@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SVM
+module TrailSmith
   # Provide access to translation data
   class Translation
     def initialize(translated_data)

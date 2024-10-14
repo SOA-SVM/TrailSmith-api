@@ -4,7 +4,7 @@ require 'http'
 require 'yaml'
 require_relative 'translation'
 
-module SVM
+module TrailSmith
   # send out HTTP request to Google Cloud Translation
   class Request
     API_PATH = 'https://translation.googleapis.com/language/translate/v2'

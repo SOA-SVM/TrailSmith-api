@@ -23,14 +23,14 @@ describe 'Test Cloud Translation API library' do
 
   describe 'Translation information' do
     it 'HAPPY: should provide correct translated attributes' do
-      translation = SVM::CloudApi.new(CLOUD_TOKEN).translation(TEXTS, TARGET_LANGUAGE)
+      translation = TrailSmith::CloudApi.new(CLOUD_TOKEN).translation(TEXTS, TARGET_LANGUAGE)
       _(translation.translations).must_equal CORRECT['translations']
     end
 
     it 'SAD: should raise exception when unauthorized' do
       _(proc do
-        SVM::CloudApi.new('BAD_TOKEN').translation(TEXTS, TARGET_LANGUAGE)
-      end).must_raise SVM::Response::BadRequest
+        TrailSmith::CloudApi.new('BAD_TOKEN').translation(TEXTS, TARGET_LANGUAGE)
+      end).must_raise TrailSmith::Response::BadRequest
     end
   end
 end
