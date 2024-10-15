@@ -1,0 +1,6 @@
+---
+detectors:
+  IrresponsibleModule:
+    enabled: false
+exclude_paths:
+  - spec/fixtures/project_info.rb # one-time test fixture creator

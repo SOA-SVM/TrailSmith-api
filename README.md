@@ -9,7 +9,7 @@
     - detectedSourceLanguage
 
 - **Entites:**
-    - Translations
+    - Sentence
 
 ## Install
 
