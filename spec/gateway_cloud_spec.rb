@@ -23,9 +23,9 @@ describe 'Test Cloud Translation API library' do
 
   describe 'Translation information' do
     it 'HAPPY: should provide correct translated attributes' do
-      @sentence = TrailSmith::CloudTranslation::SentenceMapper.new(CLOUD_TOKEN).find(TEXTS, TARGET_LANGUAGE)
-      translated_text = @sentence.translated_text
-      source_language = @sentence.source_language
+      @sentences = TrailSmith::CloudTranslation::SentenceMapper.new(CLOUD_TOKEN).find(TEXTS, TARGET_LANGUAGE)
+      translated_text = @sentences.translated_text
+      source_language = @sentences.source_language
 
       correct_translated_text = CORRECT['translations'].map { |t| t['translatedText'] }
       correct_source_language = CORRECT['translations'].map { |t| t['detectedSourceLanguage'] }

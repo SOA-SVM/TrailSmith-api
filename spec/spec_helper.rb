@@ -9,7 +9,8 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../lib/cloud_api'
+require_relative '../require_app'
+require_app
 
 TEXTS = [
   'Hello, world!', # test_en

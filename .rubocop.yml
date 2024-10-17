@@ -1,0 +1,18 @@
+---
+# Apply latest Ruby style guide and newly introduced cops
+AllCops:
+  TargetRubyVersion: 3.3.5
+  NewCops: enable
+  Include:
+  - 'Gemfile'
+  - 'Rackefile'
+
+# ignore block length in test code only
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+  - 'spec/**/*'
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
