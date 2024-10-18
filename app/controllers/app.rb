@@ -19,6 +19,7 @@ module TrailSmith
       routing.root do
         view 'home'
       end
+<<<<<<< HEAD
 
       routing.on 'spot' do
         routing.is do
@@ -30,6 +31,8 @@ module TrailSmith
           end
         end
       end
+=======
+>>>>>>> a420b36... First web app with MVC architecture (spike)
     end
   end
 end
