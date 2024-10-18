@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'  # Make sure this line is present
-require './app/controllers/app'  # Adjust if your path is different
+require_relative 'require_app'
+require_app
 
-run TrailSmith::App
+run TrailSmith::App.freeze.app
