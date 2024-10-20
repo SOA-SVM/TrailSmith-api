@@ -43,3 +43,11 @@ namespace :quality do
     sh "flog #{CODE}"
   end
 end
+
+desc 'Run the application'
+task :run do
+  puts "Running the application..."
+  # Add the actual command to run your application, e.g.:
+  sh 'ruby app/controllers/app.rb' # Adjust the path to your entry point
+end
+

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/victory1154/TrailSmith/require_app.rb": {
+      "/Users/muhsinchen/Desktop/SOAProject/TrailSmith/require_app.rb": {
         "lines": [
           null,
           null,
@@ -13,7 +13,7 @@
           null
         ]
       },
-      "/home/victory1154/TrailSmith/lib/entities/sentence.rb": {
+      "/Users/muhsinchen/Desktop/SOAProject/TrailSmith/lib/entities/sentence.rb": {
         "lines": [
           null,
           null,
@@ -33,7 +33,7 @@
           null
         ]
       },
-      "/home/victory1154/TrailSmith/lib/entities/spot.rb": {
+      "/Users/muhsinchen/Desktop/SOAProject/TrailSmith/lib/entities/spot.rb": {
         "lines": [
           null,
           null,
@@ -58,7 +58,7 @@
           null
         ]
       },
-      "/home/victory1154/TrailSmith/lib/gateways/cloud_api.rb": {
+      "/Users/muhsinchen/Desktop/SOAProject/TrailSmith/lib/gateways/cloud_api.rb": {
         "lines": [
           null,
           null,
@@ -117,7 +117,7 @@
           null
         ]
       },
-      "/home/victory1154/TrailSmith/lib/gateways/maps_api.rb": {
+      "/Users/muhsinchen/Desktop/SOAProject/TrailSmith/lib/gateways/maps_api.rb": {
         "lines": [
           null,
           null,
@@ -128,46 +128,46 @@
           null,
           1,
           1,
-          1,
+          0,
           null,
           null,
           1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
+          0,
           null,
           null,
           null,
           1,
           1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
+          0,
           null,
           null,
           1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
           null,
           null,
           null,
           null,
           1,
           1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
           null,
           null,
           1,
@@ -186,7 +186,7 @@
           null
         ]
       },
-      "/home/victory1154/TrailSmith/lib/mappers/sentence_mapper.rb": {
+      "/Users/muhsinchen/Desktop/SOAProject/TrailSmith/lib/mappers/sentence_mapper.rb": {
         "lines": [
           null,
           null,
@@ -235,7 +235,7 @@
           null
         ]
       },
-      "/home/victory1154/TrailSmith/lib/mappers/spot_mapper.rb": {
+      "/Users/muhsinchen/Desktop/SOAProject/TrailSmith/lib/mappers/spot_mapper.rb": {
         "lines": [
           null,
           null,
@@ -244,46 +244,31 @@
           null,
           1,
           1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
           null,
           null,
           1,
-          1,
-          1,
+          0,
+          0,
           null,
           null,
           1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          5,
-          5,
-          5,
-          null,
-          null,
-          1,
-          null,
-          5,
-          null,
-          null,
-          null,
-          null,
+          0,
           null,
           null,
           null,
           1,
           1,
-          1,
+          0,
+          0,
+          0,
           null,
           null,
           1,
-          1,
           null,
+          0,
           null,
           null,
           null,
@@ -293,23 +278,38 @@
           null,
           1,
           1,
+          0,
           null,
           null,
           1,
-          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
+          0,
+          null,
+          null,
           1,
-          5,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
           null,
           null,
           null,
@@ -319,6 +319,6 @@
         ]
       }
     },
-    "timestamp": 1729330774
+    "timestamp": 1729354231
   }
 }
