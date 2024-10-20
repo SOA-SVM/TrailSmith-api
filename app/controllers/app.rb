@@ -58,4 +58,8 @@ module TrailSmith
 >>>>>>> 28128a2... Initial commit
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> f0d3650... Initial commit
