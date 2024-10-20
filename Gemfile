@@ -1,4 +1,8 @@
 # frozen_string_literal: true
+gem 'roda'
+gem 'slim'
+gem 'puma'
+gem 'rack'
 
 source 'https://rubygems.org'
 

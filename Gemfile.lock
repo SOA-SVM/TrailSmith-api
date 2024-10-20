@@ -180,17 +180,30 @@ DEPENDENCIES
   logger (~> 1.6, >= 1.6.1)
   minitest (~> 5.20)
   minitest-rg (~> 5.2)
+<<<<<<< HEAD
   pry (~> 0.14.2)
   puma (~> 6.4, >= 6.4.3)
   rake (~> 13.2, >= 13.2.1)
   reek (~> 6.3)
   rerun (~> 0.14.0)
   roda (~> 3.85)
+=======
+  puma
+  rack
+  rake (~> 13.2, >= 13.2.1)
+  reek (~> 6.3)
+  rerun (~> 0.14.0)
+  roda
+>>>>>>> d9baf78... Initial commit
   rubocop (~> 1.66, >= 1.66.1)
   rubocop-minitest (~> 0.36.0)
   rubocop-rake (~> 0.6.0)
   simplecov (~> 0.22.0)
+<<<<<<< HEAD
   slim (~> 5.2, >= 5.2.1)
+=======
+  slim
+>>>>>>> d9baf78... Initial commit
   vcr (~> 6.3, >= 6.3.1)
   webmock (~> 3.24)
 
