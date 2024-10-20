@@ -21,6 +21,4 @@ module TrailSmith
       end
     end
   end
-  puts "Application started!"
-
 end
