@@ -19,6 +19,17 @@ module TrailSmith
       routing.root do
         view 'home'
       end
+
+      routing.on 'spot' do
+        routing.is do
+          # POST /spot
+          routing.post do
+            query = routing.params['query']
+            spot = GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(query)
+            view 'spot', locals: { spot: }
+          end
+        end
+      end
     end
   end
 end

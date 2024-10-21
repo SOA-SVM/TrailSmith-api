@@ -60,6 +60,6 @@ end
 # require_relative '../entities/spot'
 # require_relative '../mappers/spot_mapper'
 
-# GOOGLE_MAPS_KEY = 'WRONG'
+# # GOOGLE_MAPS_KEY = 'WRONG'
 # TEXT_QUERY = 'NTHU'
-# TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(TEXT_QUERY)
+# test = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(TEXT_QUERY)
