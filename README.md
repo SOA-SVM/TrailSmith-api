@@ -1,32 +1,21 @@
 # TrailSmith
+Application that allows the AI tour guide to recommend different travel routes to users.
 
-### Cloud Translation API
+## Overview
+TrailSmith will provide different travel routes with specific **spots** based on the user's **request**. The provided **sentences** could be translated according to the user's selected language.
 
-- **Elements:**
-    - q (source texts)
-    - target (target language)
-    - translatedText
-    - detectedSourceLanguage
 
-- **Entites:**
-    - Sentence
-
-## Install
-
-## Setting up this script
+## Setup
 
 - Create a personal Google Cloud API access token with `public_repo` scope
 - Copy `config/secrets_example.yml` to `config/secrets.yml` and update token
 - Ensure correct version of Ruby install (see `.ruby-version` for `rbenv`)
 - Run `bundle install`
 
-## Running this script
+## Running tests
 
-To create fixtures, run:
+To run tests:
 
 ```shell
-ruby lib/project_info.rb
+rake spec
 ```
-
-Fixture data should appear in `spec/fixtures/` folder
-
