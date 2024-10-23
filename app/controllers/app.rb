@@ -36,7 +36,11 @@ module TrailSmith
 >>>>>>> a420b36... First web app with MVC architecture (spike)
 =======
 
+<<<<<<< HEAD
       routing.on "location" do
+=======
+      routing.on 'location' do
+>>>>>>> 98ebf7f... fix: connect to location
         routing.is do
           # POST /location/
           routing.post do
