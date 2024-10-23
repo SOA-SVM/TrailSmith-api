@@ -19,6 +19,8 @@ module TrailSmith
       routing.root do
         view 'home'
       end
+<<<<<<< HEAD
+<<<<<<< HEAD
 
       routing.on 'spot' do
         routing.is do
@@ -30,6 +32,38 @@ module TrailSmith
           end
         end
       end
+=======
+>>>>>>> a420b36... First web app with MVC architecture (spike)
+=======
+
+<<<<<<< HEAD
+      routing.on "location" do
+=======
+      routing.on 'location' do
+>>>>>>> 98ebf7f... fix: connect to location
+        routing.is do
+          # POST /location/
+          routing.post do
+            site = routing.params['query'].downcase
+
+            routing.redirect "location/#{site}"
+          end
+        end
+
+        routing.on String do |site|
+          # GET /location/[site]
+          routing.get do
+            site_info = GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(site)
+
+            view 'location', locals: { spot: site_info }
+          end
+        end
+      end
+>>>>>>> 28128a2... Initial commit
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> f0d3650... Initial commit

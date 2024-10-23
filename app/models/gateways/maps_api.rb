@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # frozen_string_literal: true
+=======
+ frozen_string_literal: true
+>>>>>>> 3d531ef... refactor: Maps refactor to enterprise design patterns
 
 require 'http'
 
@@ -60,6 +64,12 @@ end
 # require_relative '../entities/spot'
 # require_relative '../mappers/spot_mapper'
 
+<<<<<<< HEAD
 # # GOOGLE_MAPS_KEY = 'WRONG'
 # TEXT_QUERY = 'NTHU'
 # test = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(TEXT_QUERY)
+=======
+# GOOGLE_MAPS_KEY = 'WRONG'
+# TEXT_QUERY = 'NTHU'
+# TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(TEXT_QUERY)
+>>>>>>> 3d531ef... refactor: Maps refactor to enterprise design patterns
