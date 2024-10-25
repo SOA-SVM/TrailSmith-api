@@ -2,7 +2,7 @@
 Application that allows the AI tour guide to recommend different travel routes to users.
 
 ## Overview
-TrailSmith will provide different travel routes with specific **spots** based on the user's **request**. The provided **sentences** could be translated according to the user's selected language.
+TrailSmith will provide different travel routes with specific **spots** based on the user's **z**. The provided **sentences** could be translated according to the user's selected language.
 
 
 ## Setup

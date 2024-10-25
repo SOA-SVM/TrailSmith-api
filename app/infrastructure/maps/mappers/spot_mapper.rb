@@ -44,7 +44,8 @@ module TrailSmith
 
         def build_entity
           TrailSmith::Entity::Spot.new(
-            id:,
+            id: nil,
+            place_id:,
             formatted_address:,
             display_name:,
             rating:,
@@ -52,7 +53,7 @@ module TrailSmith
           )
         end
 
-        def id
+        def place_id
           @data['places'][0]['id']
         end
 
