@@ -7,6 +7,7 @@ module TrailSmith
   # Web App
   class App < Roda
     plugin :render, engine: 'slim', views: 'app/views'
+    plugin :public, root: 'app/views/public'
     plugin :assets, css: 'style.css', path: 'app/views/assets'
     plugin :common_logger, $stderr
     plugin :halt
@@ -14,6 +15,7 @@ module TrailSmith
     route do |routing|
       routing.assets # load CSS
       response['Content-Type'] = 'text/html; charset=utf-8'
+      routing.public
 
       # GET /
       routing.root do
@@ -24,18 +26,18 @@ module TrailSmith
         routing.is do
           # POST /location/
           routing.post do
-            site = routing.params['query'].downcase
-
-            routing.redirect "location/#{site}"
+            query = routing.params['query'].downcase
+            spot = GoogleMaps::SpotMapper.new(App.config.GOOGLE_MAPS_KEY).find(query)
+            Repository::For.entity(spot).create(spot)
+            routing.redirect "location/#{spot.place_id}"
           end
         end
 
-        routing.on String do |site|
-          # GET /location/[site]
+        routing.on String do |place_id|
+          # GET /location/[place_id]
           routing.get do
-            site_info = GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(site)
-
-            view 'location', locals: { spot: site_info }
+            spot = Repository::For.klass(Entity::Spot).find_place_id(place_id)
+            view 'location', locals: { spot: spot }
           end
         end
       end

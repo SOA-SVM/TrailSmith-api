@@ -9,13 +9,15 @@ module TrailSmith
     class Spot < Dry::Struct
       include Dry.Types
 
-      attribute :id,                Strict::String
+      attribute :id,                Integer.optional
+      attribute :place_id,          Strict::String
       attribute :formatted_address, Strict::String
       attribute :display_name,      Strict::String
       attribute :rating,            Strict::Float
-      attribute :reviews,           Strict::Array.of(Hash.schema(author_name: Strict::String,
-                                                                 rating: Strict::Float,
-                                                                 text: Strict::String))
+      attribute :reviews,           Strict::Array
+      # attribute :reviews,           Strict::Array.of(Hash.schema(author_name: Strict::String,
+      #                                                            rating: Strict::Float,
+      #                                                            text: Strict::String))
     end
   end
 end

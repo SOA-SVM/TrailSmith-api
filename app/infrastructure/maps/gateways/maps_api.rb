@@ -57,9 +57,10 @@ module TrailSmith
   end
 end
 
-# require_relative '../entities/spot'
-# require_relative '../mappers/spot_mapper'
+# require 'json'
+# require_relative '../../../../require_app'
+# require_app
 
-# # GOOGLE_MAPS_KEY = 'WRONG'
 # TEXT_QUERY = 'NTHU'
+# GOOGLE_MAPS_KEY = ENV.fetch('GOOGLE_MAPS_KEY', nil)
 # test = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(TEXT_QUERY)
