@@ -6,7 +6,7 @@ require 'yaml'
 text_search = lambda do |config, text_query|
   url = 'https://places.googleapis.com/v1/places:searchText'
   HTTP.headers(
-    'X-Goog-Api-Key' => config['GOOGLE_MAPS_KEY'],
+    'X-Goog-Api-Key'   => config['GOOGLE_MAPS_KEY'],
     'X-Goog-FieldMask' => 'places.displayName,places.formattedAddress,places.id,places.rating,places.reviews'
   ).post(url, json: { textQuery: text_query })
 end

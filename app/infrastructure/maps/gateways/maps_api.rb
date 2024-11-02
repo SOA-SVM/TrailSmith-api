@@ -23,7 +23,7 @@ module TrailSmith
         def text_search(text_query)
           url = 'https://places.googleapis.com/v1/places:searchText'
           http_response = HTTP.headers(
-            'X-Goog-Api-Key' => @key,
+            'X-Goog-Api-Key'   => @key,
             'X-Goog-FieldMask' => 'places.displayName,places.formattedAddress,places.id,places.rating,places.reviews'
           ).post(url, json: { textQuery: text_query })
 

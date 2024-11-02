@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby File.read('.ruby-version').strip
 
 # Configuration and Utilities
 gem 'figaro', '~> 1.0'
-gem 'pry', '~> 0.14.2'
-gem 'rake', '~> 13.2', '>= 13.2.1'
+gem 'pry'
+gem 'rake'
 
 # Web Application
 gem 'logger', '~> 1.6', '>= 1.6.1'
@@ -40,11 +41,11 @@ end
 
 # Development
 group :development do
-  gem 'flog', '~> 4.8'
-  gem 'reek', '~> 6.3'
-  gem 'rerun', '~> 0.14.0'
-  gem 'rubocop', '~> 1.66', '>= 1.66.1'
-  gem 'rubocop-minitest', '~> 0.36.0'
-  gem 'rubocop-rake', '~> 0.6.0'
+  gem 'flog'
+  gem 'reek'
+  gem 'rerun'
+  gem 'rubocop'
+  gem 'rubocop-minitest'
+  gem 'rubocop-rake'
   gem 'rubocop-sequel'
 end

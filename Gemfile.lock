@@ -16,8 +16,9 @@ GEM
     dry-configurable (1.2.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-core (1.0.1)
+    dry-core (1.0.2)
       concurrent-ruby (~> 1.0)
+      logger
       zeitwerk (~> 2.6)
     dry-inflector (1.1.0)
     dry-initializer (3.1.1)
@@ -45,7 +46,6 @@ GEM
       dry-inflector (~> 1.0)
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
-    ffi (1.17.0)
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-aarch64-linux-musl)
     ffi (1.17.0-arm-linux-gnu)
@@ -77,7 +77,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     ice_nine (0.11.2)
-    json (2.7.2)
+    json (2.7.5)
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -87,13 +87,12 @@ GEM
       rake (~> 13.0)
     logger (1.6.1)
     method_source (1.1.0)
-    mini_portile2 (2.8.7)
     minitest (5.25.1)
     minitest-rg (5.3.0)
       minitest (~> 5.0)
-    nio4r (2.7.3)
+    nio4r (2.7.4)
     parallel (1.26.3)
-    parser (3.3.5.0)
+    parser (3.3.5.1)
       ast (~> 2.4.1)
       racc
     path_expander (1.1.3)
@@ -121,7 +120,7 @@ GEM
     rexml (3.3.9)
     roda (3.85.0)
       rack
-    rubocop (1.67.0)
+    rubocop (1.68.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -131,20 +130,20 @@ GEM
       rubocop-ast (>= 1.32.2, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.32.3)
+    rubocop-ast (1.33.0)
       parser (>= 3.3.1.0)
     rubocop-minitest (0.36.0)
       rubocop (>= 1.61, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-sequel (0.3.5)
+    rubocop-sequel (0.3.6)
       rubocop (~> 1.0)
     ruby-progressbar (1.13.0)
     ruby_parser (3.21.1)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
-    sequel (5.85.0)
+    sequel (5.86.0)
       bigdecimal
     sexp_processor (4.17.2)
     simplecov (0.22.0)
@@ -156,8 +155,6 @@ GEM
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
-    sqlite3 (1.7.3)
-      mini_portile2 (~> 2.8.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
     sqlite3 (1.7.3-arm64-darwin)
@@ -177,12 +174,14 @@ GEM
     zeitwerk (2.7.1)
 
 PLATFORMS
+  aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
+  arm-linux
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
-  ruby
+  x86-linux
   x86-linux-gnu
   x86-linux-musl
   x86_64-darwin
@@ -193,21 +192,21 @@ DEPENDENCIES
   dry-struct (~> 1.6)
   dry-types (~> 1.7, >= 1.7.2)
   figaro (~> 1.0)
-  flog (~> 4.8)
+  flog
   hirb
   http (~> 5.2)
   logger (~> 1.6, >= 1.6.1)
   minitest (~> 5.20)
   minitest-rg (~> 5.2)
-  pry (~> 0.14.2)
+  pry
   puma (~> 6.4, >= 6.4.3)
-  rake (~> 13.2, >= 13.2.1)
-  reek (~> 6.3)
-  rerun (~> 0.14.0)
+  rake
+  reek
+  rerun
   roda (~> 3.85)
-  rubocop (~> 1.66, >= 1.66.1)
-  rubocop-minitest (~> 0.36.0)
-  rubocop-rake (~> 0.6.0)
+  rubocop
+  rubocop-minitest
+  rubocop-rake
   rubocop-sequel
   sequel (~> 5.0)
   simplecov (~> 0.22.0)
@@ -215,6 +214,9 @@ DEPENDENCIES
   sqlite3 (~> 1.0)
   vcr (~> 6.3, >= 6.3.1)
   webmock (~> 3.24)
+
+RUBY VERSION
+   ruby 3.3.5p100
 
 BUNDLED WITH
    2.5.18
