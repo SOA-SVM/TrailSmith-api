@@ -1,0 +1,108 @@
+<section>
+  <div class="container-fluid">
+    <div class="search-container">
+      <%# <h1>TrailSmith</h1> %>
+      <p>Find your next adventure, hotel, or dining experience</p>
+      <!-- Tab navigation -->
+      <!--<ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="#hotels" data-bs-toggle="tab">Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#things-to-do" data-bs-toggle="tab">Things to Do</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#restaurants" data-bs-toggle="tab">Restaurants</a>
+        </li>
+      </ul>-->
+      <!-- Tab content -->
+      <!--<div class="tab-content">
+        <div class="tab-pane fade show active" id="hotels">
+          <p>Showing results for hotels...</p>
+        </div>
+        <div class="tab-pane fade" id="things-to-do">
+          <p>Showing results for things to do...</p>
+        </div>
+        <div class="tab-pane fade" id="restaurants">
+          <p>Showing results for restaurants...</p>
+        </div>
+      </div>-->
+      <!-- Input group for search -->
+      <form role="form" action="/location" method="POST" id="show-spot-info">
+        <div class="input-group mt-3">
+          <input type="text" name="query" placeholder="I want a day trip to Hsinchu." required="true" class="form-control">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <div class="my-3">
+        <div>
+          <h2>Or get started with a popular destination</h2>
+        </div>
+      </div>
+      <div>
+        <div>
+            <ul class="d-flex popular_spot">
+                <li>
+                    <a href="/">
+                        <div class="card">
+                            <div><div>
+                                <picture>
+                                    <img src="/media/tainan.jpg" alt="tainan" width="300" height="300" loading="lazy">
+                                </picture>
+                            </div></div>
+                            <div class="spot_name">
+                                <div>Tainan</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <div class="card">
+                            <div><div>
+                                <picture>
+                                    <img src="/media/taipei.jpg" alt="taipei" width="300" height="300" loading="lazy">
+                                </picture>
+                            </div></div>
+                            <div class="spot_name">
+                                <div>Taipei</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <div class="card">
+                            <div><div>
+                                <picture>
+                                    <img src="/media/kaohsiung.jpg" alt="kaohsiung" width="300" height="300" loading="lazy">
+                                </picture>
+                            </div></div>
+                            <div class="spot_name">
+                                <div>Kaohsiung</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <div class="card">
+                            <div><div>
+                                <picture>
+                                    <img src="/media/hsinchu.jpg" alt="hsinchu" width="300" height="300" loading="lazy">
+                                </picture>
+                            </div></div>
+                            <div class="spot_name">
+                                <div>Hsinchu</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
