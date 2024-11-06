@@ -9,10 +9,12 @@ gem 'pry'
 gem 'rake'
 
 # Web Application
+gem 'erb', '~> 4.0', '>= 4.0.4'
+gem 'htmlbeautifier'
 gem 'logger', '~> 1.6', '>= 1.6.1'
 gem 'puma', '~> 6.4', '>= 6.4.3'
 gem 'roda', '~> 3.85'
-gem 'slim', '~> 5.2', '>= 5.2.1'
+gem 'tilt'
 
 # Data Validation
 gem 'dry-struct', '~> 1.6'

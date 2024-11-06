@@ -1,14 +1,15 @@
 #  frozen_string_literal: true
 
 require 'roda'
-require 'slim'
+require 'erb'
 
 module TrailSmith
   # Web App
   class App < Roda
-    plugin :render, engine: 'slim', views: 'app/views'
+    plugin :render, engine: 'erb', views: 'app/views'
     plugin :public, root: 'app/views/public'
-    plugin :assets, css: 'style.css', path: 'app/views/assets'
+    # Load CSS assets with a timestamp to prevent caching issues
+    plugin :assets, path: 'app/views/assets', css: 'style.css', timestamp_paths: true
     plugin :common_logger, $stderr
     plugin :halt
 
