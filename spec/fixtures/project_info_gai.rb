@@ -1,34 +1,35 @@
-#  frozen_string_literal: true
+# frozen_string_literal: true
 
 require 'http'
 require 'yaml'
 
-def trans_api_path
-    ''
+def openai_api_path
+  'https://api.openai.com/v1/chat/completions'
 end
 
-def gai_request(api_key, source_texts, target_language)
-    HTTP.post(
-     
-      params: {
-        
-      }
-    )
+def send_openai_request(api_key, messages)
+  HTTP.post(
+    openai_api_path,
+    headers: {
+      'Authorization' => "Bearer #{api_key}", 'Content-Type' => 'application/json'
+    },
+    json: {
+      model: 'gpt-4o-mini', messages: messages, temperature: 0.7
+    }
+  )
 end
 
 config = YAML.safe_load_file('config/secrets.yml')
-api_key = config['GAI_Token']
+api_key = config['OpenAI_Token']
 
-texts = [
-  
+messages = [
+  { role: 'user', content: 'Where is Taiwan?' }
 ]
-target_language = 'zh-TW'
+openai_result = {}
+response = send_openai_request(api_key, messages).parse
+openai_result['messages'] = response['choices']
 
-response = gai_request(api_key, texts, target_language).parse
+file_path = 'spec/fixtures/openai_response.yml'
+File.write(file_path, openai_result.to_yaml)
 
-translations = response['data']
-file_path = ''
-
-File.write(file_path, )
-
-puts 'GAI result saved!'
+puts 'OpenAI response saved to spec/fixtures/openai_response.yml'
