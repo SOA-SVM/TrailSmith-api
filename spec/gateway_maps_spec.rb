@@ -27,7 +27,7 @@ describe 'Tests Google Maps API library' do
         TrailSmith::GoogleMaps::SpotMapper
           .new(GOOGLE_MAPS_KEY)
           .find(TEXT_QUERY)
-      _(place.id).must_equal CORRECT['id']
+      _(place.place_id).must_equal CORRECT['id']
       _(place.formatted_address).must_equal CORRECT['formatted_address']
       _(place.display_name).must_equal CORRECT['display_name']
       _(place.rating).must_equal CORRECT['rating']

@@ -13,7 +13,7 @@ require_app
 
 TEXT_QUERY = 'NTHU'
 CONFIG = YAML.safe_load_file('config/secrets.yml')
-GOOGLE_MAPS_KEY = CONFIG['GOOGLE_MAPS_KEY']
+GOOGLE_MAPS_KEY = ENV.fetch('GOOGLE_MAPS_KEY', nil)
 CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])
 
 CASSETTES_FOLDER = 'spec/fixtures/cassettes'

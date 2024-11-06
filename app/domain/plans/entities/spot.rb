@@ -15,9 +15,12 @@ module TrailSmith
       attribute :display_name,      Strict::String
       attribute :rating,            Strict::Float
       attribute :reviews,           Strict::Array
-      # attribute :reviews,           Strict::Array.of(Hash.schema(author_name: Strict::String,
-      #                                                            rating: Strict::Float,
-      #                                                            text: Strict::String))
+
+      def score
+        rating_num = reviews.length + 1
+        rating_sum = reviews.sum { |review| review[:rating] } + rating
+        rating_sum / rating_num
+      end
     end
   end
 end
