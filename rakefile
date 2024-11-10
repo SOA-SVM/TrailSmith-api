@@ -51,7 +51,7 @@ namespace :db do
       return
     end
 
-    require_app(%w[models infrastructure])
+    require_app(%w[domain infrastructure])
     DatabaseHelper.wipe_database
   end
 
