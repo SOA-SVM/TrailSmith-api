@@ -591,10 +591,10 @@
           1,
           null,
           1,
-          2,
-          2,
-          2,
-          2,
+          3,
+          3,
+          3,
+          3,
           null,
           null,
           null,
@@ -631,6 +631,47 @@
           1,
           1,
           1,
+          null,
+          null
+        ]
+      },
+      "/home/shou/hw/api_explore/spec/gateway_database_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
           null,
           null
         ]
@@ -678,6 +719,6 @@
         ]
       }
     },
-    "timestamp": 1731293120
+    "timestamp": 1731308301
   }
 }

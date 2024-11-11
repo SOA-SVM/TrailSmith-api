@@ -8,10 +8,12 @@ Users may **wish** for specific details, such as the desired duration, number of
 
 ## Setup
 
-- Create a personal Google Cloud API access token with `public_repo` scope
+- Create a personal Google Maps API access token with `public_repo` scope
 - Copy `config/secrets_example.yml` to `config/secrets.yml` and update token
 - Ensure correct version of Ruby install (see `.ruby-version` for `rbenv`)
 - Run `bundle install`
+- Run `bundle exec rake db:migrate` to create dev database
+- Run `RACK_ENV=test bundle exec rake db:migrate` to create test database
 
 ## Running tests
 
