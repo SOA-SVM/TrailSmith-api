@@ -20,11 +20,12 @@ module TrailSmith
 
         return if record
 
-        Database::SpotOrm.create(place_id: place_id,
-                                 formatted_address: entity.formatted_address,
-                                 display_name: entity.display_name,
-                                 rating: entity.rating,
-                                 reviews: entity.reviews.to_json)
+        spot_orm = Database::SpotOrm.create(place_id: place_id,
+                                            formatted_address: entity.formatted_address,
+                                            display_name: entity.display_name,
+                                            rating: entity.rating,
+                                            reviews: entity.reviews.to_json)
+        rebuild_entity(spot_orm)
       end
 
       def self.rebuild_entity(db_record)

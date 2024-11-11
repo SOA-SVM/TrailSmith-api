@@ -6,7 +6,8 @@ module DatabaseHelper
     db = TrailSmith::App.db
     # Ignore foreign key constraints when wiping tables
     db.run('PRAGMA foreign_keys = OFF')
-    TrailSmith::Database::TripOrm.map(&:destroy)
+    TrailSmith::Database::PlanOrm.map(&:destroy)
+    TrailSmith::Database::SpotOrm.map(&:destroy)
     db.run('PRAGMA foreign_keys = ON')
   end
 end

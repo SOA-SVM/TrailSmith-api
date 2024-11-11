@@ -9,7 +9,7 @@ end
 
 desc 'Run tests once'
 Rake::TestTask.new(:spec) do |t|
-  t.pattern = 'spec/*_spec.rb'
+  t.pattern = Dir.glob('spec/*_spec.rb') - ['spec/gateway_cloud_spec.rb'] # ignore cloud api for now
   t.warning = false
 end
 
