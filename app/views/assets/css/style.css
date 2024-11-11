@@ -311,8 +311,15 @@ header a #title {
   font-weight: 800;
   font-size: calc(1.375rem + 1.5vw);
 }
-header a #logo {
-  width: calc(1.375rem + 5vw);
+@media (orientation: landscape) {
+  header a #logo {
+    width: calc(1.375rem + 5vw);
+  }
+}
+@media (orientation: portrait) {
+  header a #logo {
+    height: calc(1.375rem + 5vh);
+  }
 }
 
 .search-container {

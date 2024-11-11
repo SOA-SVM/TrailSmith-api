@@ -10,7 +10,15 @@ header {
             font-size: calc(1.375rem + 1.5vw);
         }
         #logo {
-            width: calc(1.375rem + 5vw);
+            // when screen width larger than height
+            @media (orientation: landscape) {
+                width: calc(1.375rem + 5vw);
+            }
+
+            // when screen height larger than width
+            @media (orientation: portrait) {
+                height: calc(1.375rem + 5vh);
+            }
         }
     }
 }

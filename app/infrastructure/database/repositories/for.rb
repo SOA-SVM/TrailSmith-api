@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 require_relative 'spots'
+require_relative 'plans'
 
 module TrailSmith
   module Repository
     # Finds the right repository for an entity object or class
     module For
       ENTITY_REPOSITORY = {
-        Entity::Spot => Spots
+        Entity::Spot => Spots,
+        Entity::Plan => Plans
       }.freeze
 
       def self.klass(entity_klass)

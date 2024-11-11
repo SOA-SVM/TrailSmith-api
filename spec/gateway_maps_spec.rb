@@ -1,20 +1,13 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper_maps'
+require_relative 'helpers/spec_helper'
+require_relative 'helpers/vcr_helper'
 
 describe 'Tests Google Maps API library' do
-  VCR.configure do |c|
-    c.cassette_library_dir = CASSETTES_FOLDER
-    c.hook_into :webmock
-
-    c.filter_sensitive_data('<GOOGLE_MAPS_KEY>') { GOOGLE_MAPS_KEY }
-    c.filter_sensitive_data('<GOOGLE_MAPS_KEY_ECS>') { CGI.escape(GOOGLE_MAPS_KEY) }
-  end
+  VcrHelper.setup_vcr
 
   before do
-    VCR.insert_cassette CASSETTE_FILE,
-                        record: :new_episodes,
-                        match_requests_on: %i[method uri headers]
+    VcrHelper.configure_vcr_for_map
   end
 
   after do
@@ -27,11 +20,11 @@ describe 'Tests Google Maps API library' do
         TrailSmith::GoogleMaps::SpotMapper
           .new(GOOGLE_MAPS_KEY)
           .find(TEXT_QUERY)
-      _(place.id).must_equal CORRECT['id']
-      _(place.formatted_address).must_equal CORRECT['formatted_address']
-      _(place.display_name).must_equal CORRECT['display_name']
-      _(place.rating).must_equal CORRECT['rating']
-      _(place.reviews).must_equal CORRECT['reviews']
+      _(place.place_id).must_equal MAP_CORRECT['id']
+      _(place.formatted_address).must_equal MAP_CORRECT['formatted_address']
+      _(place.display_name).must_equal MAP_CORRECT['display_name']
+      _(place.rating).must_equal MAP_CORRECT['rating']
+      _(place.reviews).must_equal MAP_CORRECT['reviews']
     end
 
     it 'BAD: should exception with wrong key' do

@@ -64,3 +64,4 @@ end
 # TEXT_QUERY = 'NTHU'
 # GOOGLE_MAPS_KEY = ENV.fetch('GOOGLE_MAPS_KEY', nil)
 # test = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).find(TEXT_QUERY)
+# test.score

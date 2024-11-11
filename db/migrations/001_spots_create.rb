@@ -4,8 +4,9 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:spot) do
+    create_table(:spots) do
       primary_key :id
+      foreign_key :plan_id, :plans
 
       String      :place_id, unique: true
       String      :formatted_address
