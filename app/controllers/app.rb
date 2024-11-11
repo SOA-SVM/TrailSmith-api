@@ -1,17 +1,20 @@
 #  frozen_string_literal: true
 
+require 'rack' # for Rack::MethodOverride
 require 'roda'
 require 'erb'
 
 module TrailSmith
   # Web App
   class App < Roda
-    plugin :render, engine: 'erb', views: 'app/views'
-    plugin :public, root: 'app/views/public'
-    # Load CSS assets with a timestamp to prevent caching issues
-    plugin :assets, path: 'app/views/assets', css: 'style.css', timestamp_paths: true
-    plugin :common_logger, $stderr
     plugin :halt
+    plugin :flash
+    plugin :all_verbs # allows HTTP verbs beyond GET/POST (e.g., DELETE)
+    plugin :render, engine: 'erb', views: 'app/presentation/views_html'
+    plugin :public, root: 'app/presentation/public'
+    # Load CSS assets with a timestamp to prevent caching issues
+    plugin :assets, path: 'app/presentation/assets', css: 'style.css', timestamp_paths: true
+    plugin :common_logger, $stderr
 
     route do |routing|
       routing.assets # load CSS

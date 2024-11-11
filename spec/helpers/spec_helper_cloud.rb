@@ -10,7 +10,7 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../require_app'
+require_relative '../../require_app'
 require_app
 
 TEXTS = [

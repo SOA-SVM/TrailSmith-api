@@ -13,7 +13,8 @@ task spec: ['spec:default']
 namespace :spec do
   desc 'Run unit and integration tests'
   Rake::TestTask.new(:default) do |t|
-    t.pattern = 'spec/tests/{integration, unit}/**/*_spec.rb'
+    t.pattern = Dir.glob('spec/tests/{integration,unit}/**/*_spec.rb') \
+                - ['spec/tests/integration/gateway_cloud_spec.rb'] # ignore cloud api for now
     t.warning = false
   end
 
@@ -30,7 +31,7 @@ task :respec do
 end
 
 desc 'Run web app in default mode'
-task run: ['run: default']
+task run: ['run:default']
 
 namespace :run do
   desc 'Run web app in development or production'
