@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper_cloud'
+require_relative '../../helpers/spec_helper_cloud'
 
 describe 'Test Cloud Translation API library' do
   VCR.configure do |c|
