@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'figaro'
+require 'logger'
+require 'rack/session'
 require 'roda'
 require 'sequel'
 require 'yaml'
@@ -25,5 +27,11 @@ module TrailSmith
     # Database Setup
     @db = Sequel.connect(ENV.fetch('DATABASE_URL'))
     def self.db = @db # rubocop:disable Style/TrivialAccessors
+
+    # Logger Setup
+    @logger = Logger.new($stderr)
+    class << self
+      attr_reader :logger
+    end
   end
 end

@@ -322,6 +322,10 @@ header a #title {
   }
 }
 
+.alert {
+  margin: 0 12px;
+}
+
 .search-container {
   text-align: center;
 }
