@@ -11,9 +11,9 @@ module TrailSmith
       include Dry.Types
 
       attribute :id,      Integer.optional
-      attribute :spot,    Strict::Array.of(Spot)
       attribute :score,   Strict::Integer
       attribute :type,    Strict::String
+      attribute :spots,   Strict::Array.of(Spot)
     end
   end
 end

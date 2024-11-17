@@ -17,9 +17,9 @@ module TrailSmith
       attribute :reviews,           Strict::Array
 
       def score
-        rating_num = reviews.length + 1
-        rating_sum = reviews.sum { |review| review[:rating] } + rating
-        rating_sum / rating_num
+        num = reviews.length + 1
+        sum = reviews.sum { |review| review[:rating] } + rating
+        sum / num
       end
     end
   end
