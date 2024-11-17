@@ -250,4 +250,354 @@ http_interactions:
           ]
         }
   recorded_at: Sun, 17 Nov 2024 03:45:10 GMT
+- request:
+    method: post
+    uri: https://places.googleapis.com/v1/places:searchText
+    body:
+      encoding: UTF-8
+      string: '{"textQuery":"NYCU"}'
+    headers:
+      X-Goog-Api-Key:
+      - "<GOOGLE_MAPS_KEY>"
+      X-Goog-Fieldmask:
+      - places.displayName,places.formattedAddress,places.id,places.rating,places.reviews
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+      Host:
+      - places.googleapis.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Sun, 17 Nov 2024 08:22:55 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=154
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "places": [
+            {
+              "id": "ChIJMV8k71c2aDQRmj5yOn_aKTk",
+              "formattedAddress": "No. 1001號, Daxue Rd, East District, Hsinchu City, Taiwan 30010",
+              "rating": 4.6,
+              "displayName": {
+                "text": "National Yang Ming Chiao Tung University",
+                "languageCode": "en"
+              },
+              "reviews": [
+                {
+                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChZDSUhNMG9nS0VJQ0FnSUNyZ2FqZWZ3EAE",
+                  "relativePublishTimeDescription": "4 months ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "Four years after completing my master's degree in semiconductor technology at NCTU, I realized how proud I am to have studied here. The professors are excellent in their teaching, and the campus is very student-friendly compared to many universities worldwide. I made great friends here, both humans and dogs! I learned a lot from NCTU, and this experience has greatly helped my career. Below are some of the pics I took during my two years at this uni. Don't miss the pics of my furry friends, chiaba, danke, tiedan and songshu at the end!",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "Four years after completing my master's degree in semiconductor technology at NCTU, I realized how proud I am to have studied here. The professors are excellent in their teaching, and the campus is very student-friendly compared to many universities worldwide. I made great friends here, both humans and dogs! I learned a lot from NCTU, and this experience has greatly helped my career. Below are some of the pics I took during my two years at this uni. Don't miss the pics of my furry friends, chiaba, danke, tiedan and songshu at the end!",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Amit Sravan",
+                    "uri": "https://www.google.com/maps/contrib/100098845219501880450/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU9bA4WzDh8hr3LluzkMqRE3MdpDdof87I7TrpsC71E5ZD5v4JKcw=s128-c0x00000000-cc-rp-mo-ba3"
+                  },
+                  "publishTime": "2024-07-07T19:55:34.909463Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNyZ2FqZWZ3EAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNyZ2FqZWZ3EAE!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                },
+                {
+                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChZDSUhNMG9nS0VJQ0FnSUR3M1BYNkh3EAE",
+                  "relativePublishTimeDescription": "6 years ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "One of the best university to study electronics and computer science. Apart of academics the school has beautiful campus and good canteens. The school also has a awesome waffle shop.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "One of the best university to study electronics and computer science. Apart of academics the school has beautiful campus and good canteens. The school also has a awesome waffle shop.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "SEWAKE DEWANSHU CHHAGAN",
+                    "uri": "https://www.google.com/maps/contrib/116862919740793312336/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLdl9yLtsnoTAYlPgM2zlCU83emye0eCu9nU9FhpOla_qxa4w=s128-c0x00000000-cc-rp-mo-ba4"
+                  },
+                  "publishTime": "2018-02-21T05:13:24.790Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUR3M1BYNkh3EAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUR3M1BYNkh3EAE!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                },
+                {
+                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChdDSUhNMG9nS0VJQ0FnSUNvamY3djNBRRAB",
+                  "relativePublishTimeDescription": "5 years ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "Love NCTU's artificial waterfall with lot of koi in it. And more over its Taiwan's No.3 university .",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "Love NCTU's artificial waterfall with lot of koi in it. And more over its Taiwan's No.3 university .",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "sagarika dash",
+                    "uri": "https://www.google.com/maps/contrib/111562388246307545703/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUwLTvnoNKdT2-orl1CQCkSbkFjvM9FsWOSnhyVovgv6l63enLzbA=s128-c0x00000000-cc-rp-mo-ba4"
+                  },
+                  "publishTime": "2019-02-22T16:16:25.843844Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNvamY3djNBRRAB&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNvamY3djNBRRAB!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                },
+                {
+                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChdDSUhNMG9nS0VJQ0FnSUR6dzhieWl3RRAB",
+                  "relativePublishTimeDescription": "5 months ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "One of the best Universities in Taiwan. Close to the science park with the world class professors.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "One of the best Universities in Taiwan. Close to the science park with the world class professors.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "masjohncook",
+                    "uri": "https://www.google.com/maps/contrib/110418153991329095404/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjULW5_GySQKcVcWWyw82L-dT3OW50-2WZe5cdJZ5313lIr1zaQyqw=s128-c0x00000000-cc-rp-mo-ba5"
+                  },
+                  "publishTime": "2024-06-12T00:13:12.794537Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUR6dzhieWl3RRAB&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUR6dzhieWl3RRAB!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                },
+                {
+                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChdDSUhNMG9nS0VJQ0FnSURIeE5ENnhBRRAB",
+                  "relativePublishTimeDescription": "2 months ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "Been here two times for the last two years. It was a really nice research visit.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "Been here two times for the last two years. It was a really nice research visit.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "brian bramanto",
+                    "uri": "https://www.google.com/maps/contrib/102333104449638603833/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXMLaXdcaMawF9IeE6PPdKWaXH3pggpef6ylhq8vpI4w5RQyJs=s128-c0x00000000-cc-rp-mo-ba4"
+                  },
+                  "publishTime": "2024-09-12T14:27:06.234486Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURIeE5ENnhBRRAB&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURIeE5ENnhBRRAB!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                }
+              ]
+            }
+          ]
+        }
+  recorded_at: Sun, 17 Nov 2024 08:22:54 GMT
+- request:
+    method: post
+    uri: https://places.googleapis.com/v1/places:searchText
+    body:
+      encoding: UTF-8
+      string: '{"textQuery":"NTU"}'
+    headers:
+      X-Goog-Api-Key:
+      - "<GOOGLE_MAPS_KEY>"
+      X-Goog-Fieldmask:
+      - places.displayName,places.formattedAddress,places.id,places.rating,places.reviews
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+      Host:
+      - places.googleapis.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Sun, 17 Nov 2024 08:22:55 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=184
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{\n  \"places\": [\n    {\n      \"id\": \"ChIJY0QBmQoP2jERGYItxQAIu7g\",\n
+        \     \"formattedAddress\": \"50 Nanyang Ave, Singapore 639798\",\n      \"rating\":
+        4.5,\n      \"displayName\": {\n        \"text\": \"Nanyang Technological
+        University\",\n        \"languageCode\": \"en\"\n      },\n      \"reviews\":
+        [\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChdDSUhNMG9nS0VJQ0FnSUNEelByVGp3RRAB\",\n
+        \         \"relativePublishTimeDescription\": \"4 months ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"Beautiful campus! Amazed
+        at how NTU has transformed over the years.\\n\\nI like the diversity of the
+        different style of architecture in NTU, the fact that every building has its
+        unique characteristic. i like the nostalgia of yunnan garden, the majestic
+        of Nanyang business school as well as the futuristic feel of the hive.\\n\\nAs
+        an NUS alum who had graduated 20 years ago, NUS used to be much nicer and
+        trendier. Sad to say, Over the years, NUS stayed pretty much the same while
+        NTU improved by leaps and bounds!\",\n            \"languageCode\": \"en\"\n
+        \         },\n          \"originalText\": {\n            \"text\": \"Beautiful
+        campus! Amazed at how NTU has transformed over the years.\\n\\nI like the
+        diversity of the different style of architecture in NTU, the fact that every
+        building has its unique characteristic. i like the nostalgia of yunnan garden,
+        the majestic of Nanyang business school as well as the futuristic feel of
+        the hive.\\n\\nAs an NUS alum who had graduated 20 years ago, NUS used to
+        be much nicer and trendier. Sad to say, Over the years, NUS stayed pretty
+        much the same while NTU improved by leaps and bounds!\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"authorAttribution\": {\n            \"displayName\":
+        \"Kok How Lee\",\n            \"uri\": \"https://www.google.com/maps/contrib/106829727180318415827/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjXYw1x-VpdXQfNwojX8ZhOX6KcYnBatnzcHmsFU2dkxl3TxJjj_pg=s128-c0x00000000-cc-rp-mo-ba4\"\n
+        \         },\n          \"publishTime\": \"2024-06-28T00:33:16.913757Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNEelByVGp3RRAB&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNEelByVGp3RRAB!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChZDSUhNMG9nS0VJQ0FnSURPdmRXd0pBEAE\",\n
+        \         \"relativePublishTimeDescription\": \"8 months ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"NTU's campus is blessed
+        with its own beauty of hilly landscapes and green nature surrounds the colleges.\\n\\nIt's
+        a breath-taking experience especially for a beautiful morning walk, at the
+        same time get to enjoy the rich biodiversity of flora and fauna that refresh
+        our body and soul most importantly, not only that, it attracts a wide range
+        of wildlife. Long-tailed macaques, wild boars, and otters, have been sighted
+        on campus as well.\\n\\nWelcome to NTU!\\n\\nShalom!\U0001F33F\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"originalText\": {\n            \"text\":
+        \"NTU's campus is blessed with its own beauty of hilly landscapes and green
+        nature surrounds the colleges.\\n\\nIt's a breath-taking experience especially
+        for a beautiful morning walk, at the same time get to enjoy the rich biodiversity
+        of flora and fauna that refresh our body and soul most importantly, not only
+        that, it attracts a wide range of wildlife. Long-tailed macaques, wild boars,
+        and otters, have been sighted on campus as well.\\n\\nWelcome to NTU!\\n\\nShalom!\U0001F33F\",\n
+        \           \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
+        {\n            \"displayName\": \"Josephine Tang\",\n            \"uri\":
+        \"https://www.google.com/maps/contrib/111333226180614624597/reviews\",\n            \"photoUri\":
+        \"https://lh3.googleusercontent.com/a-/ALV-UjX-wSz-j2eYhtgtjLdv-9l3OF-uk1YLCkQND9Z7T7BYIS0-AKsU4w=s128-c0x00000000-cc-rp-mo-ba5\"\n
+        \         },\n          \"publishTime\": \"2024-02-24T10:50:25.235481Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURPdmRXd0pBEAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURPdmRXd0pBEAE!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChZDSUhNMG9nS0VJQ0FnSUNRMm9yNkVREAE\",\n
+        \         \"relativePublishTimeDescription\": \"6 years ago\",\n          \"rating\":
+        4,\n          \"text\": {\n            \"text\": \"Really big and nice campus.
+        There are some distinct architecture there. It's a bit hard to get to, but
+        I think the distance effects how big the campus is. I didn't study there,
+        I just visited so I'm not sure about the education though.\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"originalText\": {\n            \"text\":
+        \"Really big and nice campus. There are some distinct architecture there.
+        It's a bit hard to get to, but I think the distance effects how big the campus
+        is. I didn't study there, I just visited so I'm not sure about the education
+        though.\",\n            \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
+        {\n            \"displayName\": \"Thien-Kim Quach\",\n            \"uri\":
+        \"https://www.google.com/maps/contrib/108038205926473059622/reviews\",\n            \"photoUri\":
+        \"https://lh3.googleusercontent.com/a-/ALV-UjXwTLVs91j4DLVxsulZ6n9bHO1eGyEV5eg3-bcHltYxXBtGEy6txg=s128-c0x00000000-cc-rp-mo-ba5\"\n
+        \         },\n          \"publishTime\": \"2018-09-14T12:56:25.362007Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNRMm9yNkVREAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNRMm9yNkVREAE!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChdDSUhNMG9nS0VJQ0FnSUNoMzgzRGlnRRAB\",\n
+        \         \"relativePublishTimeDescription\": \"a year ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"It was an amazing experience
+        going to NTU Open House 2023 yesterday! Student ambassadors were really friendly,
+        and everything seemed to be executed in clockwork style (starting from the
+        shuttle buses that ferried us from Jurong East MRT to the campus itself).
+        I had an amazing time with the tours, free concerts & photobooth and many,
+        many more!\\n\\nMany may regard NTU as \\\"Pulau NTU\\\" because of its location
+        away from 'most of Singapore'. It has its charms in my humble opinion, ranging
+        from the 'dim sum' building, to the Nanyang Lake, and the many greenery that
+        surrounds and fills the campus. Another plus point for being relatively inaccessible
+        is that there's lower foot traffic on most days, which gives peace and tranquility
+        to its occupants. Therein lies its beauty - you have to travel to see it (highly
+        recommended)!\",\n            \"languageCode\": \"en\"\n          },\n          \"originalText\":
+        {\n            \"text\": \"It was an amazing experience going to NTU Open
+        House 2023 yesterday! Student ambassadors were really friendly, and everything
+        seemed to be executed in clockwork style (starting from the shuttle buses
+        that ferried us from Jurong East MRT to the campus itself). I had an amazing
+        time with the tours, free concerts & photobooth and many, many more!\\n\\nMany
+        may regard NTU as \\\"Pulau NTU\\\" because of its location away from 'most
+        of Singapore'. It has its charms in my humble opinion, ranging from the 'dim
+        sum' building, to the Nanyang Lake, and the many greenery that surrounds and
+        fills the campus. Another plus point for being relatively inaccessible is
+        that there's lower foot traffic on most days, which gives peace and tranquility
+        to its occupants. Therein lies its beauty - you have to travel to see it (highly
+        recommended)!\",\n            \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
+        {\n            \"displayName\": \"G Y\",\n            \"uri\": \"https://www.google.com/maps/contrib/111376056027123649376/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjVPlDEDI_6bMa4RhdMD7NuiGaSgGwzqrC0o1Gk0fcyKRRuIeQE=s128-c0x00000000-cc-rp-mo-ba5\"\n
+        \         },\n          \"publishTime\": \"2023-02-26T01:48:03.756803Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNoMzgzRGlnRRAB&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNoMzgzRGlnRRAB!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChZDSUhNMG9nS0VJQ0FnSURBbGRuM1VBEAE\",\n
+        \         \"relativePublishTimeDescription\": \"6 years ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"A breathtaking collage,
+        from the natural beauty to the expanse. The wide variety of courses it caters
+        and the facilities provided are mind blowing. I was just visiting a friend
+        of mine and it felt entitled to just step in it. The distribution of facilities
+        from the Laboratories to lecture rooms to hostels to the canteens, NTU is
+        well thought out. No wonder it's among the top 20 universities in the world.
+        Try to visit it, if you cant enrol in it!\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"originalText\": {\n            \"text\":
+        \"A breathtaking collage, from the natural beauty to the expanse. The wide
+        variety of courses it caters and the facilities provided are mind blowing.
+        I was just visiting a friend of mine and it felt entitled to just step in
+        it. The distribution of facilities from the Laboratories to lecture rooms
+        to hostels to the canteens, NTU is well thought out. No wonder it's among
+        the top 20 universities in the world. Try to visit it, if you cant enrol in
+        it!\",\n            \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
+        {\n            \"displayName\": \"Chanaka Hettige\",\n            \"uri\":
+        \"https://www.google.com/maps/contrib/104835839967673632825/reviews\",\n            \"photoUri\":
+        \"https://lh3.googleusercontent.com/a-/ALV-UjUXs79aWp212O5TN1nyaZ_6aPOD2M-HDAjQnGiLQRuh8jDBnCxVTw=s128-c0x00000000-cc-rp-mo-ba6\"\n
+        \         },\n          \"publishTime\": \"2018-04-04T08:41:04.354Z\",\n          \"flagContentUri\":
+        \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURBbGRuM1VBEAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURBbGRuM1VBEAE!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
+        \       }\n      ]\n    }\n  ]\n}\n"
+  recorded_at: Sun, 17 Nov 2024 08:22:54 GMT
 recorded_with: VCR 6.3.1

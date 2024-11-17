@@ -4,7 +4,7 @@ module TrailSmith
   module Repository
     # Repository for Members
     class Plans
-      def self.create(entity)
+      def self.create
         plan_orm = Database::SpotOrm.create(type: entity.type,
                                             score: entity.score)
         rebuild_entity(plan_orm)
