@@ -16,21 +16,22 @@ config = YAML.safe_load_file('config/secrets.yml')
 maps_response = {}
 maps_results = {}
 
-## HAPPY project request
+# HAPPY project request
 text_query = 'NTHU'
 maps_response[text_query] = text_search.call(config, text_query)
 place = maps_response[text_query].parse
 
+## change the naming convention from camelCase into snake_case
 maps_results['id'] = place['places'][0]['id']
 
-maps_results['formatted_address'] = place['places'][0]['formattedAddress']
 # should be 300新竹市東區光復路二段101號
+maps_results['formatted_address'] = place['places'][0]['formattedAddress']
 
-maps_results['display_name'] = place['places'][0]['displayName']['text']
 # should be 清華大學
+maps_results['display_name'] = place['places'][0]['displayName']['text']
 
-maps_results['rating'] = place['places'][0]['rating'].to_f
 # should be 4.6
+maps_results['rating'] = place['places'][0]['rating'].to_f
 
 maps_results['reviews'] = place['places'][0]['reviews'].map do |review|
   {

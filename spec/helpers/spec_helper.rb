@@ -16,7 +16,11 @@ require 'webmock'
 require_relative '../../require_app'
 require_app
 
+TrailSmith::App.config.GOOGLE_MAPS_KEY
+GOOGLE_MAPS_KEY = TrailSmith::App.config.GOOGLE_MAPS_KEY
+
+TEXT_QUERY_LIST = %w[NTHU NYCU NTU].freeze
 TEXT_QUERY = 'NTHU'
-CONFIG = YAML.safe_load_file('config/secrets.yml')
-GOOGLE_MAPS_KEY = ENV.fetch('GOOGLE_MAPS_KEY', nil)
+TYPE = 'RELAX'
+
 MAP_CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])
