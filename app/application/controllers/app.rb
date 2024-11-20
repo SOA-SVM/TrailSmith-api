@@ -8,8 +8,6 @@ module TrailSmith
   # Web App
   class App < Roda
     plugin :halt
-    plugin :sessions,
-           secret: App.config.SESSION_SECRET
     plugin :flash
     plugin :all_verbs # allows HTTP verbs beyond GET/POST (e.g., DELETE)
     plugin :render, engine: 'erb', views: 'app/presentation/views_html'

@@ -19,7 +19,7 @@ Metrics/BlockLength:
   Exclude:
   - 'spec/**/*' # Minitest's nested test structure requires large blocks
   - 'rakefile' # Rake namespaces produce large blocks
-  - 'app/controllers/**/*.rb' # Roda's nested controllers require large blocks
+  - 'app/application/controllers/**/*.rb' # Roda's nested controllers require large blocks
 
 
 Layout/MultilineMethodCallIndentation:
