@@ -1,32 +1,6 @@
 <section>
   <div class="container-fluid">
     <div class="search-container">
-      <!-- <h1>TrailSmith</h1>
-      <p>Find your next adventure, hotel, or dining experience</p> -->
-      <!-- Tab navigation -->
-      <!--<ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="#hotels" data-bs-toggle="tab">Hotels</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#things-to-do" data-bs-toggle="tab">Things to Do</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#restaurants" data-bs-toggle="tab">Restaurants</a>
-        </li>
-      </ul>-->
-      <!-- Tab content -->
-      <!--<div class="tab-content">
-        <div class="tab-pane fade show active" id="hotels">
-          <p>Showing results for hotels...</p>
-        </div>
-        <div class="tab-pane fade" id="things-to-do">
-          <p>Showing results for things to do...</p>
-        </div>
-        <div class="tab-pane fade" id="restaurants">
-          <p>Showing results for restaurants...</p>
-        </div>
-      </div>-->
       <!-- Input group for search -->
       <form role="form" action="/location" method="POST" id="show-spot-info">
         <div class="input-group mt-3">
@@ -36,6 +10,33 @@
         </div>
       </form>
     </div>
+    <div class="row">
+      <div class="col-md-12 blank-row"></div>
+    </div>
+    <% if spots.any?%>
+    <table class="table table-hover" id="spots_table">
+      <thead>
+        <th>Plan</th>
+        <th>Spots</th>
+      </thead>
+      <tbody>
+        <% spots.each.with_index do |spot, index| %>
+        <tr class="table-row spot_row" id="spot[<%= index %>].row">
+          <td class="td_plan">
+            <span class="spot_table_display_name" id="spot[<%= index %>].display_name">
+              <%=spot.display_name%>
+            </span>
+          </td>
+          <td class="td_display_name">
+            <span class="spot_table_display_name" id="spot[<%= index %>].display_name">
+              <%=spot.display_name%>
+            </span>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
     <div>
       <div class="my-3">
         <div>

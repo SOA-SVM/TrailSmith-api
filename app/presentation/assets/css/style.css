@@ -330,6 +330,14 @@ header a #title {
   text-align: center;
 }
 
+.blank-row {
+  height: 30px;
+}
+
+.table-row {
+  cursor: pointer;
+}
+
 h2 {
   font-weight: 700;
   font-size: 20px;

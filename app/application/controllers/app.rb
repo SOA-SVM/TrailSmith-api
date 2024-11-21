@@ -3,6 +3,7 @@
 require 'rack' # for Rack::MethodOverride
 require 'roda'
 require 'erb'
+require 'irb'
 
 module TrailSmith
   # Web App
@@ -29,7 +30,8 @@ module TrailSmith
 
       # GET /
       routing.root do
-        view 'home'
+        spots = Repository::For.klass(Entity::Spot).all
+        view 'home', locals: { spots: }
       end
 
       routing.on 'location' do
