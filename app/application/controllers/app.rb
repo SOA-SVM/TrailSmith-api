@@ -14,7 +14,9 @@ module TrailSmith
     plugin :render, engine: 'erb', views: 'app/presentation/views_html'
     plugin :public, root: 'app/presentation/public'
     # Load CSS assets with a timestamp to prevent caching issues
-    plugin :assets, path: 'app/presentation/assets', css: 'style.css', timestamp_paths: true
+    plugin :assets, path: 'app/presentation/assets',
+                    css: 'style.css', timestamp_paths: true,
+                    js: 'table_row_click.js'
     plugin :common_logger, $stderr
 
     MESSAGES = {

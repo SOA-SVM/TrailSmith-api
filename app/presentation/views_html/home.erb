@@ -1,110 +1,108 @@
-<section>
-  <div class="container-fluid">
-    <div class="search-container">
-      <!-- Input group for search -->
-      <form role="form" action="/location" method="POST" id="show-spot-info">
-        <div class="input-group mt-3">
-          <%# <input type="text" name="query" placeholder="I want a day trip to Hsinchu." required="true" class="form-control"> %>
-          <input type="text" name="query" placeholder="Write a spot(e.g. NTHU)" required="true" class="form-control">
-          <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-      </form>
-    </div>
-    <div class="row">
-      <div class="col-md-12 blank-row"></div>
-    </div>
-    <% if spots.any?%>
-    <table class="table table-hover" id="spots_table">
-      <thead>
-        <th>Plan</th>
-        <th>Spots</th>
-      </thead>
-      <tbody>
-        <% spots.each.with_index do |spot, index| %>
-        <tr class="table-row spot_row" id="spot[<%= index %>].row">
-          <td class="td_plan">
-            <span class="spot_table_display_name" id="spot[<%= index %>].display_name">
-              <%=spot.display_name%>
-            </span>
-          </td>
-          <td class="td_display_name">
-            <span class="spot_table_display_name" id="spot[<%= index %>].display_name">
-              <%=spot.display_name%>
-            </span>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <% end %>
-    <div>
-      <div class="my-3">
-        <div>
-          <h2>Or get started with a popular destination</h2>
-        </div>
+<div class="container-fluid">
+  <div class="search-container">
+    <!-- Input group for search -->
+    <form role="form" action="/location" method="POST" id="show-spot-info">
+      <div class="input-group mt-3">
+        <%# <input type="text" name="query" placeholder="I want a day trip to Hsinchu." required="true" class="form-control"> %>
+        <input type="text" name="query" placeholder="Write a spot(e.g. NTHU)" required="true" class="form-control">
+        <button type="submit" class="btn btn-primary">Search</button>
       </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-md-12 blank-row"></div>
+  </div>
+  <% if spots.any?%>
+  <table class="table table-hover" id="spots_table">
+    <thead>
+      <th>Plan</th>
+      <th>Spots</th>
+    </thead>
+    <tbody>
+      <% spots.each.with_index do |spot, index| %>
+      <tr class="table-row spot_row" id="spot[<%= index %>].row" data-href="location/<%= spot.place_id%>">
+        <td class="td_plan">
+          <span class="spot_table_display_name" id="spot[<%= index %>].display_name">
+            <%=spot.display_name%>
+          </span>
+        </td>
+        <td class="td_display_name">
+          <span class="spot_table_display_name" id="spot[<%= index %>].display_name">
+            <%=spot.display_name%>
+          </span>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  <div>
+    <div class="my-3">
       <div>
-        <div>
-            <ul class="d-flex popular_spot">
-                <li>
-                    <a href="/">
-                        <div class="card">
-                            <div><div>
-                                <picture>
-                                    <img src="/media/tainan.jpg" alt="tainan" width="300" height="300" loading="lazy">
-                                </picture>
-                            </div></div>
-                            <div class="spot_name">
-                                <div>Tainan</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/">
-                        <div class="card">
-                            <div><div>
-                                <picture>
-                                    <img src="/media/taipei.jpg" alt="taipei" width="300" height="300" loading="lazy">
-                                </picture>
-                            </div></div>
-                            <div class="spot_name">
-                                <div>Taipei</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/">
-                        <div class="card">
-                            <div><div>
-                                <picture>
-                                    <img src="/media/kaohsiung.jpg" alt="kaohsiung" width="300" height="300" loading="lazy">
-                                </picture>
-                            </div></div>
-                            <div class="spot_name">
-                                <div>Kaohsiung</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/">
-                        <div class="card">
-                            <div><div>
-                                <picture>
-                                    <img src="/media/hsinchu.jpg" alt="hsinchu" width="300" height="300" loading="lazy">
-                                </picture>
-                            </div></div>
-                            <div class="spot_name">
-                                <div>Hsinchu</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <h2>Or get started with a popular destination</h2>
+      </div>
+    </div>
+    <div>
+      <div>
+          <ul class="d-flex popular_spot">
+              <li>
+                  <a href="/">
+                      <div class="card">
+                          <div><div>
+                              <picture>
+                                  <img src="/media/tainan.jpg" alt="tainan" width="300" height="300" loading="lazy">
+                              </picture>
+                          </div></div>
+                          <div class="spot_name">
+                              <div>Tainan</div>
+                          </div>
+                      </div>
+                  </a>
+              </li>
+              <li>
+                  <a href="/">
+                      <div class="card">
+                          <div><div>
+                              <picture>
+                                  <img src="/media/taipei.jpg" alt="taipei" width="300" height="300" loading="lazy">
+                              </picture>
+                          </div></div>
+                          <div class="spot_name">
+                              <div>Taipei</div>
+                          </div>
+                      </div>
+                  </a>
+              </li>
+              <li>
+                  <a href="/">
+                      <div class="card">
+                          <div><div>
+                              <picture>
+                                  <img src="/media/kaohsiung.jpg" alt="kaohsiung" width="300" height="300" loading="lazy">
+                              </picture>
+                          </div></div>
+                          <div class="spot_name">
+                              <div>Kaohsiung</div>
+                          </div>
+                      </div>
+                  </a>
+              </li>
+              <li>
+                  <a href="/">
+                      <div class="card">
+                          <div><div>
+                              <picture>
+                                  <img src="/media/hsinchu.jpg" alt="hsinchu" width="300" height="300" loading="lazy">
+                              </picture>
+                          </div></div>
+                          <div class="spot_name">
+                              <div>Hsinchu</div>
+                          </div>
+                      </div>
+                  </a>
+              </li>
+          </ul>
       </div>
     </div>
   </div>
-</section>
+</div>
