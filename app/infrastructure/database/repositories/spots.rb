@@ -18,6 +18,12 @@ module TrailSmith
         rebuild_entity Database::SpotOrm.find(place_id: place_id)
       end
 
+      def self.find_place_ids(place_ids)
+        place_ids.map do |place_id|
+          find_place_id(place_id)
+        end.compact
+      end
+
       def self.find_display_name(display_name)
         rebuild_entity Database::SpotOrm.find(display_name: display_name)
       end

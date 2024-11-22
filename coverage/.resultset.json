@@ -117,6 +117,10 @@
           0,
           null,
           null,
+          1,
+          0,
+          null,
+          null,
           null,
           null
         ]
@@ -339,6 +343,12 @@
           null,
           1,
           0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
           null,
           null,
           1,
@@ -599,20 +609,20 @@
         "lines": [
           null,
           null,
-          1,
-          1,
-          1,
-          0,
           null,
           null,
-          1,
+          null,
+          null,
+          null,
           null,
           null,
           null
         ]
       },
       "/home/shou/hw/api_explore/app/presentation/view_objects/plans_list.rb": {
-        "lines": []
+        "lines": [
+          null
+        ]
       },
       "/home/shou/hw/api_explore/app/presentation/view_objects/spot.rb": {
         "lines": [
@@ -647,6 +657,10 @@
           1,
           null,
           1,
+          null,
+          null,
+          1,
+          null,
           1,
           null,
           1,
@@ -655,6 +669,7 @@
           null,
           null,
           null,
+          null,
           1,
           0,
           0,
@@ -662,6 +677,10 @@
           null,
           null,
           0,
+          null,
+          0,
+          0,
+          0,
           0,
           0,
           null,
@@ -680,7 +699,6 @@
           null,
           0,
           0,
-          0,
           null,
           0,
           0,
@@ -688,8 +706,20 @@
           null,
           null,
           null,
+          0,
           null,
           0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
           null,
           0,
           null,
@@ -812,6 +842,6 @@
         ]
       }
     },
-    "timestamp": 1732171456
+    "timestamp": 1732267104
   }
 }

@@ -41,6 +41,11 @@ header {
 
 .table-row {
     cursor: pointer;
+    vertical-align: middle;
+    i {
+        color: #f7b981;
+    }
+    border-color: #dfe2e5;
 }
 
 h2 {

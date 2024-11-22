@@ -341,6 +341,11 @@ header a #title {
 
 .table-row {
   cursor: pointer;
+  vertical-align: middle;
+  border-color: #dfe2e5;
+}
+.table-row i {
+  color: #f7b981;
 }
 
 h2 {

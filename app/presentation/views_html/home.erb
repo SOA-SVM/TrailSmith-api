@@ -15,12 +15,22 @@
   <% if spots.any?%>
   <table class="table table-hover" id="spots_table">
     <thead>
+      <th></th>
       <th>Plan</th>
       <th>Spots</th>
     </thead>
     <tbody>
       <% spots.each.with_index do |spot, index| %>
       <tr class="table-row spot_row" id="spot[<%= index %>].row" data-href="location/<%= spot.place_id%>">
+        <td id="delete_spot">
+          <form role="form" method="post" action="location/<%= spot.place_id %>">
+            <input type="hidden" name="_method" value="delete">
+
+            <button type="submit" class="btn btn-sm btn-link" id="spot[<%= index %>].delete">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </form>
+        </td>
         <td class="td_plan">
           <span class="spot_table_display_name" id="spot[<%= index %>].display_name">
             <%=spot.display_name%>
