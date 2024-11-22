@@ -74,5 +74,5 @@ group :development do
   gem 'rubocop-sequel'
 end
 
-gem "rackup", "~> 2.2"
+gem 'rackup', '~> 2.2'
 gem 'sinatra'
