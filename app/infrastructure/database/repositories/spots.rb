@@ -6,12 +6,26 @@ module TrailSmith
   module Repository
     # Repository for Members
     class Spots
+      def self.all
+        Database::SpotOrm.all.map { |db_spot| rebuild_entity(db_spot) }
+      end
+
       def self.find_id(id)
         rebuild_entity Database::SpotOrm.find(id: id)
       end
 
       def self.find_place_id(place_id)
         rebuild_entity Database::SpotOrm.find(place_id: place_id)
+      end
+
+      def self.find_place_ids(place_ids)
+        place_ids.map do |place_id|
+          find_place_id(place_id)
+        end.compact
+      end
+
+      def self.find_display_name(display_name)
+        rebuild_entity Database::SpotOrm.find(display_name: display_name)
       end
 
       def self.create(entity)

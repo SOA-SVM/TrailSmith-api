@@ -23,12 +23,29 @@ header {
     }
 }
 
-.alert{
+.alert {
     margin: 0 12px;
 }
 
 .search-container {
     text-align: center;
+}
+
+.blank-row {
+    height: 30px;
+}
+
+// table{
+//     border-top: #dee2e6 1 solid;
+// }
+
+.table-row {
+    cursor: pointer;
+    vertical-align: middle;
+    i {
+        color: #f7b981;
+    }
+    border-color: #dfe2e5;
 }
 
 h2 {

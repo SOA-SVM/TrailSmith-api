@@ -3,6 +3,7 @@
 require 'rack' # for Rack::MethodOverride
 require 'roda'
 require 'erb'
+require 'irb'
 
 module TrailSmith
   # Web App
@@ -13,13 +14,18 @@ module TrailSmith
     plugin :render, engine: 'erb', views: 'app/presentation/views_html'
     plugin :public, root: 'app/presentation/public'
     # Load CSS assets with a timestamp to prevent caching issues
-    plugin :assets, path: 'app/presentation/assets', css: 'style.css', timestamp_paths: true
+    plugin :assets, path: 'app/presentation/assets',
+                    css: 'style.css', timestamp_paths: true,
+                    js: 'table_row_click.js'
     plugin :common_logger, $stderr
+
+    use Rack::MethodOverride # allows HTTP verbs beyond GET/POST (e.g., DELETE)
 
     MESSAGES = {
       invalid_location: 'Invalid location input.',
       location_not_found: 'Could not find that location.',
-      db_error: 'Database error occurred.'
+      db_error: 'Database error occurred.',
+      no_plan: 'Add a spot to get started.'
     }.freeze
 
     route do |routing|
@@ -29,7 +35,12 @@ module TrailSmith
 
       # GET /
       routing.root do
-        view 'home'
+        # Get cookie viewer's previously seen projects
+        session[:watching] ||= []
+        spots = Repository::For.klass(Entity::Spot).find_place_ids(session[:watching])
+        session[:watching] = spots.map(&:place_id)
+        flash.now[:notice] = MESSAGES[:no_plan] if spots.none?
+        view 'home', locals: { spots: }
       end
 
       routing.on 'location' do
@@ -46,16 +57,27 @@ module TrailSmith
             begin
               spot = GoogleMaps::SpotMapper.new(App.config.GOOGLE_MAPS_KEY).find(query)
               Repository::For.entity(spot).create(spot)
-              routing.redirect "location/#{spot.place_id}"
             rescue StandardError => err
               App.logger.error "ERROR: #{err.message}"
               flash[:error] = MESSAGES[:location_not_found]
               routing.redirect '/'
             end
+
+            # Add new project to watched set in cookies
+            session[:watching].insert(0, spot.place_id).uniq!
+
+            routing.redirect "location/#{spot.place_id}"
           end
         end
 
         routing.on String do |place_id|
+          # DELETE /location/[place_id]
+          routing.delete do
+            session[:watching].delete(place_id)
+
+            routing.redirect '/'
+          end
+
           # GET /location/[place_id]
           routing.get do
             begin
@@ -70,7 +92,7 @@ module TrailSmith
               routing.redirect '/'
             end
 
-            view 'location', locals: { spot: spot }
+            view 'location', locals: { spot: }
           end
         end
       end

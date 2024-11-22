@@ -19,7 +19,11 @@ module TrailSmith
       def score
         num = reviews.length + 1
         sum = reviews.sum { |review| review[:rating] } + rating
-        sum / num
+        (sum / num).round(2)
+      end
+
+      def to_attr_hash
+        to_hash.except(:id)
       end
     end
   end
