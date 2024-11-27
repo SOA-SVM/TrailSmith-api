@@ -1,12 +1,12 @@
 ---
 # Apply latest Ruby style guide and newly introduced cops
 AllCops:
-  TargetRubyVersion: 3.3.5
+  TargetRubyVersion: 3.3
   NewCops: enable
   Include:
-    - "Gemfile"
-    - "rakefile"
-    - "**/*.rb"
+    - 'Gemfile'
+    - 'rakefile'
+    - '**/*.rb'
 
 require:
   - rubocop-minitest
@@ -17,9 +17,9 @@ require:
 Metrics/BlockLength:
   Enabled: true
   Exclude:
-    - "spec/**/*" # Minitest's nested test structure requires large blocks
-    - "rakefile" # Rake namespaces produce large blocks
-    - "app/application/controllers/**/*.rb" # Roda's nested controllers require large blocks
+    - 'spec/**/*' # Minitest's nested test structure requires large blocks
+    - 'rakefile' # Rake namespaces produce large blocks
+    - 'app/application/controllers/**/*.rb' # Roda's nested controllers require large blocks
 
 Layout/MultilineMethodCallIndentation:
   Enabled: true
@@ -35,15 +35,15 @@ Naming/RescuedExceptionsVariableName:
 Style/HashSyntax:
   Enabled: true
   Exclude:
-    - "rakefile"
+    - 'rakefile'
 
 Style/SymbolArray:
   Enabled: true
   Exclude:
-    - "rakefile"
-    - "app/infrastructure/database/migrations/*.rb"
+    - 'rakefile'
+    - 'app/infrastructure/database/migrations/*.rb'
 
 Sequel/IrreversibleMigration:
   Enabled: true
   Exclude:
-    - "db/migrations/**/*.rb"
+    - 'db/migrations/**/*.rb'
