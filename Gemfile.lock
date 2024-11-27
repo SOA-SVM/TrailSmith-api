@@ -122,6 +122,8 @@ GEM
     minitest (5.25.1)
     minitest-rg (5.3.0)
       minitest (~> 5.0)
+    mustermann (3.0.3)
+      ruby2_keywords (~> 0.0.1)
     nio4r (2.7.4)
     page-object (2.3.1)
       page_navigation (>= 0.10)
@@ -142,8 +144,14 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
+    rack-protection (4.1.1)
+      base64 (>= 0.1.0)
+      logger (>= 1.6.0)
+      rack (>= 3.0.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
+    rackup (2.2.1)
+      rack (>= 3)
     rainbow (3.1.1)
     rake (13.2.1)
     rb-fsevent (0.11.2)
@@ -200,6 +208,13 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
+    sinatra (4.1.1)
+      logger (>= 1.6.0)
+      mustermann (~> 3.0)
+      rack (>= 3.0.0, < 4)
+      rack-protection (= 4.1.1)
+      rack-session (>= 2.0.0, < 3)
+      tilt (~> 2.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
     sqlite3 (1.7.3-arm64-darwin)
@@ -259,6 +274,7 @@ DEPENDENCIES
   pry
   puma (~> 6.4, >= 6.4.3)
   rack-session (~> 2.0)
+  rackup (~> 2.2)
   rake (~> 13.2, >= 13.2.1)
   reek
   rerun
@@ -270,6 +286,7 @@ DEPENDENCIES
   selenium-webdriver (~> 4.26)
   sequel (~> 5.0)
   simplecov (~> 0.22.0)
+  sinatra
   sqlite3 (~> 1.0)
   tilt
   vcr (~> 6.3, >= 6.3.1)
