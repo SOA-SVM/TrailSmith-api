@@ -76,3 +76,6 @@ end
 
 gem 'rackup', '~> 2.2'
 gem 'sinatra'
+
+# API
+gem 'google_distance_matrix', '~> 0.7.0'
