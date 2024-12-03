@@ -58,11 +58,11 @@ module TrailSmith
 
       Forbidden = Class.new(StandardError)
       NotFound = Class.new(StandardError)
-      Invalid = Class.new(StandardError)
+      InvalidRequest = Class.new(StandardError)
 
       HTTP_ERROR = { 400 => NotFound }.freeze
       OTHER_ERROR = { 'REQUEST_DENIED'           => Forbidden,
-                      'Configuration is invalid' => Invalid }.freeze
+                      'Configuration is invalid' => InvalidRequest }.freeze
 
       CLIENT_ERROR = GoogleDistanceMatrix::ClientError
       INVALID_MATRIX = GoogleDistanceMatrix::InvalidMatrix
