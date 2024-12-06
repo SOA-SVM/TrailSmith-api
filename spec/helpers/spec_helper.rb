@@ -16,11 +16,14 @@ require 'webmock'
 require_relative '../../require_app'
 require_app
 
-TrailSmith::App.config.GOOGLE_MAPS_KEY
 GOOGLE_MAPS_KEY = TrailSmith::App.config.GOOGLE_MAPS_KEY
 
 TEXT_QUERY_LIST = %w[NTHU NYCU NTU].freeze
 TEXT_QUERY = 'NTHU'
 TYPE = 'RELAX'
+STARTING_SPOT = 'ChIJB7ZNzXI2aDQREwR22ltdKxE'
+NEXT_SPOT = 'ChIJBXLgwuk1aDQRuu4aKYS0jF4'
+TRAVEL_MODE = 'walking'
 
 MAP_CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])
+DISTANCE_CORRECT = YAML.safe_load_file('spec/fixtures/distance_api_results.yml')

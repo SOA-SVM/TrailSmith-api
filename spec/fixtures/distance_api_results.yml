@@ -1,0 +1,12 @@
+---
+starting_spot:
+  place_id: ChIJB7ZNzXI2aDQREwR22ltdKxE
+next_spot:
+  place_id: ChIJBXLgwuk1aDQRuu4aKYS0jF4
+distance:
+  desc: 3.0 km
+  meter: 2971
+travel_time:
+  desc: 40 mins
+  sec: 2412
+travel_mode: walking
