@@ -4,7 +4,7 @@ module TrailSmith
   module GoogleMaps
     # Data Mapper: Maps place -> Spot entity
     class SpotMapper
-      def initialize(key, gateway_class = GoogleMaps::Api)
+      def initialize(key, gateway_class = Api)
         @key = key
         @gateway_class = gateway_class
         @gateway = @gateway_class.new(@key)

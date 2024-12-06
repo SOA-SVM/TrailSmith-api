@@ -1,5 +1,7 @@
 # frozen_string_literal: false
 
+require_relative 'spot_mapper'
+
 module TrailSmith
   module GoogleMaps
     # Data Mapper: Maps place -> Spot entity
@@ -13,14 +15,14 @@ module TrailSmith
       def _arrange_plan
         spots = []
         @text_query_list.each do |text_query|
-          spot = TrailSmith::GoogleMaps::SpotMapper.new(@key).find(text_query)
+          spot = SpotMapper.new(@key).find(text_query)
           spots << spot
         end
         spots
       end
 
       def build_entity
-        TrailSmith::Entity::Plan.new(
+        Entity::Plan.new(
           id: nil,
           type: @type,
           score: nil,
