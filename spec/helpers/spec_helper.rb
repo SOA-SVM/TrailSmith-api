@@ -23,12 +23,11 @@ STARTING_SPOT = 'ChIJB7ZNzXI2aDQREwR22ltdKxE'
 NEXT_SPOT = 'ChIJBXLgwuk1aDQRuu4aKYS0jF4'
 TRAVEL_MODE = 'walking'
 GPT_JSON = '{
-  "num_people": 2,
-  "region": "Hsinchu",
-  "day": 3
-  "spots": ["nthu", "nycu", "新竹市立動物園"],
-  "travelling": ["walking", "biking"]
+"num_people": 2,
+"region": "Hsinchu",
+"day": 3,
+"spots": ["300新竹市東區中華路二段445號300", "nthu", "新竹動物園"],
+"travelling": ["walking", "walking"]
 }'
-
 MAP_CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])
 DISTANCE_CORRECT = YAML.safe_load_file('spec/fixtures/distance_api_results.yml')

@@ -12,18 +12,6 @@ module TrailSmith
         @key = key
       end
 
-      def build_entity(gpt_json)
-        gpt_dict = JSON.parse(gpt_json)
-        TrailSmith::Entity::Plan.new(
-          id: nil,
-          spots: build_spot_array(gpt_dict['spots']),
-          travelling: build_way_array(spots, gpt_dict['travel_mode']),
-          region: gpt_dict['region'],
-          num_people: gpt_dict['num_people'],
-          day: gpt_dict['day']
-        )
-      end
-
       def build_spot_array(name_array)
         name_array.map do |name|
           SpotMapper.new(@key).build_entity(name)
@@ -31,9 +19,26 @@ module TrailSmith
       end
 
       def build_way_array(spot_array, travel_mode_array)
-        (0..travel_mode_array.length).map do |i|
-          Distance::WayMapper.new(@key).find(spot_array[i].place_id, spot_array[i + 1].place_id, travel_mode[i])
+        (0...travel_mode_array.length).map do |i|
+          starting_spot = spot_array[i].place_id
+          next_spot = spot_array[i + 1].place_id
+          travel_mode = travel_mode_array[i]
+          Distance::WayMapper.new(@key).find(starting_spot, next_spot, travel_mode)
         end
+      end
+
+      def build_entity(gpt_json) # rubocop:disable Metrics/MethodLength
+        gpt_dict = JSON.parse(gpt_json)
+        spots = build_spot_array(gpt_dict['spots'])
+        travelling = build_way_array(spots, gpt_dict['travelling'])
+        TrailSmith::Entity::Plan.new(
+          id: nil,
+          spots: spots,
+          travelling: travelling,
+          region: gpt_dict['region'],
+          num_people: gpt_dict['num_people'],
+          day: gpt_dict['day']
+        )
       end
     end
   end

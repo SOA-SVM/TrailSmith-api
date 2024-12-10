@@ -13,7 +13,7 @@ module TrailSmith
 
       attribute :id,         Integer.optional
       attribute :spots,      Strict::Array.of(Spot)
-      attribute :travelling, Strict::Array.of(Value::Way)
+      attribute :travelling, Array
       attribute :region,     Strict::String
       attribute :num_people, Strict::Integer
       attribute :day,        Strict::Integer

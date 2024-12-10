@@ -27,8 +27,8 @@ module TrailSmith
     end
 
     # Database Setup
-    # @db = Sequel.connect(ENV.fetch('DATABASE_URL'))
-    # def self.db = @db
+    @db = Sequel.connect(ENV.fetch('DATABASE_URL'))
+    def self.db = @db # rubocop:disable Style/TrivialAccessors
 
     # Logger Setup
     @logger = Logger.new($stderr)
