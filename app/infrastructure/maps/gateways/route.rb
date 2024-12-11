@@ -1,7 +1,6 @@
 #  frozen_string_literal: true
 
 require 'google-maps'
-require 'irb'
 
 module TrailSmith
   module Route
@@ -23,16 +22,16 @@ module TrailSmith
       class Request
         def initialize(token)
           @token = token
-        end
 
-        def get_route(starting_spot, next_spot, mode)
           Google::Maps.configure do |conf|
             conf.authentication_mode = Google::Maps::Configuration::API_KEY
             conf.api_key = @token
           end
+        end
 
-          starting_spot = fetch_spot(starting_spot)
-          next_spot = fetch_spot(next_spot)
+        def get_route(starting_spot, next_spot, mode)
+          starting_spot = fetch_spot(starting_spot.place_id)
+          next_spot = fetch_spot(next_spot.place_id)
           route = build_route(starting_spot, next_spot, mode:)
 
           Response.new(route).tap do |response|
@@ -41,11 +40,6 @@ module TrailSmith
         end
 
         def get_spot_detail(place_id)
-          Google::Maps.configure do |conf|
-            conf.authentication_mode = Google::Maps::Configuration::API_KEY
-            conf.api_key = @token
-          end
-
           fetch_spot(place_id)
         end
 
@@ -66,6 +60,7 @@ module TrailSmith
       class Errors
         Forbidden = Class.new(StandardError)
         RouteNotFound = Class.new(StandardError)
+        OtherError = Class.new(StandardError)
 
         ERROR = {
           'REQUEST_DENIED: The provided API key is invalid.' => Forbidden,
@@ -73,14 +68,19 @@ module TrailSmith
         }.freeze
 
         def self.raise_msg(err)
-          ERROR[err.message]
+          ERROR[err.message] || OtherError
         end
       end
 
       # Decorates HTTP responses with success/error
       class Response < SimpleDelegator
+        def initialize(response)
+          super
+          @error = nil
+        end
+
         def successful?
-          response.duration
+          duration
         rescue StandardError => err
           @error = err
           false

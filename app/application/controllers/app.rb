@@ -4,6 +4,7 @@ require 'rack' # for Rack::MethodOverride
 require 'roda'
 require 'erb'
 require 'irb'
+require 'json'
 
 module TrailSmith
   # Web App
@@ -113,8 +114,9 @@ module TrailSmith
               ],
               mode: %w[walking walking walking]
             }
+            info = JSON.generate(info)
 
-            plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY, info[:spots], 'retro').build_entity
+            plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(info)
 
             view 'test', locals: { plan: }
           end
