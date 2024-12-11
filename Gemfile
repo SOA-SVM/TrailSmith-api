@@ -78,5 +78,7 @@ gem 'rackup', '~> 2.2'
 gem 'sinatra'
 
 # API
-gem 'google_distance_matrix', '~> 0.7.0'
 gem 'google-maps', '~> 3.0', '>= 3.0.7'
+
+# Others
+gem 'mutex_m'
