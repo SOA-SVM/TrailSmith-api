@@ -18,7 +18,7 @@ require_app
 
 GOOGLE_MAPS_KEY = TrailSmith::App.config.GOOGLE_MAPS_KEY
 
-TEXT_QUERY = 'NTHU'
+TEXT_QUERY = 'nthu'
 STARTING_SPOT = 'ChIJB7ZNzXI2aDQREwR22ltdKxE'
 NEXT_SPOT = 'ChIJBXLgwuk1aDQRuu4aKYS0jF4'
 TRAVEL_MODE = 'walking'
@@ -26,7 +26,7 @@ GPT_JSON = '{
 "num_people": 2,
 "region": "Hsinchu",
 "day": 3,
-"spots": ["300新竹市東區中華路二段445號300", "nthu", "新竹動物園"],
+"spots": ["nthu", "Hsinchu Train Station", "Hsinchu Zoo"],
 "travelling": ["walking", "walking"]
 }'
 MAP_CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])

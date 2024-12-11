@@ -9,9 +9,10 @@ module TrailSmith
     class Report < Dry::Struct
       include Dry.Types
 
-      attribute :publish_time,      Strict::String
-      attribute :rating,            Strict::Float
-      attribute :text,              Strict::String
+      attribute :id,            Integer.optional
+      attribute :publish_time,  Strict::String
+      attribute :rating,        Strict::Float
+      attribute :text,          Strict::String
 
       def keywords
         # GPT keywords from the review text
@@ -30,8 +31,11 @@ module TrailSmith
                   3. Just give the score'
         question = "Review:#{text} Prompt:#{prompt}"
         response = TrailSmith::OpenaiAPI.new(OPENAI_TOKEN).generate_text(question)
-        value = (response.messages.first['content'].to_f + rating) / 2
-        Value::Fun.new(value)
+        (response.messages.first['content'].to_f + rating) / 2
+      end
+
+      def to_attr_hash
+        to_hash.except(:id)
       end
     end
   end

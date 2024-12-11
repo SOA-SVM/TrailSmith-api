@@ -21,20 +21,22 @@ module TrailSmith
 
       def fun
         # average fun score of reports
-        Value::Fun.new(reports.map(&:fun).sum / reports.length)
+        fun_score = reports.map(&:fun).sum / reports.length
+        Value::Fun.new(fun_score)
       end
 
       def popular
-        Value::Fun.new(rating_count)
-      end
-
-      def to_attr_hash
-        to_hash.except(:id)
+        popular_score = rating_count
+        Value::Fun.new(popular_score)
       end
 
       def keywords
         # array of keywords of reports
         reports.flat_map(&:keywords).uniq
+      end
+
+      def to_attr_hash
+        to_hash.except(:id, :reports)
       end
     end
   end

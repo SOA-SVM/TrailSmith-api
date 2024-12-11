@@ -2,14 +2,16 @@
 
 require_relative 'spots'
 require_relative 'plans'
+require_relative 'reports'
 
 module TrailSmith
   module Repository
     # Finds the right repository for an entity object or class
     module For
       ENTITY_REPOSITORY = {
-        Entity::Spot => Spots,
-        Entity::Plan => Plans
+        Entity::Spot   => Spots,
+        Entity::Plan   => Plans,
+        Entity::Report => Reports
       }.freeze
 
       def self.klass(entity_klass)

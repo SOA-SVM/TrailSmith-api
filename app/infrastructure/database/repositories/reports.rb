@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-require_relative 'reports'
+require 'json'
 
 module TrailSmith
   module Repository
     # Repository for Reports
-    class Spots
+    class Reports
       def self.all
-        Database::SpotOrm.all.map { |db_record| rebuild_entity(db_record) }
+        Database::ReportOrm.all.map { |db_record| rebuild_entity(db_record) }
       end
 
       def self.find(entity)
         # find database of entity from id
-        db_record = Database::SpotOrm.find(entity.placd_id)
+        db_record = Database::ReportOrm.find(text: entity.text)
         rebuild_entity(db_record)
       end
 
@@ -20,13 +20,13 @@ module TrailSmith
         # build entity from database
         return nil unless db_record
 
-        Entity::Spot.new(db_record.to_hash)
+        Entity::Report.new(db_record.to_hash)
       end
 
       def self.create(entity)
         raise 'Entity already exists in database' if find(entity)
 
-        spot_db = Database::SpotOrm.create(entity.to_attr_hash)
+        db_record = Database::ReportOrm.create(entity.to_attr_hash)
         rebuild_entity(db_record)
       end
     end

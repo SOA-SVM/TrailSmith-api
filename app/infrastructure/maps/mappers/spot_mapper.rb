@@ -5,12 +5,13 @@ module TrailSmith
     # build spot entity
     class SpotMapper
       def initialize(key)
-        @gateway = GoogleMaps::Api.new(key)
+        @key = key
       end
 
       def build_report_array(report_array)
         report_array.map do |report|
           Entity::Report.new(
+            id: nil,
             publish_time: report['publishTime'],
             rating: report['rating'].to_f,
             text: report['originalText']['text']
@@ -19,7 +20,7 @@ module TrailSmith
       end
 
       def build_entity(text_query)
-        spot = @gateway.place_data(text_query)
+        spot = GoogleMaps::Api.new(@key).place_data(text_query)
 
         Entity::Spot.new(
           id: nil,
