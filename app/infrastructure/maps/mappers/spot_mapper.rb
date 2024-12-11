@@ -36,6 +36,10 @@ module TrailSmith
         )
       end
 
+      def coordinate
+        Coordinate.new(@key).coordinate(place_id)
+      end
+
       # Find the coordinate for the spot
       class Coordinate
         def initialize(token, gateway_class = Route::Api)
