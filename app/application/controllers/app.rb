@@ -96,6 +96,30 @@ module TrailSmith
           end
         end
       end
+
+      routing.on 'test' do
+        routing.on String do |place_name|
+          # GET /test/[place_name]
+          if place_name == 'tainan'
+            info = {
+              num_people: 2,
+              region: 'Tainan',
+              day: 1,
+              spots: [
+                'Anping Old Fort',
+                'Chihkan Tower',
+                'Shennong Street',
+                'Tainan Confucius Temple'
+              ],
+              mode: %w[walking walking walking]
+            }
+
+            plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY, info[:spots], 'retro').build_entity
+
+            view 'test', locals: { plan: }
+          end
+        end
+      end
     end
   end
 end
