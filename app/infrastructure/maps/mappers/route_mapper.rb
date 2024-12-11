@@ -38,7 +38,8 @@ module TrailSmith
             travel_time:,
             travel_time_desc:,
             distance:,
-            distance_desc:
+            distance_desc:,
+            overview_polyline:
           )
         end
 
@@ -58,6 +59,10 @@ module TrailSmith
 
         def distance_desc
           @data.distance.text
+        end
+
+        def overview_polyline
+          @data.instance_variable_get(:@route).overview_polyline.points
         end
       end
     end

@@ -33,10 +33,7 @@ module TrailSmith
           starting_spot = fetch_spot(starting_spot.place_id)
           next_spot = fetch_spot(next_spot.place_id)
           route = build_route(starting_spot, next_spot, mode:)
-
-          Response.new(route).tap do |response|
-            raise response.error unless response.successful?
-          end
+          route if data?(route)
         end
 
         def get_spot_detail(place_id)
@@ -51,6 +48,12 @@ module TrailSmith
 
         def build_route(starting_spot, next_spot, mode)
           Google::Maps::Route.new(starting_spot, next_spot, mode:)
+        rescue StandardError => err
+          raise Errors.raise_msg(err)
+        end
+
+        def data?(route)
+          route.duration
         rescue StandardError => err
           raise Errors.raise_msg(err)
         end
@@ -69,25 +72,6 @@ module TrailSmith
 
         def self.raise_msg(err)
           ERROR[err.message] || OtherError
-        end
-      end
-
-      # Decorates HTTP responses with success/error
-      class Response < SimpleDelegator
-        def initialize(response)
-          super
-          @error = nil
-        end
-
-        def successful?
-          duration
-        rescue StandardError => err
-          @error = err
-          false
-        end
-
-        def error
-          Errors.raise_msg(@error)
         end
       end
     end
