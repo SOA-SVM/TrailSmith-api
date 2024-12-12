@@ -12,22 +12,23 @@ module TrailSmith
 
       def find(starting_spot, next_spot, mode = 'driving')
         data = @gateway.route_data(starting_spot, next_spot, mode)
-        Route.to_value(data, mode, starting_spot, next_spot)
+        loc = [starting_spot, next_spot]
+        Route.to_value(data, mode, loc)
       end
 
-      def self.to_value(data, mode, starting_spot, next_spot)
-        DataMapper.new(data, mode, starting_spot, next_spot).to_value
+      def self.to_value(data, mode, loc)
+        DataMapper.new(data, mode, loc).to_value
       end
 
       # Extracts value object specific elements from data structure
       class DataMapper
         attr_reader :travel_mode, :data, :starting_spot, :next_spot
 
-        def initialize(data, mode, starting_spot, next_spot)
+        def initialize(data, mode, loc)
           @data = data
           @travel_mode = mode
-          @starting_spot = starting_spot
-          @next_spot = next_spot
+          @starting_spot = loc[0]
+          @next_spot = loc[1]
         end
 
         def to_value
