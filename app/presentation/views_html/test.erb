@@ -12,9 +12,9 @@
                     <span class="spot-name"><%= spot.name %></span>
                 </div>
                 <% if index < plan.spots.size - 1 %>
-                    <div class="route-arrow">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
+                <div class="route-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
                 <% end %>
             </div>
         <% end %>
@@ -27,30 +27,6 @@
 <style>
     .left {
         background-color: lightgreen;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Align text to the left */
-    }
-
-    .route-step {
-        margin: 5px 0;
-    }
-
-    .step-text {
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .route-arrow {
-        font-size: 24px; /* Make the icon larger */
-        color: darkgray;
-        margin: 5px 0;
-        margin-left: 50px; /* Add margin to align with text */
-    }
-    
-    .route-step:hover {
-        cursor: pointer; /* Show pointer cursor on hover */
     }
 
     .right {

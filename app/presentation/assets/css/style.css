@@ -327,6 +327,12 @@ header a #title {
   }
 }
 
+footer {
+  padding: 0.5in 0;
+  font-size: 11px;
+  color: #646464;
+}
+
 .alert {
   margin: 0 12px;
 }
@@ -381,8 +387,27 @@ h2 {
   letter-spacing: 0.02em;
 }
 
-footer {
-  padding: 0.5in 0;
-  font-size: 11px;
-  color: #646464;
+.left {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
+}
+
+.route-step {
+  margin: 5px 0;
+}
+.route-step .step-text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.route-arrow {
+  font-size: 24px; /* Make the icon larger */
+  color: darkgray;
+  margin: 5px 0;
+  margin-left: 50px; /* Add margin to align with text */
+}
+.route-arrow:hover {
+  cursor: pointer; /* Show pointer cursor on hover */
 }
