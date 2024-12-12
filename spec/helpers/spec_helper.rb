@@ -30,4 +30,3 @@ GPT_JSON = '{
 "travelling": ["walking", "walking"]
 }'
 MAP_CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])
-DISTANCE_CORRECT = YAML.safe_load_file('spec/fixtures/distance_api_results.yml')

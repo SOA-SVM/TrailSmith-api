@@ -4,6 +4,7 @@ require 'rack' # for Rack::MethodOverride
 require 'roda'
 require 'erb'
 require 'irb'
+require 'json'
 
 module TrailSmith
   # Web App
@@ -93,6 +94,31 @@ module TrailSmith
             end
 
             view 'location', locals: { spot: }
+          end
+        end
+      end
+
+      routing.on 'test' do
+        routing.on String do |place_name|
+          # GET /test/[place_name]
+          if place_name == 'tainan'
+            info = {
+              num_people: 2,
+              region: 'Tainan',
+              day: 1,
+              spots: [
+                'Anping Old Fort',
+                'Chihkan Tower',
+                'Shennong Street',
+                'Tainan Confucius Temple'
+              ],
+              mode: %w[walking walking walking]
+            }
+            info = JSON.generate(info)
+
+            plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(info)
+
+            view 'test', locals: { plan: }
           end
         end
       end
