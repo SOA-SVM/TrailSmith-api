@@ -16,6 +16,16 @@ module TrailSmith
         rebuild_entity(db_record)
       end
 
+      def self.find_place_id(place_id)
+        rebuild_entity Database::SpotOrm.find(place_id: place_id)
+      end
+
+      def self.find_place_ids(place_ids)
+        place_ids.map do |place_id|
+          find_place_id(place_id)
+        end.compact
+      end
+
       def self.rebuild_entity(db_record)
         # build entity from database
         return nil unless db_record
@@ -26,7 +36,7 @@ module TrailSmith
       def self.create(entity)
         raise 'Entity already exists in database' if find(entity)
 
-        spot_db = Database::SpotOrm.create(entity.to_attr_hash)
+        Database::SpotOrm.create(entity.to_attr_hash)
         rebuild_entity(db_record)
       end
     end

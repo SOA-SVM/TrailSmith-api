@@ -2,7 +2,7 @@
 
 require 'json'
 require_relative 'spot_mapper'
-require_relative 'way_mapper'
+require_relative 'route_mapper'
 
 module TrailSmith
   module GoogleMaps
@@ -19,9 +19,9 @@ module TrailSmith
           id: nil,
           spots:,
           travelling:,
-          region: gpt_dict['region'],
-          num_people: gpt_dict['num_people'],
-          day: gpt_dict['day']
+          region: @gpt_dict['region'],
+          num_people: @gpt_dict['num_people'],
+          day: @gpt_dict['day']
         )
       end
 

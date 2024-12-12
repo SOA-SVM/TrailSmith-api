@@ -18,6 +18,7 @@ module TrailSmith
       attribute :rating,       Strict::Float
       attribute :rating_count, Strict::Integer
       attribute :reports,      Array.of(Report)
+      attribute :address,      Strict::String
       attribute :coordinate,   Strict::Hash
 
       def fun
