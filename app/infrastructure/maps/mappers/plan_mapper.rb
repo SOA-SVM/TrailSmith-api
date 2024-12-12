@@ -39,7 +39,7 @@ module TrailSmith
 
       def build_spot_array(name_array)
         name_array.map do |name|
-          SpotMapper.new(@key).find(name)
+          SpotMapper.new(@key).build_entity(name)
         end
       end
     end

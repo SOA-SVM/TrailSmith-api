@@ -5,22 +5,10 @@ require 'roda'
 require 'erb'
 require 'irb'
 require 'json'
-require 'ostruct'
 
 module TrailSmith
   # Web App
-  class App < Roda
-    configure do
-      config = YAML.safe_load_file('config/secrets.yml')
-      Config = OpenStruct.new(
-        GOOGLE_MAPS_KEY: config['development']['GOOGLE_MAPS_KEY'],
-        OPENAI_TOKEN: config['development']['OPENAI_TOKEN']
-      )
-    end
-
-    def self.config
-      Config
-    end
+  class App < Roda # rubocop:disable Metrics/ClassLength
     plugin :halt
     plugin :flash
     plugin :all_verbs # allows HTTP verbs beyond GET/POST (e.g., DELETE)
