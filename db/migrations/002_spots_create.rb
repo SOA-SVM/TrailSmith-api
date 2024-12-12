@@ -8,10 +8,9 @@ Sequel.migration do
       primary_key :id
 
       String :place_id, unique: true
-      String :formatted_address
-      String :display_name
-      Float  :rating
-      String :reviews # Store json
+      String :name
+      Float :rating
+      Integer :rating_count
 
       DateTime :created_at
       DateTime :updated_at

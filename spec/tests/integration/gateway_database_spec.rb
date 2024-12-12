@@ -20,18 +20,28 @@ describe 'Integration Tests of Maps API and Database' do
       DatabaseHelper.wipe_database
     end
 
-    it 'HAPPY: should be able to save spot from Maps to database' do
-      spot = TrailSmith::GoogleMaps::SpotMapper
-        .new(GOOGLE_MAPS_KEY)
-        .find(TEXT_QUERY)
+    it 'HAPPY: Report Database' do
+      spot = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).build_entity(TEXT_QUERY)
 
-      rebuilt = TrailSmith::Repository::For.entity(spot).create(spot)
+      (0..4).each do |i|
+        report = spot.reports[i]
+        report_db = TrailSmith::Repository::For.entity(report).create(report)
+        _(report_db.publish_time).must_equal report.publish_time
+        _(report_db.rating).must_equal report.rating
+        _(report_db.text).must_equal report.text
+      end
+    end
+    it 'HAPPY: Spot Database' do
+      spot = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).build_entity(TEXT_QUERY)
+      spot_db = TrailSmith::Repository::For.entity(spot).create(spot)
 
-      _(rebuilt.place_id).must_equal(spot.place_id)
-      _(rebuilt.formatted_address).must_equal(spot.formatted_address)
-      _(rebuilt.display_name).must_equal(spot.display_name)
-      _(rebuilt.rating).must_equal(spot.rating)
-      _(rebuilt.reviews).must_equal(spot.reviews)
+      (0..4).each do |i|
+        report = spot.reports[i]
+        report_db = TrailSmith::Repository::For.entity(report).create(report)
+        _(report_db.publish_time).must_equal report.publish_time
+        _(report_db.rating).must_equal report.rating
+        _(report_db.text).must_equal report.text
+      end
     end
   end
 end

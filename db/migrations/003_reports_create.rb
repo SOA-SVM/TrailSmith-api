@@ -4,12 +4,12 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:plans) do
+    create_table(:reports) do
       primary_key :id
 
-      String   :region
-      Integer  :num_people
-      Integer  :day
+      String :publish_time
+      Float  :rating
+      String :text
 
       DateTime :created_at
       DateTime :updated_at

@@ -5,12 +5,16 @@ http_interactions:
     uri: https://places.googleapis.com/v1/places:searchText
     body:
       encoding: UTF-8
-      string: '{"textQuery":"NTHU"}'
+      string: '{"textQuery":"nthu"}'
     headers:
       X-Goog-Api-Key:
       - WRONG_KEY
       X-Goog-Fieldmask:
-      - places.displayName,places.formattedAddress,places.id,places.rating,places.reviews
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
       Connection:
       - close
       Content-Type:
@@ -31,7 +35,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Sun, 17 Nov 2024 03:45:10 GMT
+      - Tue, 10 Dec 2024 19:30:19 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +45,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=8
+      - gfet4t7; dur=25
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Accept-Ranges:
@@ -75,18 +79,22 @@ http_interactions:
             ]
           }
         }
-  recorded_at: Sun, 17 Nov 2024 03:45:09 GMT
+  recorded_at: Tue, 10 Dec 2024 19:30:19 GMT
 - request:
     method: post
     uri: https://places.googleapis.com/v1/places:searchText
     body:
       encoding: UTF-8
-      string: '{"textQuery":"NTHU"}'
+      string: '{"textQuery":"nthu"}'
     headers:
       X-Goog-Api-Key:
       - "<GOOGLE_MAPS_KEY>"
       X-Goog-Fieldmask:
-      - places.displayName,places.formattedAddress,places.id,places.rating,places.reviews
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
       Connection:
       - close
       Content-Type:
@@ -107,7 +115,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 17 Nov 2024 03:45:10 GMT
+      - Tue, 10 Dec 2024 19:30:19 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -117,7 +125,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=194
+      - gfet4t7; dur=222
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Accept-Ranges:
@@ -133,13 +141,34 @@ http_interactions:
           "places": [
             {
               "id": "ChIJB7ZNzXI2aDQREwR22ltdKxE",
-              "formattedAddress": "No. 101號, Section 2, Guangfu Rd, East District, Hsinchu City, Taiwan 300",
               "rating": 4.6,
+              "userRatingCount": 2558,
               "displayName": {
                 "text": "National Tsing Hua University",
                 "languageCode": "en"
               },
               "reviews": [
+                {
+                  "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChZDSUhNMG9nS0VJQ0FnSUQzNEtiVEhBEAE",
+                  "relativePublishTimeDescription": "4 weeks ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "As a Beijing Tsinghua alumni, I am very happy to visit another smaller Tsinghua.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "As a Beijing Tsinghua alumni, I am very happy to visit another smaller Tsinghua.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Kevin Zhang",
+                    "uri": "https://www.google.com/maps/contrib/108577504965898846202/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUwaz5cpd89Jm7ARAxDP8inE6thQQR3zeITKs50p816iXpBJS3r=s128-c0x00000000-cc-rp-mo-ba4"
+                  },
+                  "publishTime": "2024-11-11T06:20:49.768565Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUQzNEtiVEhBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUQzNEtiVEhBEAE!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
+                },
                 {
                   "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChZDSUhNMG9nS0VJQ0FnSURTejczMVRnEAE",
                   "relativePublishTimeDescription": "3 years ago",
@@ -205,7 +234,7 @@ http_interactions:
                 },
                 {
                   "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChdDSUhNMG9nS0VJQ0FnSUQtb3VyeGhnRRAB",
-                  "relativePublishTimeDescription": "a year ago",
+                  "relativePublishTimeDescription": "2 years ago",
                   "rating": 5,
                   "text": {
                     "text": "Very beautiful campus with gardens, lake, green fields. Neat and clean and well managed, lots of eateries, cafe.",
@@ -223,44 +252,27 @@ http_interactions:
                   "publishTime": "2022-11-25T03:01:01.940947Z",
                   "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUQtb3VyeGhnRRAB&d=17924085&t=1",
                   "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUQtb3VyeGhnRRAB!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
-                },
-                {
-                  "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChdDSUhNMG9nS0VJQ0FnSURHb2FpTmdRRRAB",
-                  "relativePublishTimeDescription": "2 years ago",
-                  "rating": 5,
-                  "text": {
-                    "text": "Beautiful campus with many pine trees and large pond. Feeling peaceful and calm every time visit here.",
-                    "languageCode": "en"
-                  },
-                  "originalText": {
-                    "text": "Beautiful campus with many pine trees and large pond. Feeling peaceful and calm every time visit here.",
-                    "languageCode": "en"
-                  },
-                  "authorAttribution": {
-                    "displayName": "登阮寶罄",
-                    "uri": "https://www.google.com/maps/contrib/100964549769638885265/reviews",
-                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX9pidHFUaQ9dh_lMpLOUp-EeQN4vUzmMJAgqSB7sCQuWwduMbc=s128-c0x00000000-cc-rp-mo-ba4"
-                  },
-                  "publishTime": "2021-11-30T11:23:33.976931Z",
-                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURHb2FpTmdRRRAB&d=17924085&t=1",
-                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURHb2FpTmdRRRAB!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
                 }
               ]
             }
           ]
         }
-  recorded_at: Sun, 17 Nov 2024 03:45:10 GMT
+  recorded_at: Tue, 10 Dec 2024 19:30:19 GMT
 - request:
     method: post
     uri: https://places.googleapis.com/v1/places:searchText
     body:
       encoding: UTF-8
-      string: '{"textQuery":"NYCU"}'
+      string: '{"textQuery":"Hsinchu Train Station"}'
     headers:
       X-Goog-Api-Key:
       - "<GOOGLE_MAPS_KEY>"
       X-Goog-Fieldmask:
-      - places.displayName,places.formattedAddress,places.id,places.rating,places.reviews
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
       Connection:
       - close
       Content-Type:
@@ -281,7 +293,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 17 Nov 2024 08:22:55 GMT
+      - Tue, 10 Dec 2024 19:30:20 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -291,7 +303,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=154
+      - gfet4t7; dur=191
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Accept-Ranges:
@@ -306,135 +318,139 @@ http_interactions:
         {
           "places": [
             {
-              "id": "ChIJMV8k71c2aDQRmj5yOn_aKTk",
-              "formattedAddress": "No. 1001號, Daxue Rd, East District, Hsinchu City, Taiwan 30010",
-              "rating": 4.6,
+              "id": "ChIJBXLgwuk1aDQRuu4aKYS0jF4",
+              "rating": 4.2,
+              "userRatingCount": 1867,
               "displayName": {
-                "text": "National Yang Ming Chiao Tung University",
+                "text": "Hsinchu",
                 "languageCode": "en"
               },
               "reviews": [
                 {
-                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChZDSUhNMG9nS0VJQ0FnSUNyZ2FqZWZ3EAE",
-                  "relativePublishTimeDescription": "4 months ago",
-                  "rating": 5,
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNGazV6ZFVBEAE",
+                  "relativePublishTimeDescription": "a year ago",
+                  "rating": 4,
                   "text": {
-                    "text": "Four years after completing my master's degree in semiconductor technology at NCTU, I realized how proud I am to have studied here. The professors are excellent in their teaching, and the campus is very student-friendly compared to many universities worldwide. I made great friends here, both humans and dogs! I learned a lot from NCTU, and this experience has greatly helped my career. Below are some of the pics I took during my two years at this uni. Don't miss the pics of my furry friends, chiaba, danke, tiedan and songshu at the end!",
+                    "text": "Hsinchu Railway station, a main railway station in Hsinchu, a busy station",
                     "languageCode": "en"
                   },
                   "originalText": {
-                    "text": "Four years after completing my master's degree in semiconductor technology at NCTU, I realized how proud I am to have studied here. The professors are excellent in their teaching, and the campus is very student-friendly compared to many universities worldwide. I made great friends here, both humans and dogs! I learned a lot from NCTU, and this experience has greatly helped my career. Below are some of the pics I took during my two years at this uni. Don't miss the pics of my furry friends, chiaba, danke, tiedan and songshu at the end!",
+                    "text": "Hsinchu Railway station, a main railway station in Hsinchu, a busy station",
                     "languageCode": "en"
                   },
                   "authorAttribution": {
-                    "displayName": "Amit Sravan",
-                    "uri": "https://www.google.com/maps/contrib/100098845219501880450/reviews",
-                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU9bA4WzDh8hr3LluzkMqRE3MdpDdof87I7TrpsC71E5ZD5v4JKcw=s128-c0x00000000-cc-rp-mo-ba3"
+                    "displayName": "Wai Leung Choi",
+                    "uri": "https://www.google.com/maps/contrib/117333781456696433831/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLB-oQAigsdiJed7m31Gh-jiHolLfclVq41O12KWcLRJGLjQQ=s128-c0x00000000-cc-rp-mo-ba8"
                   },
-                  "publishTime": "2024-07-07T19:55:34.909463Z",
-                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNyZ2FqZWZ3EAE&d=17924085&t=1",
-                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNyZ2FqZWZ3EAE!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                  "publishTime": "2023-11-01T16:11:49.071542Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNGazV6ZFVBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNGazV6ZFVBEAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
                 },
                 {
-                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChZDSUhNMG9nS0VJQ0FnSUR3M1BYNkh3EAE",
-                  "relativePublishTimeDescription": "6 years ago",
-                  "rating": 5,
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUM2cExIdFNBEAE",
+                  "relativePublishTimeDescription": "3 years ago",
+                  "rating": 4,
                   "text": {
-                    "text": "One of the best university to study electronics and computer science. Apart of academics the school has beautiful campus and good canteens. The school also has a awesome waffle shop.",
+                    "text": "The Hsinchu Train Station.  A subway connects the front and the rear stations. One can also access the subway at the Platform #5. Very convenient!",
                     "languageCode": "en"
                   },
                   "originalText": {
-                    "text": "One of the best university to study electronics and computer science. Apart of academics the school has beautiful campus and good canteens. The school also has a awesome waffle shop.",
+                    "text": "The Hsinchu Train Station.  A subway connects the front and the rear stations. One can also access the subway at the Platform #5. Very convenient!",
                     "languageCode": "en"
                   },
                   "authorAttribution": {
-                    "displayName": "SEWAKE DEWANSHU CHHAGAN",
-                    "uri": "https://www.google.com/maps/contrib/116862919740793312336/reviews",
-                    "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLdl9yLtsnoTAYlPgM2zlCU83emye0eCu9nU9FhpOla_qxa4w=s128-c0x00000000-cc-rp-mo-ba4"
+                    "displayName": "李好命",
+                    "uri": "https://www.google.com/maps/contrib/116842344434887843262/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUfSxr3qy2CYgCxn2yb3jBxtNGPbKrOxG0H2SmaOMbR3Fumbcut-w=s128-c0x00000000-cc-rp-mo-ba8"
                   },
-                  "publishTime": "2018-02-21T05:13:24.790Z",
-                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUR3M1BYNkh3EAE&d=17924085&t=1",
-                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUR3M1BYNkh3EAE!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                  "publishTime": "2021-09-03T23:33:20.807601Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUM2cExIdFNBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUM2cExIdFNBEAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
                 },
                 {
-                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChdDSUhNMG9nS0VJQ0FnSUNvamY3djNBRRAB",
-                  "relativePublishTimeDescription": "5 years ago",
-                  "rating": 5,
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNKNWJqTGNBEAE",
+                  "relativePublishTimeDescription": "a year ago",
+                  "rating": 4,
                   "text": {
-                    "text": "Love NCTU's artificial waterfall with lot of koi in it. And more over its Taiwan's No.3 university .",
+                    "text": "the atmospher is strikingly pleasing that you'll always smile seeing your love one arive at this kind of busy place",
                     "languageCode": "en"
                   },
                   "originalText": {
-                    "text": "Love NCTU's artificial waterfall with lot of koi in it. And more over its Taiwan's No.3 university .",
+                    "text": "the atmospher is strikingly pleasing that you'll always smile seeing your love one arive at this kind of busy place",
                     "languageCode": "en"
                   },
                   "authorAttribution": {
-                    "displayName": "sagarika dash",
-                    "uri": "https://www.google.com/maps/contrib/111562388246307545703/reviews",
-                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUwLTvnoNKdT2-orl1CQCkSbkFjvM9FsWOSnhyVovgv6l63enLzbA=s128-c0x00000000-cc-rp-mo-ba4"
+                    "displayName": "celben balallo",
+                    "uri": "https://www.google.com/maps/contrib/110453852587803021169/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU_ozXeGFBz3u3_WqA1fUmeCXl-R0-qwvSGzvQ-XOVFx-keshpH=s128-c0x00000000-cc-rp-mo"
                   },
-                  "publishTime": "2019-02-22T16:16:25.843844Z",
-                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNvamY3djNBRRAB&d=17924085&t=1",
-                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNvamY3djNBRRAB!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                  "publishTime": "2023-07-01T13:48:47.179390Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNKNWJqTGNBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNKNWJqTGNBEAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
                 },
                 {
-                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChdDSUhNMG9nS0VJQ0FnSUR6dzhieWl3RRAB",
-                  "relativePublishTimeDescription": "5 months ago",
-                  "rating": 5,
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNBdlptOFJREAE",
+                  "relativePublishTimeDescription": "7 years ago",
+                  "rating": 4,
                   "text": {
-                    "text": "One of the best Universities in Taiwan. Close to the science park with the world class professors.",
+                    "text": "The architecture is interesting to see built in Japan colonial period. Trains to Liujia station is only 4 car,go slowly,making relax&forget our busy days.",
                     "languageCode": "en"
                   },
                   "originalText": {
-                    "text": "One of the best Universities in Taiwan. Close to the science park with the world class professors.",
+                    "text": "The architecture is interesting to see built in Japan colonial period. Trains to Liujia station is only 4 car,go slowly,making relax&forget our busy days.",
                     "languageCode": "en"
                   },
                   "authorAttribution": {
-                    "displayName": "masjohncook",
-                    "uri": "https://www.google.com/maps/contrib/110418153991329095404/reviews",
-                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjULW5_GySQKcVcWWyw82L-dT3OW50-2WZe5cdJZ5313lIr1zaQyqw=s128-c0x00000000-cc-rp-mo-ba5"
+                    "displayName": "U. X.",
+                    "uri": "https://www.google.com/maps/contrib/110688123631511398095/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXEo5falrPpSCqUUDxqzwQFyNrYWPhitwggKnxSdDBcaHNII7O9tg=s128-c0x00000000-cc-rp-mo-ba8"
                   },
-                  "publishTime": "2024-06-12T00:13:12.794537Z",
-                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUR6dzhieWl3RRAB&d=17924085&t=1",
-                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUR6dzhieWl3RRAB!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                  "publishTime": "2017-07-02T08:28:29.803Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNBdlptOFJREAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNBdlptOFJREAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
                 },
                 {
-                  "name": "places/ChIJMV8k71c2aDQRmj5yOn_aKTk/reviews/ChdDSUhNMG9nS0VJQ0FnSURIeE5ENnhBRRAB",
-                  "relativePublishTimeDescription": "2 months ago",
-                  "rating": 5,
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNIX3VUbUF3EAE",
+                  "relativePublishTimeDescription": "3 months ago",
+                  "rating": 4,
                   "text": {
-                    "text": "Been here two times for the last two years. It was a really nice research visit.",
+                    "text": "Okay but doesn't have the same primal charm as the north station.",
                     "languageCode": "en"
                   },
                   "originalText": {
-                    "text": "Been here two times for the last two years. It was a really nice research visit.",
+                    "text": "Okay but doesn't have the same primal charm as the north station.",
                     "languageCode": "en"
                   },
                   "authorAttribution": {
-                    "displayName": "brian bramanto",
-                    "uri": "https://www.google.com/maps/contrib/102333104449638603833/reviews",
-                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXMLaXdcaMawF9IeE6PPdKWaXH3pggpef6ylhq8vpI4w5RQyJs=s128-c0x00000000-cc-rp-mo-ba4"
+                    "displayName": "Sam Hendren",
+                    "uri": "https://www.google.com/maps/contrib/104051948634883189140/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocKQpHFZ7_dbjrk42Gx_eXnAaq0FLJkLQnTeIgCz8kCc4J_xzA=s128-c0x00000000-cc-rp-mo-ba2"
                   },
-                  "publishTime": "2024-09-12T14:27:06.234486Z",
-                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURIeE5ENnhBRRAB&d=17924085&t=1",
-                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURIeE5ENnhBRRAB!2m1!1s0x34683657ef245f31:0x3929da7f3a723e9a"
+                  "publishTime": "2024-09-05T13:40:00.572977Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNIX3VUbUF3EAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNIX3VUbUF3EAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
                 }
               ]
             }
           ]
         }
-  recorded_at: Sun, 17 Nov 2024 08:22:54 GMT
+  recorded_at: Tue, 10 Dec 2024 19:30:19 GMT
 - request:
     method: post
     uri: https://places.googleapis.com/v1/places:searchText
     body:
       encoding: UTF-8
-      string: '{"textQuery":"NTU"}'
+      string: '{"textQuery":"Hsinchu Zoo"}'
     headers:
       X-Goog-Api-Key:
       - "<GOOGLE_MAPS_KEY>"
       X-Goog-Fieldmask:
-      - places.displayName,places.formattedAddress,places.id,places.rating,places.reviews
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
       Connection:
       - close
       Content-Type:
@@ -455,7 +471,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 17 Nov 2024 08:22:55 GMT
+      - Tue, 10 Dec 2024 19:30:20 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -465,7 +481,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=184
+      - gfet4t7; dur=187
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Accept-Ranges:
@@ -476,128 +492,802 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: "{\n  \"places\": [\n    {\n      \"id\": \"ChIJY0QBmQoP2jERGYItxQAIu7g\",\n
-        \     \"formattedAddress\": \"50 Nanyang Ave, Singapore 639798\",\n      \"rating\":
-        4.5,\n      \"displayName\": {\n        \"text\": \"Nanyang Technological
-        University\",\n        \"languageCode\": \"en\"\n      },\n      \"reviews\":
-        [\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChdDSUhNMG9nS0VJQ0FnSUNEelByVGp3RRAB\",\n
-        \         \"relativePublishTimeDescription\": \"4 months ago\",\n          \"rating\":
-        5,\n          \"text\": {\n            \"text\": \"Beautiful campus! Amazed
-        at how NTU has transformed over the years.\\n\\nI like the diversity of the
-        different style of architecture in NTU, the fact that every building has its
-        unique characteristic. i like the nostalgia of yunnan garden, the majestic
-        of Nanyang business school as well as the futuristic feel of the hive.\\n\\nAs
-        an NUS alum who had graduated 20 years ago, NUS used to be much nicer and
-        trendier. Sad to say, Over the years, NUS stayed pretty much the same while
-        NTU improved by leaps and bounds!\",\n            \"languageCode\": \"en\"\n
-        \         },\n          \"originalText\": {\n            \"text\": \"Beautiful
-        campus! Amazed at how NTU has transformed over the years.\\n\\nI like the
-        diversity of the different style of architecture in NTU, the fact that every
-        building has its unique characteristic. i like the nostalgia of yunnan garden,
-        the majestic of Nanyang business school as well as the futuristic feel of
-        the hive.\\n\\nAs an NUS alum who had graduated 20 years ago, NUS used to
-        be much nicer and trendier. Sad to say, Over the years, NUS stayed pretty
-        much the same while NTU improved by leaps and bounds!\",\n            \"languageCode\":
+      string: "{\n  \"places\": [\n    {\n      \"id\": \"ChIJl78Wnt01aDQRz1shOsBVUGU\",\n
+        \     \"rating\": 4,\n      \"userRatingCount\": 18984,\n      \"displayName\":
+        {\n        \"text\": \"Hsinchu Zoo\",\n        \"languageCode\": \"en\"\n
+        \     },\n      \"reviews\": [\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChdDSUhNMG9nS0VJQ0FnSUNuMDZIZXBBRRAB\",\n
+        \         \"relativePublishTimeDescription\": \"2 months ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"Hsinchu Zoo is clean.\\nYou
+        can spend like 20 to 30 minutes to enjoy the view and check all the animals
+        around the zoo.\\nAlso, the huge tress are beautiful\U0001F929.\\nA good place
+        to visit while you are at Hsinchu.\",\n            \"languageCode\": \"en\"\n
+        \         },\n          \"originalText\": {\n            \"text\": \"Hsinchu
+        Zoo is clean.\\nYou can spend like 20 to 30 minutes to enjoy the view and
+        check all the animals around the zoo.\\nAlso, the huge tress are beautiful\U0001F929.\\nA
+        good place to visit while you are at Hsinchu.\",\n            \"languageCode\":
         \"en\"\n          },\n          \"authorAttribution\": {\n            \"displayName\":
-        \"Kok How Lee\",\n            \"uri\": \"https://www.google.com/maps/contrib/106829727180318415827/reviews\",\n
-        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjXYw1x-VpdXQfNwojX8ZhOX6KcYnBatnzcHmsFU2dkxl3TxJjj_pg=s128-c0x00000000-cc-rp-mo-ba4\"\n
-        \         },\n          \"publishTime\": \"2024-06-28T00:33:16.913757Z\",\n
-        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNEelByVGp3RRAB&d=17924085&t=1\",\n
-        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNEelByVGp3RRAB!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
-        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChZDSUhNMG9nS0VJQ0FnSURPdmRXd0pBEAE\",\n
-        \         \"relativePublishTimeDescription\": \"8 months ago\",\n          \"rating\":
-        5,\n          \"text\": {\n            \"text\": \"NTU's campus is blessed
-        with its own beauty of hilly landscapes and green nature surrounds the colleges.\\n\\nIt's
-        a breath-taking experience especially for a beautiful morning walk, at the
-        same time get to enjoy the rich biodiversity of flora and fauna that refresh
-        our body and soul most importantly, not only that, it attracts a wide range
-        of wildlife. Long-tailed macaques, wild boars, and otters, have been sighted
-        on campus as well.\\n\\nWelcome to NTU!\\n\\nShalom!\U0001F33F\",\n            \"languageCode\":
-        \"en\"\n          },\n          \"originalText\": {\n            \"text\":
-        \"NTU's campus is blessed with its own beauty of hilly landscapes and green
-        nature surrounds the colleges.\\n\\nIt's a breath-taking experience especially
-        for a beautiful morning walk, at the same time get to enjoy the rich biodiversity
-        of flora and fauna that refresh our body and soul most importantly, not only
-        that, it attracts a wide range of wildlife. Long-tailed macaques, wild boars,
-        and otters, have been sighted on campus as well.\\n\\nWelcome to NTU!\\n\\nShalom!\U0001F33F\",\n
-        \           \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
-        {\n            \"displayName\": \"Josephine Tang\",\n            \"uri\":
-        \"https://www.google.com/maps/contrib/111333226180614624597/reviews\",\n            \"photoUri\":
-        \"https://lh3.googleusercontent.com/a-/ALV-UjX-wSz-j2eYhtgtjLdv-9l3OF-uk1YLCkQND9Z7T7BYIS0-AKsU4w=s128-c0x00000000-cc-rp-mo-ba5\"\n
-        \         },\n          \"publishTime\": \"2024-02-24T10:50:25.235481Z\",\n
-        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURPdmRXd0pBEAE&d=17924085&t=1\",\n
-        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURPdmRXd0pBEAE!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
-        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChZDSUhNMG9nS0VJQ0FnSUNRMm9yNkVREAE\",\n
-        \         \"relativePublishTimeDescription\": \"6 years ago\",\n          \"rating\":
-        4,\n          \"text\": {\n            \"text\": \"Really big and nice campus.
-        There are some distinct architecture there. It's a bit hard to get to, but
-        I think the distance effects how big the campus is. I didn't study there,
-        I just visited so I'm not sure about the education though.\",\n            \"languageCode\":
-        \"en\"\n          },\n          \"originalText\": {\n            \"text\":
-        \"Really big and nice campus. There are some distinct architecture there.
-        It's a bit hard to get to, but I think the distance effects how big the campus
-        is. I didn't study there, I just visited so I'm not sure about the education
-        though.\",\n            \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
-        {\n            \"displayName\": \"Thien-Kim Quach\",\n            \"uri\":
-        \"https://www.google.com/maps/contrib/108038205926473059622/reviews\",\n            \"photoUri\":
-        \"https://lh3.googleusercontent.com/a-/ALV-UjXwTLVs91j4DLVxsulZ6n9bHO1eGyEV5eg3-bcHltYxXBtGEy6txg=s128-c0x00000000-cc-rp-mo-ba5\"\n
-        \         },\n          \"publishTime\": \"2018-09-14T12:56:25.362007Z\",\n
-        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNRMm9yNkVREAE&d=17924085&t=1\",\n
-        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNRMm9yNkVREAE!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
-        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChdDSUhNMG9nS0VJQ0FnSUNoMzgzRGlnRRAB\",\n
+        \"Jel\",\n            \"uri\": \"https://www.google.com/maps/contrib/109708415369518152650/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjXlL3rfQE08TWttiqqcWVj0abZbgh1Mc3zktixeUFIfo6_LOYY-2A=s128-c0x00000000-cc-rp-mo-ba5\"\n
+        \         },\n          \"publishTime\": \"2024-09-29T14:59:44.812494Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNuMDZIZXBBRRAB&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNuMDZIZXBBRRAB!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChdDSUhNMG9nS0VJQ0FnSURYeExTbzhBRRAB\",\n
+        \         \"relativePublishTimeDescription\": \"a month ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"It's a mini scale zoo (ticket
+        price 50 NTD), buy from the machine, only short queue.  A pretty good place
+        to visit alone, with friends or with family. It's located in a park, so after
+        visiting the zoo, you can take a walk in the park and especially in weekend
+        they have some kind of day market sells foods drinks and plants too (dunno
+        only in weekend or everyday)!\",\n            \"languageCode\": \"en\"\n          },\n
+        \         \"originalText\": {\n            \"text\": \"It's a mini scale zoo
+        (ticket price 50 NTD), buy from the machine, only short queue.  A pretty good
+        place to visit alone, with friends or with family. It's located in a park,
+        so after visiting the zoo, you can take a walk in the park and especially
+        in weekend they have some kind of day market sells foods drinks and plants
+        too (dunno only in weekend or everyday)!\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"authorAttribution\": {\n            \"displayName\":
+        \"Hikari Shareen\",\n            \"uri\": \"https://www.google.com/maps/contrib/107194122627389572943/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjVt9HnFEekwUHAA16E0LwwEsgN3jKKGWULWqyqbREc7MOgmpII=s128-c0x00000000-cc-rp-mo-ba4\"\n
+        \         },\n          \"publishTime\": \"2024-10-24T07:15:31.383850Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURYeExTbzhBRRAB&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURYeExTbzhBRRAB!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChZDSUhNMG9nS0VJQ0FnSURGcXZlM1pnEAE\",\n
         \         \"relativePublishTimeDescription\": \"a year ago\",\n          \"rating\":
-        5,\n          \"text\": {\n            \"text\": \"It was an amazing experience
-        going to NTU Open House 2023 yesterday! Student ambassadors were really friendly,
-        and everything seemed to be executed in clockwork style (starting from the
-        shuttle buses that ferried us from Jurong East MRT to the campus itself).
-        I had an amazing time with the tours, free concerts & photobooth and many,
-        many more!\\n\\nMany may regard NTU as \\\"Pulau NTU\\\" because of its location
-        away from 'most of Singapore'. It has its charms in my humble opinion, ranging
-        from the 'dim sum' building, to the Nanyang Lake, and the many greenery that
-        surrounds and fills the campus. Another plus point for being relatively inaccessible
-        is that there's lower foot traffic on most days, which gives peace and tranquility
-        to its occupants. Therein lies its beauty - you have to travel to see it (highly
-        recommended)!\",\n            \"languageCode\": \"en\"\n          },\n          \"originalText\":
-        {\n            \"text\": \"It was an amazing experience going to NTU Open
-        House 2023 yesterday! Student ambassadors were really friendly, and everything
-        seemed to be executed in clockwork style (starting from the shuttle buses
-        that ferried us from Jurong East MRT to the campus itself). I had an amazing
-        time with the tours, free concerts & photobooth and many, many more!\\n\\nMany
-        may regard NTU as \\\"Pulau NTU\\\" because of its location away from 'most
-        of Singapore'. It has its charms in my humble opinion, ranging from the 'dim
-        sum' building, to the Nanyang Lake, and the many greenery that surrounds and
-        fills the campus. Another plus point for being relatively inaccessible is
-        that there's lower foot traffic on most days, which gives peace and tranquility
-        to its occupants. Therein lies its beauty - you have to travel to see it (highly
-        recommended)!\",\n            \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
-        {\n            \"displayName\": \"G Y\",\n            \"uri\": \"https://www.google.com/maps/contrib/111376056027123649376/reviews\",\n
-        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjVPlDEDI_6bMa4RhdMD7NuiGaSgGwzqrC0o1Gk0fcyKRRuIeQE=s128-c0x00000000-cc-rp-mo-ba5\"\n
-        \         },\n          \"publishTime\": \"2023-02-26T01:48:03.756803Z\",\n
-        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNoMzgzRGlnRRAB&d=17924085&t=1\",\n
-        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNoMzgzRGlnRRAB!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
-        \       },\n        {\n          \"name\": \"places/ChIJY0QBmQoP2jERGYItxQAIu7g/reviews/ChZDSUhNMG9nS0VJQ0FnSURBbGRuM1VBEAE\",\n
-        \         \"relativePublishTimeDescription\": \"6 years ago\",\n          \"rating\":
-        5,\n          \"text\": {\n            \"text\": \"A breathtaking collage,
-        from the natural beauty to the expanse. The wide variety of courses it caters
-        and the facilities provided are mind blowing. I was just visiting a friend
-        of mine and it felt entitled to just step in it. The distribution of facilities
-        from the Laboratories to lecture rooms to hostels to the canteens, NTU is
-        well thought out. No wonder it's among the top 20 universities in the world.
-        Try to visit it, if you cant enrol in it!\",\n            \"languageCode\":
-        \"en\"\n          },\n          \"originalText\": {\n            \"text\":
-        \"A breathtaking collage, from the natural beauty to the expanse. The wide
-        variety of courses it caters and the facilities provided are mind blowing.
-        I was just visiting a friend of mine and it felt entitled to just step in
-        it. The distribution of facilities from the Laboratories to lecture rooms
-        to hostels to the canteens, NTU is well thought out. No wonder it's among
-        the top 20 universities in the world. Try to visit it, if you cant enrol in
-        it!\",\n            \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
-        {\n            \"displayName\": \"Chanaka Hettige\",\n            \"uri\":
-        \"https://www.google.com/maps/contrib/104835839967673632825/reviews\",\n            \"photoUri\":
-        \"https://lh3.googleusercontent.com/a-/ALV-UjUXs79aWp212O5TN1nyaZ_6aPOD2M-HDAjQnGiLQRuh8jDBnCxVTw=s128-c0x00000000-cc-rp-mo-ba6\"\n
-        \         },\n          \"publishTime\": \"2018-04-04T08:41:04.354Z\",\n          \"flagContentUri\":
-        \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURBbGRuM1VBEAE&d=17924085&t=1\",\n
-        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURBbGRuM1VBEAE!2m1!1s0x31da0f0a99014463:0xb8bb0800c52d8219\"\n
+        3,\n          \"text\": {\n            \"text\": \"A zoo in Hsinchu, a small
+        scale zoo only. Not too far away from the railway station, about 10 minutes
+        walk from the station.\\nSpending about an hour in the zoo is more than enough.
+        The animals inside seems not very active and some of them looks quite old.\\nThe
+        entry fee is not expensive, it cost around NTWD$45 for an adult ticket while
+        buy it in apps.\",\n            \"languageCode\": \"en\"\n          },\n          \"originalText\":
+        {\n            \"text\": \"A zoo in Hsinchu, a small scale zoo only. Not too
+        far away from the railway station, about 10 minutes walk from the station.\\nSpending
+        about an hour in the zoo is more than enough. The animals inside seems not
+        very active and some of them looks quite old.\\nThe entry fee is not expensive,
+        it cost around NTWD$45 for an adult ticket while buy it in apps.\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"authorAttribution\": {\n            \"displayName\":
+        \"Wai Leung Choi\",\n            \"uri\": \"https://www.google.com/maps/contrib/117333781456696433831/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a/ACg8ocLB-oQAigsdiJed7m31Gh-jiHolLfclVq41O12KWcLRJGLjQQ=s128-c0x00000000-cc-rp-mo-ba8\"\n
+        \         },\n          \"publishTime\": \"2023-11-05T16:07:36.733652Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURGcXZlM1pnEAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURGcXZlM1pnEAE!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChZDSUhNMG9nS0VJQ0FnSUR1a2FTT1JREAE\",\n
+        \         \"relativePublishTimeDescription\": \"2 years ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"I know zoos are not the
+        holiest of places. This zoo, however,  is well maintained, the animals have
+        decent amounts of space,  they look healthy,  and most of them are in numbers
+        and do not live in isolation. It is a good place to spend half a day on a
+        weekend to be with family or friends. It is very convenient and friendly for
+        people's different needs. It may be a small zoo but it is good fun. It is
+        super affordable (50 dollars) and convenient (pay through Easy Card) too.\",\n
+        \           \"languageCode\": \"en\"\n          },\n          \"originalText\":
+        {\n            \"text\": \"I know zoos are not the holiest of places. This
+        zoo, however,  is well maintained, the animals have decent amounts of space,
+        \ they look healthy,  and most of them are in numbers and do not live in isolation.
+        It is a good place to spend half a day on a weekend to be with family or friends.
+        It is very convenient and friendly for people's different needs. It may be
+        a small zoo but it is good fun. It is super affordable (50 dollars) and convenient
+        (pay through Easy Card) too.\",\n            \"languageCode\": \"en\"\n          },\n
+        \         \"authorAttribution\": {\n            \"displayName\": \"Punky Oliverio\",\n
+        \           \"uri\": \"https://www.google.com/maps/contrib/109926133878847817808/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjWO6-Y4Cj7TU6c0oj6rltI2dyQnGxbs1qefVpjLsi-XxcUPbWv6=s128-c0x00000000-cc-rp-mo-ba4\"\n
+        \         },\n          \"publishTime\": \"2022-08-22T21:35:45.060601Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUR1a2FTT1JREAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUR1a2FTT1JREAE!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChZDSUhNMG9nS0VJQ0FnSURkb0lpNFBBEAE\",\n
+        \         \"relativePublishTimeDescription\": \"9 months ago\",\n          \"rating\":
+        3,\n          \"text\": {\n            \"text\": \"There is not much here.
+        The living environment doesn't seem that great for the animals. There aren't
+        many animals either. But remember it is government-run. On the plus side,
+        I was able to buy a cheap Formosan black bear wallet at the gift shop.\\n\\nIt's
+        something to do when you are already in the area. I came here after running
+        at the Hsinchu County stadium to walk it off. Then, I went to the Flower market
+        beside it.\",\n            \"languageCode\": \"en\"\n          },\n          \"originalText\":
+        {\n            \"text\": \"There is not much here. The living environment
+        doesn't seem that great for the animals. There aren't many animals either.
+        But remember it is government-run. On the plus side, I was able to buy a cheap
+        Formosan black bear wallet at the gift shop.\\n\\nIt's something to do when
+        you are already in the area. I came here after running at the Hsinchu County
+        stadium to walk it off. Then, I went to the Flower market beside it.\",\n
+        \           \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
+        {\n            \"displayName\": \"Ally Lin\",\n            \"uri\": \"https://www.google.com/maps/contrib/105781244839793623296/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjXNsQP0kMzFMYcntBSyCPDyMaU5v-okPO29OnB0iqfpyFMgSmAYrQ=s128-c0x00000000-cc-rp-mo-ba6\"\n
+        \         },\n          \"publishTime\": \"2024-02-20T04:10:51.556497Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURkb0lpNFBBEAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURkb0lpNFBBEAE!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
         \       }\n      ]\n    }\n  ]\n}\n"
-  recorded_at: Sun, 17 Nov 2024 08:22:54 GMT
+  recorded_at: Tue, 10 Dec 2024 19:30:20 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/distancematrix/json?destinations=place_id:ChIJBXLgwuk1aDQRuu4aKYS0jF4&key=<GOOGLE_MAPS_KEY>&mode=walking&origins=place_id:ChIJB7ZNzXI2aDQREwR22ltdKxE
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - maps.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 10 Dec 2024 19:30:20 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Vary:
+      - Accept-Language
+      X-Goog-Maps-Metro-Area:
+      - Hsinchu City
+      Content-Security-Policy-Report-Only:
+      - script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/msaifddsmnwc:377:0
+      Cross-Origin-Opener-Policy-Report-Only:
+      - same-origin; report-to=coop_reporting
+      Report-To:
+      - '{"group":"coop_reporting","max_age":2592000,"endpoints":[{"url":"https://csp.withgoogle.com/csp/report-to/scaffolding/msaifddsmnwc:377:0"}],}'
+      Server:
+      - mafe
+      Content-Length:
+      - '692'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=67
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAiZGVzdGluYXRpb25fYWRkcmVzc2VzIiA6IAogICBbCiAgICAgICIzMDAgSHNpbmNodSwgTm8uIDQ0NeiZnywgU2VjdGlvbiAyLCBaaG9uZ2h1YSBSZCwgRWFzdCBEaXN0cmljdCwgSHNpbmNodSBDaXR5LCBUYWl3YW4gMzAwIgogICBdLAogICAib3JpZ2luX2FkZHJlc3NlcyIgOiAKICAgWwogICAgICAiTm8uIDEwMeiZnywgU2VjdGlvbiAyLCBHdWFuZ2Z1IFJkLCBFYXN0IERpc3RyaWN0LCBIc2luY2h1IENpdHksIFRhaXdhbiAzMDAiCiAgIF0sCiAgICJyb3dzIiA6IAogICBbCiAgICAgIHsKICAgICAgICAgImVsZW1lbnRzIiA6IAogICAgICAgICBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImRpc3RhbmNlIiA6IAogICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJ0ZXh0IiA6ICIzLjAga20iLAogICAgICAgICAgICAgICAgICAidmFsdWUiIDogMjk3MQogICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAiZHVyYXRpb24iIDogCiAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgInRleHQiIDogIjQwIG1pbnMiLAogICAgICAgICAgICAgICAgICAidmFsdWUiIDogMjQxMgogICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAic3RhdHVzIiA6ICJPSyIKICAgICAgICAgICAgfQogICAgICAgICBdCiAgICAgIH0KICAgXSwKICAgInN0YXR1cyIgOiAiT0siCn0=
+  recorded_at: Tue, 10 Dec 2024 19:30:20 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/distancematrix/json?destinations=place_id:ChIJl78Wnt01aDQRz1shOsBVUGU&key=<GOOGLE_MAPS_KEY>&mode=walking&origins=place_id:ChIJBXLgwuk1aDQRuu4aKYS0jF4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - maps.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 10 Dec 2024 19:30:20 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Vary:
+      - Accept-Language
+      X-Goog-Maps-Metro-Area:
+      - Hsinchu City
+      Content-Security-Policy-Report-Only:
+      - script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/msaifddsmnwc:377:0
+      Cross-Origin-Opener-Policy-Report-Only:
+      - same-origin; report-to=coop_reporting
+      Report-To:
+      - '{"group":"coop_reporting","max_age":2592000,"endpoints":[{"url":"https://csp.withgoogle.com/csp/report-to/scaffolding/msaifddsmnwc:377:0"}],}'
+      Server:
+      - mafe
+      Content-Length:
+      - '673'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=85
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAiZGVzdGluYXRpb25fYWRkcmVzc2VzIiA6IAogICBbCiAgICAgICIzMDAsIFRhaXdhbiwgSHNpbmNodSBDaXR5LCBFYXN0IERpc3RyaWN0LCDpo5/lk4Hot682NuiZnyIKICAgXSwKICAgIm9yaWdpbl9hZGRyZXNzZXMiIDogCiAgIFsKICAgICAgIjMwMCBIc2luY2h1LCBOby4gNDQ16JmfLCBTZWN0aW9uIDIsIFpob25naHVhIFJkLCBFYXN0IERpc3RyaWN0LCBIc2luY2h1IENpdHksIFRhaXdhbiAzMDAiCiAgIF0sCiAgICJyb3dzIiA6IAogICBbCiAgICAgIHsKICAgICAgICAgImVsZW1lbnRzIiA6IAogICAgICAgICBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImRpc3RhbmNlIiA6IAogICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICJ0ZXh0IiA6ICIxLjEga20iLAogICAgICAgICAgICAgICAgICAidmFsdWUiIDogMTEzNwogICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAiZHVyYXRpb24iIDogCiAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgInRleHQiIDogIjE3IG1pbnMiLAogICAgICAgICAgICAgICAgICAidmFsdWUiIDogOTkxCiAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICJzdGF0dXMiIDogIk9LIgogICAgICAgICAgICB9CiAgICAgICAgIF0KICAgICAgfQogICBdLAogICAic3RhdHVzIiA6ICJPSyIKfQ==
+  recorded_at: Tue, 10 Dec 2024 19:30:20 GMT
+- request:
+    method: post
+    uri: https://places.googleapis.com/v1/places:searchText
+    body:
+      encoding: UTF-8
+      string: '{"textQuery":"nthu"}'
+    headers:
+      X-Goog-Api-Key:
+      - WRONG_KEY
+      X-Goog-Fieldmask:
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+      Host:
+      - places.googleapis.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 10 Dec 2024 19:30:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=27
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": {
+            "code": 400,
+            "message": "API key not valid. Please pass a valid API key.",
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+                "reason": "API_KEY_INVALID",
+                "domain": "googleapis.com",
+                "metadata": {
+                  "service": "places.googleapis.com"
+                }
+              },
+              {
+                "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+                "locale": "en-US",
+                "message": "API key not valid. Please pass a valid API key."
+              }
+            ]
+          }
+        }
+  recorded_at: Tue, 10 Dec 2024 19:30:59 GMT
+- request:
+    method: post
+    uri: https://places.googleapis.com/v1/places:searchText
+    body:
+      encoding: UTF-8
+      string: '{"textQuery":"nthu"}'
+    headers:
+      X-Goog-Api-Key:
+      - "<GOOGLE_MAPS_KEY>"
+      X-Goog-Fieldmask:
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+      Host:
+      - places.googleapis.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Tue, 10 Dec 2024 19:30:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=50
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "places": [
+            {
+              "id": "ChIJB7ZNzXI2aDQREwR22ltdKxE",
+              "rating": 4.6,
+              "userRatingCount": 2558,
+              "displayName": {
+                "text": "National Tsing Hua University",
+                "languageCode": "en"
+              },
+              "reviews": [
+                {
+                  "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChZDSUhNMG9nS0VJQ0FnSUQzNEtiVEhBEAE",
+                  "relativePublishTimeDescription": "4 weeks ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "As a Beijing Tsinghua alumni, I am very happy to visit another smaller Tsinghua.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "As a Beijing Tsinghua alumni, I am very happy to visit another smaller Tsinghua.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Kevin Zhang",
+                    "uri": "https://www.google.com/maps/contrib/108577504965898846202/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUwaz5cpd89Jm7ARAxDP8inE6thQQR3zeITKs50p816iXpBJS3r=s128-c0x00000000-cc-rp-mo-ba4"
+                  },
+                  "publishTime": "2024-11-11T06:20:49.768565Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUQzNEtiVEhBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUQzNEtiVEhBEAE!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
+                },
+                {
+                  "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChZDSUhNMG9nS0VJQ0FnSURTejczMVRnEAE",
+                  "relativePublishTimeDescription": "3 years ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "A large modern university campus with nice grounds and ponds. Very pleasant place to walk around. Be aware that scooters are not allowed inside and that it really is large so allow plenty of time if you’re going between building.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "A large modern university campus with nice grounds and ponds. Very pleasant place to walk around. Be aware that scooters are not allowed inside and that it really is large so allow plenty of time if you’re going between building.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Bob Cook",
+                    "uri": "https://www.google.com/maps/contrib/113314347498798056711/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXnVtt9YJqcF1nKU0HYeFRnAskfJtzUZjJ7wzw1xsyOyTpVQFIGmQ=s128-c0x00000000-cc-rp-mo-ba6"
+                  },
+                  "publishTime": "2021-01-13T14:41:43.923338Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURTejczMVRnEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURTejczMVRnEAE!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
+                },
+                {
+                  "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChdDSUhNMG9nS0VJQ0FnSURDNWV2eDRBRRAB",
+                  "relativePublishTimeDescription": "4 years ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "In 1956, NTHU was re-established in Hsinchu city. NTHU was selected as one of the National Seven Research Universities in 2002. This University is spread over 260 acres of land in East district. More than 100 student clubs are there for different activities and this University has 18 dormitories for students. The strength of students here is more than 15k. The life, activity and culture is very vibrant here.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "In 1956, NTHU was re-established in Hsinchu city. NTHU was selected as one of the National Seven Research Universities in 2002. This University is spread over 260 acres of land in East district. More than 100 student clubs are there for different activities and this University has 18 dormitories for students. The strength of students here is more than 15k. The life, activity and culture is very vibrant here.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Anindya Sundar Patra",
+                    "uri": "https://www.google.com/maps/contrib/110737197638865475422/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWbidyRx30KzxQS5S73_5ciGKVXNY05P5CY_110Ou1zc8J8zQs=s128-c0x00000000-cc-rp-mo-ba5"
+                  },
+                  "publishTime": "2020-10-05T05:08:12.152771Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURDNWV2eDRBRRAB&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURDNWV2eDRBRRAB!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
+                },
+                {
+                  "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChdDSUhNMG9nS0VJQ0FnSURVci1tU3hnRRAB",
+                  "relativePublishTimeDescription": "5 years ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "One of the Best University in Taiwan to pursue higher studies. Peaceful ambience and less crowded campus. Campus is very wide so be ready to excercise your legs.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "One of the Best University in Taiwan to pursue higher studies. Peaceful ambience and less crowded campus. Campus is very wide so be ready to excercise your legs.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Mohammad Faizan Akhtar",
+                    "uri": "https://www.google.com/maps/contrib/109937352854439838460/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXe3ZtSHh-9VAYsK_zfrAuPHOqyzHjjDSNoWHeCY0dxSmX_aAzB=s128-c0x00000000-cc-rp-mo-ba3"
+                  },
+                  "publishTime": "2019-09-08T20:29:32.744688Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURVci1tU3hnRRAB&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURVci1tU3hnRRAB!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
+                },
+                {
+                  "name": "places/ChIJB7ZNzXI2aDQREwR22ltdKxE/reviews/ChdDSUhNMG9nS0VJQ0FnSUQtb3VyeGhnRRAB",
+                  "relativePublishTimeDescription": "2 years ago",
+                  "rating": 5,
+                  "text": {
+                    "text": "Very beautiful campus with gardens, lake, green fields. Neat and clean and well managed, lots of eateries, cafe.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "Very beautiful campus with gardens, lake, green fields. Neat and clean and well managed, lots of eateries, cafe.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Washim Reza Ali",
+                    "uri": "https://www.google.com/maps/contrib/100133631403336202170/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLWNECSiwUyBvFWOIVokWE45xG8r_2mCsS489pDoo9xmosN=s128-c0x00000000-cc-rp-mo-ba3"
+                  },
+                  "publishTime": "2022-11-25T03:01:01.940947Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUQtb3VyeGhnRRAB&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUQtb3VyeGhnRRAB!2m1!1s0x34683672cd4db607:0x112b5d5bda760413"
+                }
+              ]
+            }
+          ]
+        }
+  recorded_at: Tue, 10 Dec 2024 19:30:59 GMT
+- request:
+    method: post
+    uri: https://places.googleapis.com/v1/places:searchText
+    body:
+      encoding: UTF-8
+      string: '{"textQuery":"Hsinchu Train Station"}'
+    headers:
+      X-Goog-Api-Key:
+      - "<GOOGLE_MAPS_KEY>"
+      X-Goog-Fieldmask:
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+      Host:
+      - places.googleapis.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Tue, 10 Dec 2024 19:30:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=65
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "places": [
+            {
+              "id": "ChIJBXLgwuk1aDQRuu4aKYS0jF4",
+              "rating": 4.2,
+              "userRatingCount": 1867,
+              "displayName": {
+                "text": "Hsinchu",
+                "languageCode": "en"
+              },
+              "reviews": [
+                {
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNGazV6ZFVBEAE",
+                  "relativePublishTimeDescription": "a year ago",
+                  "rating": 4,
+                  "text": {
+                    "text": "Hsinchu Railway station, a main railway station in Hsinchu, a busy station",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "Hsinchu Railway station, a main railway station in Hsinchu, a busy station",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Wai Leung Choi",
+                    "uri": "https://www.google.com/maps/contrib/117333781456696433831/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLB-oQAigsdiJed7m31Gh-jiHolLfclVq41O12KWcLRJGLjQQ=s128-c0x00000000-cc-rp-mo-ba8"
+                  },
+                  "publishTime": "2023-11-01T16:11:49.071542Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNGazV6ZFVBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNGazV6ZFVBEAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
+                },
+                {
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUM2cExIdFNBEAE",
+                  "relativePublishTimeDescription": "3 years ago",
+                  "rating": 4,
+                  "text": {
+                    "text": "The Hsinchu Train Station.  A subway connects the front and the rear stations. One can also access the subway at the Platform #5. Very convenient!",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "The Hsinchu Train Station.  A subway connects the front and the rear stations. One can also access the subway at the Platform #5. Very convenient!",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "李好命",
+                    "uri": "https://www.google.com/maps/contrib/116842344434887843262/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUfSxr3qy2CYgCxn2yb3jBxtNGPbKrOxG0H2SmaOMbR3Fumbcut-w=s128-c0x00000000-cc-rp-mo-ba8"
+                  },
+                  "publishTime": "2021-09-03T23:33:20.807601Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUM2cExIdFNBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUM2cExIdFNBEAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
+                },
+                {
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNKNWJqTGNBEAE",
+                  "relativePublishTimeDescription": "a year ago",
+                  "rating": 4,
+                  "text": {
+                    "text": "the atmospher is strikingly pleasing that you'll always smile seeing your love one arive at this kind of busy place",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "the atmospher is strikingly pleasing that you'll always smile seeing your love one arive at this kind of busy place",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "celben balallo",
+                    "uri": "https://www.google.com/maps/contrib/110453852587803021169/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU_ozXeGFBz3u3_WqA1fUmeCXl-R0-qwvSGzvQ-XOVFx-keshpH=s128-c0x00000000-cc-rp-mo"
+                  },
+                  "publishTime": "2023-07-01T13:48:47.179390Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNKNWJqTGNBEAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNKNWJqTGNBEAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
+                },
+                {
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNBdlptOFJREAE",
+                  "relativePublishTimeDescription": "7 years ago",
+                  "rating": 4,
+                  "text": {
+                    "text": "The architecture is interesting to see built in Japan colonial period. Trains to Liujia station is only 4 car,go slowly,making relax&forget our busy days.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "The architecture is interesting to see built in Japan colonial period. Trains to Liujia station is only 4 car,go slowly,making relax&forget our busy days.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "U. X.",
+                    "uri": "https://www.google.com/maps/contrib/110688123631511398095/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXEo5falrPpSCqUUDxqzwQFyNrYWPhitwggKnxSdDBcaHNII7O9tg=s128-c0x00000000-cc-rp-mo-ba8"
+                  },
+                  "publishTime": "2017-07-02T08:28:29.803Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNBdlptOFJREAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNBdlptOFJREAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
+                },
+                {
+                  "name": "places/ChIJBXLgwuk1aDQRuu4aKYS0jF4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNIX3VUbUF3EAE",
+                  "relativePublishTimeDescription": "3 months ago",
+                  "rating": 4,
+                  "text": {
+                    "text": "Okay but doesn't have the same primal charm as the north station.",
+                    "languageCode": "en"
+                  },
+                  "originalText": {
+                    "text": "Okay but doesn't have the same primal charm as the north station.",
+                    "languageCode": "en"
+                  },
+                  "authorAttribution": {
+                    "displayName": "Sam Hendren",
+                    "uri": "https://www.google.com/maps/contrib/104051948634883189140/reviews",
+                    "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocKQpHFZ7_dbjrk42Gx_eXnAaq0FLJkLQnTeIgCz8kCc4J_xzA=s128-c0x00000000-cc-rp-mo-ba2"
+                  },
+                  "publishTime": "2024-09-05T13:40:00.572977Z",
+                  "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUNIX3VUbUF3EAE&d=17924085&t=1",
+                  "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUNIX3VUbUF3EAE!2m1!1s0x346835e9c2e07205:0x5e8cb484291aeeba"
+                }
+              ]
+            }
+          ]
+        }
+  recorded_at: Tue, 10 Dec 2024 19:30:59 GMT
+- request:
+    method: post
+    uri: https://places.googleapis.com/v1/places:searchText
+    body:
+      encoding: UTF-8
+      string: '{"textQuery":"Hsinchu Zoo"}'
+    headers:
+      X-Goog-Api-Key:
+      - "<GOOGLE_MAPS_KEY>"
+      X-Goog-Fieldmask:
+      - places.id,places.displayName,places.rating,places.reviews,places.userRatingCount
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+      Host:
+      - places.googleapis.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Tue, 10 Dec 2024 19:30:59 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=46
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{\n  \"places\": [\n    {\n      \"id\": \"ChIJl78Wnt01aDQRz1shOsBVUGU\",\n
+        \     \"rating\": 4,\n      \"userRatingCount\": 18984,\n      \"displayName\":
+        {\n        \"text\": \"Hsinchu Zoo\",\n        \"languageCode\": \"en\"\n
+        \     },\n      \"reviews\": [\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChdDSUhNMG9nS0VJQ0FnSUNuMDZIZXBBRRAB\",\n
+        \         \"relativePublishTimeDescription\": \"2 months ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"Hsinchu Zoo is clean.\\nYou
+        can spend like 20 to 30 minutes to enjoy the view and check all the animals
+        around the zoo.\\nAlso, the huge tress are beautiful\U0001F929.\\nA good place
+        to visit while you are at Hsinchu.\",\n            \"languageCode\": \"en\"\n
+        \         },\n          \"originalText\": {\n            \"text\": \"Hsinchu
+        Zoo is clean.\\nYou can spend like 20 to 30 minutes to enjoy the view and
+        check all the animals around the zoo.\\nAlso, the huge tress are beautiful\U0001F929.\\nA
+        good place to visit while you are at Hsinchu.\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"authorAttribution\": {\n            \"displayName\":
+        \"Jel\",\n            \"uri\": \"https://www.google.com/maps/contrib/109708415369518152650/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjXlL3rfQE08TWttiqqcWVj0abZbgh1Mc3zktixeUFIfo6_LOYY-2A=s128-c0x00000000-cc-rp-mo-ba5\"\n
+        \         },\n          \"publishTime\": \"2024-09-29T14:59:44.812494Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNuMDZIZXBBRRAB&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNuMDZIZXBBRRAB!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChdDSUhNMG9nS0VJQ0FnSURYeExTbzhBRRAB\",\n
+        \         \"relativePublishTimeDescription\": \"a month ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"It's a mini scale zoo (ticket
+        price 50 NTD), buy from the machine, only short queue.  A pretty good place
+        to visit alone, with friends or with family. It's located in a park, so after
+        visiting the zoo, you can take a walk in the park and especially in weekend
+        they have some kind of day market sells foods drinks and plants too (dunno
+        only in weekend or everyday)!\",\n            \"languageCode\": \"en\"\n          },\n
+        \         \"originalText\": {\n            \"text\": \"It's a mini scale zoo
+        (ticket price 50 NTD), buy from the machine, only short queue.  A pretty good
+        place to visit alone, with friends or with family. It's located in a park,
+        so after visiting the zoo, you can take a walk in the park and especially
+        in weekend they have some kind of day market sells foods drinks and plants
+        too (dunno only in weekend or everyday)!\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"authorAttribution\": {\n            \"displayName\":
+        \"Hikari Shareen\",\n            \"uri\": \"https://www.google.com/maps/contrib/107194122627389572943/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjVt9HnFEekwUHAA16E0LwwEsgN3jKKGWULWqyqbREc7MOgmpII=s128-c0x00000000-cc-rp-mo-ba4\"\n
+        \         },\n          \"publishTime\": \"2024-10-24T07:15:31.383850Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURYeExTbzhBRRAB&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURYeExTbzhBRRAB!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChZDSUhNMG9nS0VJQ0FnSURGcXZlM1pnEAE\",\n
+        \         \"relativePublishTimeDescription\": \"a year ago\",\n          \"rating\":
+        3,\n          \"text\": {\n            \"text\": \"A zoo in Hsinchu, a small
+        scale zoo only. Not too far away from the railway station, about 10 minutes
+        walk from the station.\\nSpending about an hour in the zoo is more than enough.
+        The animals inside seems not very active and some of them looks quite old.\\nThe
+        entry fee is not expensive, it cost around NTWD$45 for an adult ticket while
+        buy it in apps.\",\n            \"languageCode\": \"en\"\n          },\n          \"originalText\":
+        {\n            \"text\": \"A zoo in Hsinchu, a small scale zoo only. Not too
+        far away from the railway station, about 10 minutes walk from the station.\\nSpending
+        about an hour in the zoo is more than enough. The animals inside seems not
+        very active and some of them looks quite old.\\nThe entry fee is not expensive,
+        it cost around NTWD$45 for an adult ticket while buy it in apps.\",\n            \"languageCode\":
+        \"en\"\n          },\n          \"authorAttribution\": {\n            \"displayName\":
+        \"Wai Leung Choi\",\n            \"uri\": \"https://www.google.com/maps/contrib/117333781456696433831/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a/ACg8ocLB-oQAigsdiJed7m31Gh-jiHolLfclVq41O12KWcLRJGLjQQ=s128-c0x00000000-cc-rp-mo-ba8\"\n
+        \         },\n          \"publishTime\": \"2023-11-05T16:07:36.733652Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURGcXZlM1pnEAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURGcXZlM1pnEAE!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChZDSUhNMG9nS0VJQ0FnSUR1a2FTT1JREAE\",\n
+        \         \"relativePublishTimeDescription\": \"2 years ago\",\n          \"rating\":
+        5,\n          \"text\": {\n            \"text\": \"I know zoos are not the
+        holiest of places. This zoo, however,  is well maintained, the animals have
+        decent amounts of space,  they look healthy,  and most of them are in numbers
+        and do not live in isolation. It is a good place to spend half a day on a
+        weekend to be with family or friends. It is very convenient and friendly for
+        people's different needs. It may be a small zoo but it is good fun. It is
+        super affordable (50 dollars) and convenient (pay through Easy Card) too.\",\n
+        \           \"languageCode\": \"en\"\n          },\n          \"originalText\":
+        {\n            \"text\": \"I know zoos are not the holiest of places. This
+        zoo, however,  is well maintained, the animals have decent amounts of space,
+        \ they look healthy,  and most of them are in numbers and do not live in isolation.
+        It is a good place to spend half a day on a weekend to be with family or friends.
+        It is very convenient and friendly for people's different needs. It may be
+        a small zoo but it is good fun. It is super affordable (50 dollars) and convenient
+        (pay through Easy Card) too.\",\n            \"languageCode\": \"en\"\n          },\n
+        \         \"authorAttribution\": {\n            \"displayName\": \"Punky Oliverio\",\n
+        \           \"uri\": \"https://www.google.com/maps/contrib/109926133878847817808/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjWO6-Y4Cj7TU6c0oj6rltI2dyQnGxbs1qefVpjLsi-XxcUPbWv6=s128-c0x00000000-cc-rp-mo-ba4\"\n
+        \         },\n          \"publishTime\": \"2022-08-22T21:35:45.060601Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSUR1a2FTT1JREAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSUR1a2FTT1JREAE!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       },\n        {\n          \"name\": \"places/ChIJl78Wnt01aDQRz1shOsBVUGU/reviews/ChZDSUhNMG9nS0VJQ0FnSURkb0lpNFBBEAE\",\n
+        \         \"relativePublishTimeDescription\": \"9 months ago\",\n          \"rating\":
+        3,\n          \"text\": {\n            \"text\": \"There is not much here.
+        The living environment doesn't seem that great for the animals. There aren't
+        many animals either. But remember it is government-run. On the plus side,
+        I was able to buy a cheap Formosan black bear wallet at the gift shop.\\n\\nIt's
+        something to do when you are already in the area. I came here after running
+        at the Hsinchu County stadium to walk it off. Then, I went to the Flower market
+        beside it.\",\n            \"languageCode\": \"en\"\n          },\n          \"originalText\":
+        {\n            \"text\": \"There is not much here. The living environment
+        doesn't seem that great for the animals. There aren't many animals either.
+        But remember it is government-run. On the plus side, I was able to buy a cheap
+        Formosan black bear wallet at the gift shop.\\n\\nIt's something to do when
+        you are already in the area. I came here after running at the Hsinchu County
+        stadium to walk it off. Then, I went to the Flower market beside it.\",\n
+        \           \"languageCode\": \"en\"\n          },\n          \"authorAttribution\":
+        {\n            \"displayName\": \"Ally Lin\",\n            \"uri\": \"https://www.google.com/maps/contrib/105781244839793623296/reviews\",\n
+        \           \"photoUri\": \"https://lh3.googleusercontent.com/a-/ALV-UjXNsQP0kMzFMYcntBSyCPDyMaU5v-okPO29OnB0iqfpyFMgSmAYrQ=s128-c0x00000000-cc-rp-mo-ba6\"\n
+        \         },\n          \"publishTime\": \"2024-02-20T04:10:51.556497Z\",\n
+        \         \"flagContentUri\": \"https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnSURkb0lpNFBBEAE&d=17924085&t=1\",\n
+        \         \"googleMapsUri\": \"https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnSURkb0lpNFBBEAE!2m1!1s0x346835dd9e16bf97:0x655055c03a215bcf\"\n
+        \       }\n      ]\n    }\n  ]\n}\n"
+  recorded_at: Tue, 10 Dec 2024 19:30:59 GMT
 recorded_with: VCR 6.3.1
