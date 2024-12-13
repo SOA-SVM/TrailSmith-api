@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper_openai'
-require_relative 'lib/gateways/openai_api'
-require_relative 'lib/mappers/openai_mapper'
-require_relative 'lib/entities/wish'
+require_relative '../../helpers/spec_helper_openai'
 require 'irb'
 
 describe 'Test OpenAI API liabrary' do
@@ -28,15 +25,21 @@ describe 'Test OpenAI API liabrary' do
   describe 'OpenAI Information' do
     it 'HAPPY: should provide a successful response from the API' do
       # binding.irb
-      response = TrailSmith::Openai::OpenaiAPI.new(OPENAI_TOKEN).generate_text(QUESTION)
+      mapper = TrailSmith::Openai::OpenaiMapper.new(OPENAI_TOKEN)
+      response = mapper.find(QUESTION)
+      puts "Test Response: #{response.inspect}"
       # binding.irb
-      _(response.messages.first['content']).must_include EXPECTED_RESPONSE
+      _(response).must_be_instance_of TrailSmith::Entity::Wish
+      _(response.messages).wont_be_empty # 檢查 messages 不為空
+      _(response.messages.first).must_include EXPECTED_RESPONSE # 檢查包含期望值
     end
 
     it 'SAD: should gracefully handle an invalid API token' do
-      _(proc do
-        TrailSmith::Openai::OpenaiAPI.new('BAD_TOKEN').generate_text(QUESTION)
-      end).must_raise TrailSmith::Openai::OpenaiAPI::Response::Unauthorized
+      mapper = TrailSmith::Openai::OpenaiMapper.new('BAD_TOKEN')
+
+      assert_raises(TrailSmith::Openai::OpenaiAPI::Response::Unauthorized) do
+        mapper.find(QUESTION, model: 'gpt-4o-mini', max_tokens: 50)
+      end
     end
   end
 end

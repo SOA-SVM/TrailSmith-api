@@ -39,5 +39,51 @@
       </div>
     </div>
     <% end %>
+    
+    <div class="row mt-4">
+  <div class="col-12">
+    <h3>Travel Recommendations</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="p-3 bg-light rounded">
+      <% if session && session[:last_wish] %>
+        <% begin %>
+          <% itinerary = JSON.parse(session[:last_wish]) %>
+          <div class="mb-3">
+            <h4><%= itinerary['region'] %> Travel Plan</h4>
+            <p>
+              <span class="badge bg-info"><%= itinerary['num_people'] %> People</span>
+              <span class="badge bg-info ms-2"><%= itinerary['day'] %> Day(s)</span>
+            </p>
+          </div>
+
+          <% if itinerary['spots'].is_a?(Array) && !itinerary['spots'].empty? %>
+            <div class="itinerary-details">
+              <% itinerary['spots'].each_with_index do |spot, index| %>
+                <div class="spot-item mb-3">
+                  <div class="spot-number"><strong><%= index + 1 %>.</strong> <%= spot %></div>
+                  <% if index < itinerary['mode'].length %>
+                    <div class="transport-info text-muted">
+                      <small>↓ Next: <%= itinerary['mode'][index].capitalize %></small>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% rescue JSON::ParserError, NoMethodError => e %>
+          <div class="alert alert-warning">
+            <p>Unable to parse itinerary data</p>
+            <pre><%= session[:last_wish] %></pre>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No recommendations available at this time.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
   </div>
 </div>

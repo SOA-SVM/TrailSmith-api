@@ -9,7 +9,8 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock/minitest'
 
-require_relative 'lib/gateways/openai_api'
+require_relative '../../require_app'
+require_app
 
 QUESTION = 'What is the capital of France?'
 EXPECTED_RESPONSE = 'Paris'
