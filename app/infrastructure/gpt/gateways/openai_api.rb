@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 require 'http'
-# require 'yaml'
-# require_relative 'wish'
-# require 'irb'
-# require 'json'
 
 module TrailSmith
   module  Openai
@@ -14,11 +10,22 @@ module TrailSmith
         @token = token
       end
 
-      def generate_text(prompt, model = 'gpt-4o-mini', max_tokens: 50)
+      def chat_completion(prompt, **options)
+        model, max_tokens = self.class.extract_options(options)
         api_response = Request.new(@token).get(prompt, model, max_tokens).parse
-        TrailSmith::Mapper::OpenaiMapper.build_entity(api_response)
+        #validate_messages_structure!(api_response)
+        # puts "API Response: #{api_response.inspect}"
+        api_response['choices']
       end
 
+      def self.extract_options(options, model: 'gpt-4o-mini', max_tokens: 50)
+        model = options.fetch(:model, model)
+        max_tokens = options.fetch(:max_tokens, max_tokens)
+        [model, max_tokens]
+      end
+
+      # This class is responsible for sending HTTP requests to the OpenAI API.
+      # It builds the request headers and body, and handles the HTTP interaction.
       class Request
         API_PATH = 'https://api.openai.com/v1/chat/completions'
 
@@ -49,6 +56,9 @@ module TrailSmith
         end
       end
 
+      # This class wraps the HTTP response from the OpenAI API.
+      # It provides methods to check if the response was successful and
+      # to parse the response body into a structured format.
       class Response < SimpleDelegator
         BadRequest = Class.new(StandardError)
         Unauthorized = Class.new(StandardError)
@@ -74,13 +84,22 @@ module TrailSmith
 
         # Validates the response, raising an error if it is not successful
         def validate
-          raise error unless successful?
-
-          self
+          raise_validation_error unless successful?
+          self 
         end
 
-        # Safely validates the response, returning a boolean instead of raising an error
-        def svalidate_safely
+        private
+
+        def raise_validation_error
+          error_message = error_message_with_details
+          raise error || StandardError.new(error_message)
+        end
+
+        def error_message_with_details
+          "Validation failed with response body: #{body} (HTTP code: #{code})"
+        end
+
+        def validate_safely
           successful?
         end
       end
