@@ -17,6 +17,7 @@ require_relative '../../require_app'
 require_app
 
 GOOGLE_MAPS_KEY = TrailSmith::App.config.GOOGLE_MAPS_KEY
+OPENAI_TOKEN = TrailSmith::App.config.OPENAI_TOKEN
 
 TEXT_QUERY = 'nthu'
 STARTING_SPOT = 'ChIJB7ZNzXI2aDQREwR22ltdKxE'

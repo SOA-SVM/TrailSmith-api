@@ -20,13 +20,16 @@ module TrailSmith
           @key = key
         end
 
-        def text_search(text_query)
-          url = 'https://places.googleapis.com/v1/places:searchText'
+        def field_mask
           place_info = 'places.id,places.displayName,places.formattedAddress'
           report_info = 'places.rating,places.reviews,places.userRatingCount'
+          "#{place_info},#{report_info}"
+        end
+
+        def text_search(text_query)
+          url = 'https://places.googleapis.com/v1/places:searchText'
           http_response = HTTP.headers(
-            'X-Goog-Api-Key'   => @key,
-            'X-Goog-FieldMask' => "#{place_info},#{report_info}"
+            'X-Goog-Api-Key' => @key, 'X-Goog-FieldMask' => field_mask
           ).post(url, json: { textQuery: text_query })
 
           Response.new(http_response).tap do |response|

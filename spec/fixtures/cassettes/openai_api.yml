@@ -11,71 +11,6 @@ http_interactions:
       Content-Type:
       - application/json
       Authorization:
-      - Bearer BAD_TOKEN
-      Connection:
-      - close
-      Host:
-      - api.openai.com
-      User-Agent:
-      - http.rb/5.2.0
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      Date:
-      - Fri, 13 Dec 2024 16:51:27 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '259'
-      Connection:
-      - close
-      Vary:
-      - Origin
-      X-Request-Id:
-      - req_dad8106744023e4874344f24dc72c0ef
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Cf-Cache-Status:
-      - DYNAMIC
-      Set-Cookie:
-      - __cf_bm=LE3k.s41r513LlbibwiH2Gqs0JUbmtcmF5UiH2M5KO0-1734108687-1.0.1.1-N5HHQvej062YxmeFqS304J.XRo7KCcNfqp36LiVlJvAvsZcmeRdOhStRUO7KiU_WqhleznKqY00kwB.i0AIGqg;
-        path=/; expires=Fri, 13-Dec-24 17:21:27 GMT; domain=.api.openai.com; HttpOnly;
-        Secure; SameSite=None
-      - _cfuvid=1WIGdxTxB2MLCIzi3EwxTYk65DXoCronHIl_EG7uqGk-1734108687038-0.0.1.1-604800000;
-        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 8f17757c7d39827c-TPE
-      Alt-Svc:
-      - h3=":443"; ma=86400
-    body:
-      encoding: UTF-8
-      string: |
-        {
-            "error": {
-                "message": "Incorrect API key provided: BAD_TOKEN. You can find your API key at https://platform.openai.com/account/api-keys.",
-                "type": "invalid_request_error",
-                "param": null,
-                "code": "invalid_api_key"
-            }
-        }
-  recorded_at: Fri, 13 Dec 2024 16:51:26 GMT
-- request:
-    method: post
-    uri: https://api.openai.com/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"What is
-        the capital of France?"}],"max_tokens":50}'
-    headers:
-      Content-Type:
-      - application/json
-      Authorization:
       - Bearer <OPENAI_TOKEN>
       Connection:
       - close
@@ -89,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 13 Dec 2024 16:51:27 GMT
+      - Sat, 14 Dec 2024 14:27:42 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -101,7 +36,7 @@ http_interactions:
       Openai-Organization:
       - user-5c4nicwpcfep3szkvx23dro6
       Openai-Processing-Ms:
-      - '295'
+      - '356'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -117,32 +52,32 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 17ms
       X-Request-Id:
-      - req_6b31d20c4dbe05e4f2bcd68c7c3993cd
+      - req_944131347fb0b0bf14e8cff6cad65ef2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=nA9TPzvcgqCtTIAO9SOl5mZnbhoLUVjT86I4ogG7nJA-1734108687-1.0.1.1-MifbGzQJJ7l4Ba_cZQttQp3YGgIgEhzjrwXFCw7vX1vcKu0zimQpjaVMdFkDrZGdSxeVnDbZ1cv3cZQp_jhrfQ;
-        path=/; expires=Fri, 13-Dec-24 17:21:27 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=5jsFNI6Tx00Ga0EY88VEJMejoysWuckyklvPEMlYDXQ-1734186462-1.0.1.1-ecxsq_RzED0nJtIOkP1kp9Lh6LbFuHfczmWAnnDQcI9QRb_zN79hYMPppuTsVmmrzsOwb7ohrxIfQzH3T3jVOA;
+        path=/; expires=Sat, 14-Dec-24 14:57:42 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=4ZY7VqKmAZWKdNhNCJqffAmufmKUmFbUbQiR7ObC21A-1734108687611-0.0.1.1-604800000;
+      - _cfuvid=RPN1TWYqCodoO7j1kCLdMQ7BtPl1JQI7kT20GIiq9YQ-1734186462684-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8f17757e7d914a6f-TPE
+      - 8f1ee04c4c01a9b6-TPE
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
       string: |
         {
-          "id": "chatcmpl-Ae3At1wEmpOsRUfqrC8fQO9NkQVzl",
+          "id": "chatcmpl-AeNPKMd0UN7L94lv0VBxxDt3YhwEN",
           "object": "chat.completion",
-          "created": 1734108687,
+          "created": 1734186462,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -171,7 +106,72 @@ http_interactions:
               "rejected_prediction_tokens": 0
             }
           },
-          "system_fingerprint": "fp_6fc10e10eb"
+          "system_fingerprint": "fp_39a40c96a0"
         }
-  recorded_at: Fri, 13 Dec 2024 16:51:26 GMT
+  recorded_at: Sat, 14 Dec 2024 14:27:42 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"What is
+        the capital of France?"}],"max_tokens":50}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer BAD_TOKEN
+      Connection:
+      - close
+      Host:
+      - api.openai.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sat, 14 Dec 2024 14:27:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '259'
+      Connection:
+      - close
+      Vary:
+      - Origin
+      X-Request-Id:
+      - req_2f1a52a06a85d4227de77791367991b5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=_roJd7N.DEasn7.AIaaDs0x0d.yzIVj7EL0kuNrEgmE-1734186462-1.0.1.1-ebVYkLv9u9haqhC__Y_V89Fk29I1zXUREQ4vqQgQ9NbYguYoEQQjlAf_AYbYTNofiHGOOf_wzpTXfrWP6Ls54A;
+        path=/; expires=Sat, 14-Dec-24 14:57:42 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=OZmAOc5vLmP93yTec1VpjQG9RZxPlOCssQFERMGXtck-1734186462990-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f1ee05049200748-TPE
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: |
+        {
+            "error": {
+                "message": "Incorrect API key provided: BAD_TOKEN. You can find your API key at https://platform.openai.com/account/api-keys.",
+                "type": "invalid_request_error",
+                "param": null,
+                "code": "invalid_api_key"
+            }
+        }
+  recorded_at: Sat, 14 Dec 2024 14:27:42 GMT
 recorded_with: VCR 6.3.1

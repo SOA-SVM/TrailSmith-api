@@ -22,15 +22,23 @@ module TrailSmith
       attribute :lat,          Strict::Float
       attribute :lng,          Strict::Float
 
+      def coordinate
+        { lat: lat, lng: lng }
+      end
+
       def fun
         # average fun score of reports
-        fun_score = reports.map(&:fun).sum / reports.length
-        Value::Fun.new(fun_score)
+        @fun ||= begin
+          fun_score = reports.map(&:fun).sum / reports.length
+          Value::Fun.new(fun_score)
+        end
       end
 
       def popular
-        popular_score = rating_count
-        Value::Fun.new(popular_score)
+        @popular ||= begin
+          popular_score = rating_count.to_f
+          Value::Popular.new(popular_score)
+        end
       end
 
       def keywords

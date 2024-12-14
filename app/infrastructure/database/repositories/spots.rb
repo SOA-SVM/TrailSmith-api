@@ -40,8 +40,8 @@ module TrailSmith
 
         db_spot = Database::SpotOrm.create(entity.to_attr_hash)
         entity.reports.each do |report|
-          db_report = Database::ReportOrm.create(report.to_attr_hash)
-          db_spot.add_report(db_report) # connect report and spot
+          # connect report and spot & create report
+          db_spot.add_report(Database::ReportOrm.create(report.to_attr_hash))
         end
         rebuild_entity(db_spot)
       end
