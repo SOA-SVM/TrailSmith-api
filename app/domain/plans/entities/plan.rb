@@ -13,7 +13,7 @@ module TrailSmith
 
       attribute :id,         Integer.optional
       attribute :spots,      Strict::Array.of(Spot)
-      attribute :travelling, Strict::Array.of(Value::Route)
+      attribute :routes,     Strict::Array.of(Value::Route)
       attribute :region,     Strict::String
       attribute :num_people, Strict::Integer
       attribute :day,        Strict::Integer
@@ -23,7 +23,7 @@ module TrailSmith
       end
 
       def to_attr_hash
-        to_hash.except(:id, :spots, :travelling)
+        to_hash.except(:id, :spots, :routes)
       end
     end
   end

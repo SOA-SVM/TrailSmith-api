@@ -33,8 +33,9 @@ module TrailSmith
 
         def to_value
           Value::Route.new(
-            starting_spot:,
-            next_spot:,
+            id: nil,
+            starting_spot: starting_spot.place_id,
+            next_spot: next_spot.place_id,
             travel_mode:,
             travel_time:,
             travel_time_desc:,

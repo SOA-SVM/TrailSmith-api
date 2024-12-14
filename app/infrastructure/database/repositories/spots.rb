@@ -4,8 +4,7 @@ require_relative 'reports'
 
 module TrailSmith
   module Repository
-    # Repository for Reports
-    class Spots
+    class Spots # rubocop:disable Style/Documentation
       def self.all
         Database::SpotOrm.all.map { |db_record| rebuild_entity(db_record) }
       end
@@ -30,7 +29,7 @@ module TrailSmith
 
         spot_hash = db_spot.to_hash
         spot_hash[:reports] = db_spot.reports.map do |db_report|
-          Reports.rebuild_entity(db_report)
+          Repository::Reports.rebuild_entity(db_report)
         end
 
         Entity::Spot.new(spot_hash)
@@ -40,9 +39,9 @@ module TrailSmith
         raise 'Entity already exists in database' if find(entity)
 
         db_spot = Database::SpotOrm.create(entity.to_attr_hash)
-        entity.reports.map do |report|
+        entity.reports.each do |report|
           db_report = Database::ReportOrm.create(report.to_attr_hash)
-          db_spot.add_report(db_report)
+          db_spot.add_report(db_report) # connect report and spot
         end
         rebuild_entity(db_spot)
       end
