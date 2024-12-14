@@ -6,6 +6,7 @@ Sequel.migration do
   change do
     create_table(:reports) do
       primary_key :id
+      foreign_key :spot_id, :spots
 
       String :publish_time
       Float  :rating

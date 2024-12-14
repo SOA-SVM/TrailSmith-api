@@ -9,14 +9,19 @@ module TrailSmith
     class Route < Dry::Struct
       include Dry.Types
 
-      attribute :starting_spot,     Entity::Spot
-      attribute :next_spot,         Entity::Spot
+      attribute :id,                Strict::Integer.optional
+      attribute :starting_spot,     Strict::String
+      attribute :next_spot,         Strict::String
       attribute :travel_mode,       Strict::String
       attribute :travel_time,       Strict::Integer
       attribute :travel_time_desc,  Strict::String
       attribute :distance,          Strict::Integer
       attribute :distance_desc,     Strict::String
       attribute :overview_polyline, Strict::String
+
+      def to_attr_hash
+        to_hash.except(:id)
+      end
 
       # Calculates the relaxing index based on travel mode, distance, and travel time
       # def relaxing

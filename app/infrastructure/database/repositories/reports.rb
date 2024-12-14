@@ -11,13 +11,11 @@ module TrailSmith
       end
 
       def self.find(entity)
-        # find database of entity from id
         db_record = Database::ReportOrm.find(text: entity.text)
         rebuild_entity(db_record)
       end
 
       def self.rebuild_entity(db_record)
-        # build entity from database
         return nil unless db_record
 
         Entity::Report.new(db_record.to_hash)

@@ -27,6 +27,6 @@ GPT_JSON = '{
 "region": "Hsinchu",
 "day": 3,
 "spots": ["nthu", "Hsinchu Train Station", "Hsinchu Zoo"],
-"travelling": ["walking", "walking"]
+"mode": ["walking", "walking"]
 }'
 MAP_CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])

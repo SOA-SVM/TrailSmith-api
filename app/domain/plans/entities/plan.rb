@@ -7,13 +7,13 @@ require_relative '../values/route'
 
 module TrailSmith
   module Entity
-    # Aggregate root
+    # Aggregate root for plans
     class Plan < Dry::Struct
       include Dry.Types
 
-      attribute :id,      Integer.optional
-      attribute :spots,   Strict::Array.of(Spot)
-      attribute :travelling, Strict::Array.of(Value::Route)
+      attribute :id,         Integer.optional
+      attribute :spots,      Strict::Array.of(Spot)
+      attribute :routes,     Strict::Array.of(Value::Route)
       attribute :region,     Strict::String
       attribute :num_people, Strict::Integer
       attribute :day,        Strict::Integer
@@ -23,7 +23,7 @@ module TrailSmith
       end
 
       def to_attr_hash
-        to_hash.except(:id, :spots)
+        to_hash.except(:id, :spots, :routes)
       end
     end
   end

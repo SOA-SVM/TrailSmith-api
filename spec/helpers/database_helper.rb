@@ -9,6 +9,7 @@ module DatabaseHelper
     TrailSmith::Database::PlanOrm.map(&:destroy)
     TrailSmith::Database::SpotOrm.map(&:destroy)
     TrailSmith::Database::ReportOrm.map(&:destroy)
+    TrailSmith::Database::RouteOrm.map(&:destroy)
     db.run('PRAGMA foreign_keys = ON')
   end
 end

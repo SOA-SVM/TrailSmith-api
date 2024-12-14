@@ -3,6 +3,7 @@
 require_relative 'spots'
 require_relative 'plans'
 require_relative 'reports'
+require_relative 'routes'
 
 module TrailSmith
   module Repository
@@ -11,7 +12,8 @@ module TrailSmith
       ENTITY_REPOSITORY = {
         Entity::Spot   => Spots,
         Entity::Plan   => Plans,
-        Entity::Report => Reports
+        Entity::Report => Reports,
+        Value::Route   => Routes
       }.freeze
 
       def self.klass(entity_klass)

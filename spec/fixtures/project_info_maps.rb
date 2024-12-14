@@ -5,7 +5,7 @@ require 'yaml'
 
 text_search = lambda do |config, text_query|
   url = 'https://places.googleapis.com/v1/places:searchText'
-  place_info = 'places.id,places.displayName,'
+  place_info = 'places.id,places.displayName,places.formattedAddress'
   report_info = 'places.rating,places.reviews,places.userRatingCount'
   HTTP.headers(
     'X-Goog-Api-Key'   => config['GOOGLE_MAPS_KEY'],
@@ -28,6 +28,7 @@ maps_results[:place_id] = spot['id']
 maps_results[:name] = spot['displayName']['text']
 maps_results[:rating] = spot['rating']
 maps_results[:rating_count] = spot['userRatingCount']
+maps_results[:address] = spot['formattedAddress']
 maps_results[:reports] = spot['reviews'].map do |review|
   {
     publish_time: review['publishTime'],

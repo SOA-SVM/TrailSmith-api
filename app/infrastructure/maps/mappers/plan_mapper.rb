@@ -18,7 +18,7 @@ module TrailSmith
         TrailSmith::Entity::Plan.new(
           id: nil,
           spots:,
-          travelling:,
+          routes:,
           region: @gpt_dict['region'],
           num_people: @gpt_dict['num_people'],
           day: @gpt_dict['day']
@@ -29,8 +29,8 @@ module TrailSmith
         @spots ||= build_spot_array(@gpt_dict['spots'])
       end
 
-      def travelling
-        @travelling ||= spots.each_cons(2).zip(@gpt_dict['mode']).map do |(starting_spot, next_spot), mode|
+      def routes
+        @routes ||= spots.each_cons(2).zip(@gpt_dict['mode']).map do |(starting_spot, next_spot), mode|
           TrailSmith::Mapper::Route.new(@key).find(starting_spot, next_spot, mode)
         end
       end
