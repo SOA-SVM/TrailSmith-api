@@ -10,28 +10,44 @@ module TrailSmith
         @key = key
       end
 
-      def build_report_array(report_array)
-        report_array.map do |report|
-          Entity::Report.new(
-            id: nil,
-            publish_time: report['publishTime'],
-            rating: report['rating'].to_f,
-            text: report['originalText']['text']
-          )
-        end
-      end
-
       def build_entity(text_query)
         spot = GoogleMaps::Api.new(@key).place_data(text_query)
-        coordinate = fetch_coordinates(spot['id'])
+        DataMapper.new(@key, spot).build_entity
+      end
 
-        Entity::Spot.new(
-          id: nil, place_id: spot['id'], name: extract_name(spot),
-          rating: extract_rating(spot), rating_count: spot['userRatingCount'],
-          reports: build_report_array(spot['reviews']),
-          address: spot['formattedAddress'],
-          lat: coordinate['lat'], lng: coordinate['lng']
-        )
+      # Extracts entity specific elements from data structure
+      class DataMapper
+        def initialize(key, spot)
+          @key = key
+          @spot = spot
+        end
+
+        def build_entity
+          Entity::Spot.new(
+            id: nil, place_id: @spot['id'],
+            name: @spot['displayName']['text'],
+            rating: @spot['rating'].to_f,
+            rating_count: @spot['userRatingCount'],
+            reports: DataMapper.build_reports(@spot['reviews']),
+            address: @spot['formattedAddress'],
+            lat: coordinate['lat'], lng: coordinate['lng']
+          )
+        end
+
+        def self.build_reports(reports)
+          reports.map do |report|
+            Entity::Report.new(
+              id: nil,
+              publish_time: report['publishTime'],
+              rating: report['rating'].to_f,
+              text: report['originalText']['text']
+            )
+          end
+        end
+
+        def coordinate
+          Coordinate.new(@key).coordinate(@spot['id'])
+        end
       end
 
       def coordinate
@@ -60,14 +76,6 @@ module TrailSmith
 
       def fetch_coordinates(place_id)
         Coordinate.new(@key).coordinate(place_id)
-      end
-
-      def extract_name(spot)
-        spot.dig('displayName', 'text')
-      end
-
-      def extract_rating(spot)
-        spot['rating'].to_f
       end
     end
   end

@@ -16,12 +16,13 @@ module TrailSmith
 
       def keywords
         # GPT keywords from the review text
-        prompt = '1. The keyword with one or two words that could most describe the characteristic
+        prompt = '1. The keyword with one or two words from the prompt that could most describe the characteristic
                      of the spot for the tourist.
-                  2. Do not give me a description of why choosing the keyword.'
-        question = "Review:#{text} Prompt:#{prompt}"
-        response = TrailSmith::OpenaiAPI.new(OPENAI_TOKEN).generate_text(question)
-        response.messages.first['content']
+                  2. Do not give me a description of why choosing the keyword.
+                  3. Dont give me the name of the spot.'
+        question = "Review: #{text} Prompt: #{prompt}"
+        gpt = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
+        gpt.find(question).messages.first
       end
 
       def fun
@@ -29,9 +30,10 @@ module TrailSmith
         prompt = '1. Rate how fun the spot is according to the text.
                   2. The maximum is 5 and the minimum is 0.
                   3. Just give the score'
-        question = "Review:#{text} Prompt:#{prompt}"
-        response = TrailSmith::OpenaiAPI.new(OPENAI_TOKEN).generate_text(question)
-        (response.messages.first['content'].to_f + rating) / 2
+        question = "Review: #{text} Prompt: #{prompt}"
+        gpt = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
+        response = gpt.find(question).messages.first
+        (response.to_f + rating) / 2
       end
 
       def to_attr_hash

@@ -6,6 +6,9 @@ module TrailSmith
     class Popular
       HIGH_THRESHOLD = 1000
       LOW_THRESHOLD = 100
+
+      attr_reader :value
+
       def initialize(value)
         @value = value
       end

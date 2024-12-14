@@ -6,6 +6,9 @@ module TrailSmith
     class Fun
       HIGH_THRESHOLD = 4
       LOW_THRESHOLD = 3
+
+      attr_reader :value
+
       def initialize(value)
         @value = value
       end
