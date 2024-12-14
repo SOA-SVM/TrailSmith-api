@@ -23,7 +23,7 @@ module TrailSmith
       attribute :lng,          Strict::Float
 
       def coordinate
-        { lat: lat, lng: lng }
+        { lat:, lng: }
       end
 
       def fun
@@ -44,10 +44,6 @@ module TrailSmith
       def keywords
         # array of keywords of reports
         reports.flat_map(&:keywords).uniq
-      end
-
-      def coordinate
-        { lat:, lng: }
       end
 
       def to_attr_hash
