@@ -38,6 +38,10 @@ module TrailSmith
         reports.flat_map(&:keywords).uniq
       end
 
+      def coordinate
+        { lat:, lng: }
+      end
+
       def to_attr_hash
         to_hash.except(:id, :reports)
       end

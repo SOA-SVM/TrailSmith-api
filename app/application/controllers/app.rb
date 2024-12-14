@@ -213,7 +213,7 @@ module TrailSmith
               }
             end.to_json
 
-            polylines = plan.travelling.map(&:overview_polyline).to_json
+            polylines = plan.routes.map(&:overview_polyline).to_json
 
             view 'test', locals: { plan:, token: App.config.GOOGLE_MAPS_KEY, locations:, polylines:, hashtag: }
           end
