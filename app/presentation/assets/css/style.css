@@ -307,6 +307,10 @@ a {
   color: black;
 }
 
+:root {
+  --bs-info-rgb: 0, 188, 212;
+}
+
 header {
   background-color: #f6ede5;
   margin-bottom: 10px;
@@ -406,7 +410,7 @@ h2 {
   font-size: 24px; /* Make the icon larger */
   color: darkgray;
   margin: 5px 0;
-  margin-left: 50px; /* Add margin to align with text */
+  margin-left: 15px; /* Add margin to align with text */
 }
 .route-arrow:hover {
   cursor: pointer; /* Show pointer cursor on hover */

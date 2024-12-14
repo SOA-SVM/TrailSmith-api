@@ -1,4 +1,5 @@
 @import "reset";
+@import "variable";
 
 header {
     background-color: #f6ede5;
@@ -111,7 +112,7 @@ h2 {
     font-size: 24px; /* Make the icon larger */
     color: darkgray;
     margin: 5px 0;
-    margin-left: 50px; /* Add margin to align with text */
+    margin-left: 15px; /* Add margin to align with text */
 
     &:hover {
         cursor: pointer; /* Show pointer cursor on hover */

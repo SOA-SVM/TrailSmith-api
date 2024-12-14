@@ -195,11 +195,27 @@ module TrailSmith
               ],
               mode: %w[walking walking walking]
             }
+
             info = JSON.generate(info)
 
             plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(info)
 
-            view 'test', locals: { plan: }
+            hashtag = {
+              people: plan.num_people,
+              region: plan.region,
+              day: plan.day
+            }
+
+            locations = plan.spots.map do |spot|
+              {
+                'coordinate' => spot.coordinate.to_h,
+                'title'      => spot.name
+              }
+            end.to_json
+
+            polylines = plan.travelling.map(&:overview_polyline).to_json
+
+            view 'test', locals: { plan:, token: App.config.GOOGLE_MAPS_KEY, locations:, polylines:, hashtag: }
           end
         end
       end
