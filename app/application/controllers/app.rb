@@ -114,8 +114,8 @@ module TrailSmith
                     puts 'Missing required fields in JSON response'
                     session[:last_wish] = 'Error: Invalid response format'
                   end
-                rescue JSON::ParserError => e
-                  puts "JSON parsing error: #{e.message}"
+                rescue JSON::ParserError => err
+                  puts "JSON parsing error: #{err.message}"
                   session[:last_wish] = raw_response
                 end
               else
@@ -123,12 +123,12 @@ module TrailSmith
                 session[:last_wish] = 'No recommendations available'
               end
               puts '=== OpenAI API 呼叫結束 ==='
-            rescue StandardError => e
+            rescue StandardError => err
               puts "\n=== 發生錯誤 ==="
-              puts "錯誤類型: #{e.class}"
-              puts "錯誤訊息: #{e.message}"
-              puts "錯誤堆疊:\n#{e.backtrace.join("\n")}"
-              App.logger.error "OpenAI ERROR: #{e.message}"
+              puts "錯誤類型: #{err.class}"
+              puts "錯誤訊息: #{err.message}"
+              puts "錯誤堆疊:\n#{err.backtrace.join("\n")}"
+              App.logger.error "OpenAI ERROR: #{err.message}"
               session[:last_wish] = 'Error: Unable to generate recommendations'
             end
 

@@ -23,12 +23,11 @@ module TrailSmith
 
       def build_entity(text_query)
         spot = GoogleMaps::Api.new(@key).place_data(text_query)
-        coordinate = Coordinate.new(@key).coordinate(spot['id'])
-        place_id = spot['id']
+        coordinate = fetch_coordinates(spot['id'])
 
         Entity::Spot.new(
-          id: nil, place_id: place_id, name: spot['displayName']['text'],
-          rating: spot['rating'].to_f, rating_count: spot['userRatingCount'],
+          id: nil, place_id: spot['id'], name: extract_name(spot),
+          rating: extract_rating(spot), rating_count: spot['userRatingCount'],
           reports: build_report_array(spot['reviews']),
           address: spot['formattedAddress'],
           lat: coordinate['lat'], lng: coordinate['lng']
@@ -51,6 +50,24 @@ module TrailSmith
           spot_detail = @gateway.spot_detail(place_id)
           spot_detail.data.geometry.location
         end
+      end
+
+      private
+
+      def fetch_place_data(text_query)
+        GoogleMaps::Api.new(@key).place_data(text_query)
+      end
+
+      def fetch_coordinates(place_id)
+        Coordinate.new(@key).coordinate(place_id)
+      end
+
+      def extract_name(spot)
+        spot.dig('displayName', 'text')
+      end
+
+      def extract_rating(spot)
+        spot['rating'].to_f
       end
     end
   end
