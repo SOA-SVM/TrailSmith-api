@@ -7,10 +7,13 @@ Sequel.migration do
     create_table(:spots) do
       primary_key :id
 
-      String :place_id, unique: true
-      String :name
-      Float :rating
+      String  :place_id, unique: true
+      String  :name
+      Float   :rating
       Integer :rating_count
+      String  :address
+      Float   :lat
+      Float   :lng
 
       DateTime :created_at
       DateTime :updated_at

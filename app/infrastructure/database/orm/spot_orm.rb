@@ -10,6 +10,9 @@ module TrailSmith
                    class: :'TrailSmith::Database::PlanOrm',
                    join_table: :plans_spots,
                    left_key: :spot_id, right_key: :plan_id
+      one_to_many :reports,
+                  class: :'TrailSmith::Database::ReportOrm',
+                  key: :spot_id
 
       plugin :timestamps, update_on_create: true
     end

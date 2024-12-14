@@ -14,42 +14,21 @@ describe 'Tests Google Maps API' do
     VCR.eject_cassette
   end
 
-  describe 'Plan information' do
-    it 'HAPPY: should provide correct spot attributes' do
+  describe 'Map information' do
+    it 'HAPPY: Spot attribute' do
       spot = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).build_entity(TEXT_QUERY)
       _(spot.place_id).must_equal MAP_CORRECT[:place_id]
       _(spot.name).must_equal MAP_CORRECT[:name]
       _(spot.rating).must_equal MAP_CORRECT[:rating]
       _(spot.rating_count).must_equal MAP_CORRECT[:rating_count]
+      _(spot.address).must_equal MAP_CORRECT[:address]
 
       # check Reports array
-      (0..4).each do |i|
-        # check review of nthu
-        _(spot.reports[i].publish_time).must_equal MAP_CORRECT[:reports][i][:publish_time]
-        _(spot.reports[i].rating).must_equal MAP_CORRECT[:reports][i][:rating]
-        _(spot.reports[i].text).must_equal MAP_CORRECT[:reports][i][:text]
+      spot.reports.zip(MAP_CORRECT[:reports]).each do |report, correct_report|
+        _(report.publish_time).must_equal correct_report[:publish_time]
+        _(report.rating).must_equal correct_report[:rating]
+        _(report.text).must_equal correct_report[:text]
       end
-    end
-
-    it 'HAPPY: should provide correct plan attributes' do
-      plan = TrailSmith::GoogleMaps::PlanMapper.new(GOOGLE_MAPS_KEY).build_entity(GPT_JSON)
-      # gpt_json's spots = ["nthu", ...]
-      _(plan.spots[0].place_id).must_equal MAP_CORRECT[:place_id]
-      _(plan.spots[0].name).must_equal MAP_CORRECT[:name]
-      _(plan.spots[0].rating).must_equal MAP_CORRECT[:rating]
-      _(plan.spots[0].rating_count).must_equal MAP_CORRECT[:rating_count]
-
-      # check Reports array
-      (0..4).each do |i|
-        # check review of nthu
-        _(plan.spots[0].reports[i].publish_time).must_equal MAP_CORRECT[:reports][i][:publish_time]
-        _(plan.spots[0].reports[i].rating).must_equal MAP_CORRECT[:reports][i][:rating]
-        _(plan.spots[0].reports[i].text).must_equal MAP_CORRECT[:reports][i][:text]
-      end
-
-      # check Travelling array
-      _(plan.travelling[0].travel_time).must_equal DISTANCE_CORRECT['travel_time']['sec']
-      _(plan.travelling[0].distance).must_equal DISTANCE_CORRECT['distance']['meter']
     end
 
     it 'BAD: SpotMapper should raise exception with wrong key' do

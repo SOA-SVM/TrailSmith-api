@@ -23,24 +23,27 @@ describe 'Integration Tests of Maps API and Database' do
     it 'HAPPY: Report Database' do
       spot = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).build_entity(TEXT_QUERY)
 
-      (0..4).each do |i|
-        report = spot.reports[i]
-        report_db = TrailSmith::Repository::For.entity(report).create(report)
-        _(report_db.publish_time).must_equal report.publish_time
-        _(report_db.rating).must_equal report.rating
-        _(report_db.text).must_equal report.text
+      spot.reports.each do |report|
+        rebuilt_report = TrailSmith::Repository::For.entity(report).create(report)
+        _(rebuilt_report.publish_time).must_equal report.publish_time
+        _(rebuilt_report.rating).must_equal report.rating
+        _(rebuilt_report.text).must_equal report.text
       end
     end
     it 'HAPPY: Spot Database' do
       spot = TrailSmith::GoogleMaps::SpotMapper.new(GOOGLE_MAPS_KEY).build_entity(TEXT_QUERY)
-      spot_db = TrailSmith::Repository::For.entity(spot).create(spot)
+      rebuilt_spot = TrailSmith::Repository::For.entity(spot).create(spot)
 
-      (0..4).each do |i|
-        report = spot.reports[i]
-        report_db = TrailSmith::Repository::For.entity(report).create(report)
-        _(report_db.publish_time).must_equal report.publish_time
-        _(report_db.rating).must_equal report.rating
-        _(report_db.text).must_equal report.text
+      _(rebuilt_spot.place_id).must_equal spot.place_id
+      _(rebuilt_spot.name).must_equal spot.name
+      _(rebuilt_spot.rating).must_equal spot.rating
+      _(rebuilt_spot.rating_count).must_equal spot.rating_count
+      _(rebuilt_spot.address).must_equal spot.address
+
+      rebuilt_spot.reports.zip(spot.reports) do |rebuilt_report, report|
+        _(rebuilt_report.publish_time).must_equal report.publish_time
+        _(rebuilt_report.rating).must_equal report.rating
+        _(rebuilt_report.text).must_equal report.text
       end
     end
   end

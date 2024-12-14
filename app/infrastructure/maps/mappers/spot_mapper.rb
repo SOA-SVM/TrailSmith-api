@@ -23,7 +23,7 @@ module TrailSmith
 
       def build_entity(text_query)
         spot = GoogleMaps::Api.new(@key).place_data(text_query)
-
+        coordinate = Coordinate.new(@key).coordinate(spot['id'])
         Entity::Spot.new(
           id: nil, place_id: spot['id'],
           name: spot['displayName']['text'],
@@ -31,7 +31,8 @@ module TrailSmith
           rating_count: spot['userRatingCount'],
           reports: build_report_array(spot['reviews']),
           address: spot['formattedAddress'],
-          coordinate: Coordinate.new(@key).coordinate(spot['id'])
+          lat: coordinate['lat'],
+          lng: coordinate['lng']
         )
       end
 

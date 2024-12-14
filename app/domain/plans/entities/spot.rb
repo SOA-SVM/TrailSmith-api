@@ -19,7 +19,8 @@ module TrailSmith
       attribute :rating_count, Strict::Integer
       attribute :reports,      Array.of(Report)
       attribute :address,      Strict::String
-      attribute :coordinate,   Strict::Hash
+      attribute :lat,          Strict::Float
+      attribute :lng,          Strict::Float
 
       def fun
         # average fun score of reports
