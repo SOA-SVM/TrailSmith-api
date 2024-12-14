@@ -98,7 +98,7 @@ module TrailSmith
               wish_result = openai_mapper.find(prompt, model: 'gpt-4o-mini', max_tokens: 500)
               puts "API complete response: #{wish_result.inspect}"
 
-              if wish_result && wish_result.messages.any?
+              if wish_result&.messages&.any?
                 raw_response = wish_result.messages.first
                 puts "Raw response: #{raw_response}"
 
@@ -133,7 +133,7 @@ module TrailSmith
             end
 
             begin
-              spot = GoogleMaps::SpotMapper.new(App.config.GOOGLE_MAPS_KEY).find(query)
+              spot = GoogleMaps::SpotMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(query)
               Repository::For.entity(spot).create(spot)
             rescue StandardError => err
               App.logger.error "ERROR: #{err.message}"
