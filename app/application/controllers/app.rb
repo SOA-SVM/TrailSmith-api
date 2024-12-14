@@ -219,6 +219,14 @@ module TrailSmith
           end
         end
       end
+
+      routing.on 'proxy' do
+        routing.is 'google_maps.js' do
+          response['Content-Type'] = 'application/javascript'
+          api_key = App.config.GOOGLE_MAPS_KEY
+          response.write(GoogleMapsProxy.fetch_map_script(api_key))
+        end
+      end
     end
   end
 end
