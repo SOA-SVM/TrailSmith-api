@@ -22,7 +22,6 @@ module TrailSmith
       class Request
         def initialize(token)
           @token = token
-
           Google::Maps.configure do |conf|
             conf.authentication_mode = Google::Maps::Configuration::API_KEY
             conf.api_key = @token

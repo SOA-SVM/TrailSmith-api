@@ -38,9 +38,7 @@ module TrailSmith
           return [] unless @data.is_a?(Array)
 
           @data.map do |choice|
-            if choice.is_a?(Hash) && choice['message'].is_a?(Hash)
-              choice['message']['content']
-            end
+            choice['message']['content'] if choice.is_a?(Hash) && choice['message'].is_a?(Hash)
           end.compact
         end
       end

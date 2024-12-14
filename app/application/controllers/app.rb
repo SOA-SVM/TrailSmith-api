@@ -5,22 +5,10 @@ require 'roda'
 require 'erb'
 require 'irb'
 require 'json'
-require 'ostruct'
 
 module TrailSmith
   # Web App
-  class App < Roda
-    configure do
-      config = YAML.safe_load_file('config/secrets.yml')
-      Config = OpenStruct.new(
-        GOOGLE_MAPS_KEY: config['development']['GOOGLE_MAPS_KEY'],
-        OPENAI_TOKEN: config['development']['OPENAI_TOKEN']
-      )
-    end
-
-    def self.config
-      Config
-    end
+  class App < Roda # rubocop:disable Metrics/ClassLength
     plugin :halt
     plugin :flash
     plugin :all_verbs # allows HTTP verbs beyond GET/POST (e.g., DELETE)
@@ -110,7 +98,7 @@ module TrailSmith
               wish_result = openai_mapper.find(prompt, model: 'gpt-4o-mini', max_tokens: 500)
               puts "API complete response: #{wish_result.inspect}"
 
-              if wish_result && wish_result.messages.any?
+              if wish_result&.messages&.any?
                 raw_response = wish_result.messages.first
                 puts "Raw response: #{raw_response}"
 
@@ -126,8 +114,8 @@ module TrailSmith
                     puts 'Missing required fields in JSON response'
                     session[:last_wish] = 'Error: Invalid response format'
                   end
-                rescue JSON::ParserError => e
-                  puts "JSON parsing error: #{e.message}"
+                rescue JSON::ParserError => err
+                  puts "JSON parsing error: #{err.message}"
                   session[:last_wish] = raw_response
                 end
               else
@@ -135,17 +123,17 @@ module TrailSmith
                 session[:last_wish] = 'No recommendations available'
               end
               puts '=== OpenAI API 呼叫結束 ==='
-            rescue StandardError => e
+            rescue StandardError => err
               puts "\n=== 發生錯誤 ==="
-              puts "錯誤類型: #{e.class}"
-              puts "錯誤訊息: #{e.message}"
-              puts "錯誤堆疊:\n#{e.backtrace.join("\n")}"
-              App.logger.error "OpenAI ERROR: #{e.message}"
+              puts "錯誤類型: #{err.class}"
+              puts "錯誤訊息: #{err.message}"
+              puts "錯誤堆疊:\n#{err.backtrace.join("\n")}"
+              App.logger.error "OpenAI ERROR: #{err.message}"
               session[:last_wish] = 'Error: Unable to generate recommendations'
             end
 
             begin
-              spot = GoogleMaps::SpotMapper.new(App.config.GOOGLE_MAPS_KEY).find(query)
+              spot = GoogleMaps::SpotMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(query)
               Repository::For.entity(spot).create(spot)
             rescue StandardError => err
               App.logger.error "ERROR: #{err.message}"
@@ -207,12 +195,36 @@ module TrailSmith
               ],
               mode: %w[walking walking walking]
             }
+
             info = JSON.generate(info)
 
             plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(info)
 
-            view 'test', locals: { plan: }
+            hashtag = {
+              people: plan.num_people,
+              region: plan.region,
+              day: plan.day
+            }
+
+            locations = plan.spots.map do |spot|
+              {
+                'coordinate' => spot.coordinate.to_h,
+                'title'      => spot.name
+              }
+            end.to_json
+
+            polylines = plan.routes.map(&:overview_polyline).to_json
+
+            view 'test', locals: { plan:, token: App.config.GOOGLE_MAPS_KEY, locations:, polylines:, hashtag: }
           end
+        end
+      end
+
+      routing.on 'proxy' do
+        routing.is 'google_maps.js' do
+          response['Content-Type'] = 'application/javascript'
+          api_key = App.config.GOOGLE_MAPS_KEY
+          response.write(GoogleMapsProxy.fetch_map_script(api_key))
         end
       end
     end

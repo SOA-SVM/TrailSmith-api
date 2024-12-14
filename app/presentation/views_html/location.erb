@@ -1,7 +1,7 @@
 <div class="container-fluid p-5 my-5 border">
   <div class="row">
     <h2>
-      <%= spot.display_name %>
+      <%= spot.name %>
     </h2>
   </div>
   <div class="container">
@@ -13,20 +13,20 @@
         <%= spot.rating %>
       </div>
     </div>
-    <div class="row">
+    <!--<div class="row">
       <div class="col-lg-1 col-md-2 col-sm-2">
         <strong>Score:</strong>
       </div>
       <div class="col-lg-11 col-md-10 col-sm-6">
-        <%= spot.score %>
+        <%# <%= spot.score %> %>
       </div>
-    </div>
+    </div>-->
     <div class="row">
       <div class="col-lg-1 col-md-2 col-sm-2">
         <strong>Address:</strong>
       </div>
       <div class="col-lg-11 col-md-10 col-sm-6">
-        <%= spot.formatted_address %>
+        <%= spot.address %>
       </div>
     </div>
     <% (0..2).each do |idx| %>
@@ -35,7 +35,7 @@
         <strong>Review<%= idx + 1 %>:</strong>
       </div>
       <div class="col-lg-11 col-md-10 col-sm-6">
-        <%= spot.reviews[idx][:text] %>
+        <%= spot.reports[idx][:text] %>
       </div>
     </div>
     <% end %>

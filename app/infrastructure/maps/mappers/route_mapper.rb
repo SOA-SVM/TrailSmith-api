@@ -37,10 +37,8 @@ module TrailSmith
             starting_spot: starting_spot.place_id,
             next_spot: next_spot.place_id,
             travel_mode:,
-            travel_time:,
-            travel_time_desc:,
-            distance:,
-            distance_desc:,
+            travel_time:, travel_time_desc:,
+            distance:, distance_desc:,
             overview_polyline:
           )
         end

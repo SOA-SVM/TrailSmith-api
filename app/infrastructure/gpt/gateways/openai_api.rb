@@ -13,7 +13,7 @@ module TrailSmith
       def chat_completion(prompt, **options)
         model, max_tokens = self.class.extract_options(options)
         api_response = Request.new(@token).get(prompt, model, max_tokens).parse
-        #validate_messages_structure!(api_response)
+        # validate_messages_structure!(api_response)
         # puts "API Response: #{api_response.inspect}"
         api_response['choices']
       end
@@ -85,7 +85,7 @@ module TrailSmith
         # Validates the response, raising an error if it is not successful
         def validate
           raise_validation_error unless successful?
-          self 
+          self
         end
 
         private

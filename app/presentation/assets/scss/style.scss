@@ -1,4 +1,5 @@
 @import "reset";
+@import "variable";
 
 header {
     background-color: #f6ede5;
@@ -23,6 +24,12 @@ header {
     }
 }
 
+footer {
+    padding: 0.5in 0;
+    font-size: 11px;
+    color: #646464;
+}
+
 .alert {
     margin: 0 12px;
 }
@@ -34,10 +41,6 @@ header {
 .blank-row {
     height: 30px;
 }
-
-// table{
-//     border-top: #dee2e6 1 solid;
-// }
 
 .table-row {
     cursor: pointer;
@@ -89,8 +92,29 @@ h2 {
     }
 }
 
-footer {
-    padding: 0.5in 0;
-    font-size: 11px;
-    color: #646464;
+// draw map
+.left {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+}
+
+.route-step {
+    margin: 5px 0;
+    .step-text {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.route-arrow {
+    font-size: 24px; /* Make the icon larger */
+    color: darkgray;
+    margin: 5px 0;
+    margin-left: 15px; /* Add margin to align with text */
+
+    &:hover {
+        cursor: pointer; /* Show pointer cursor on hover */
+    }
 }
