@@ -14,6 +14,16 @@ module TrailSmith
         rebuild_entity(db_record)
       end
 
+      def self.find_id(plan_id)
+        rebuild_entity Database::PlanOrm.find(id: plan_id)
+      end
+
+      def self.find_ids(plan_ids)
+        plan_ids.map do |plan_id|
+          find_id(plan_id)
+        end.compact
+      end
+
       def self.rebuild_entity(db_plan)
         return nil unless db_plan
 
