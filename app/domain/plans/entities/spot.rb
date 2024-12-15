@@ -15,9 +15,9 @@ module TrailSmith
       attribute :id,           Integer.optional
       attribute :place_id,     Strict::String
       attribute :name,         Strict::String
-      attribute :rating,       Strict::Float
-      attribute :rating_count, Strict::Integer
-      attribute :reports,      Array.of(Report)
+      attribute :rating,       Strict::Float.optional
+      attribute :rating_count, Strict::Integer.optional
+      attribute :reports,      Array.of(Report).optional
       attribute :address,      Strict::String
       attribute :lat,          Strict::Float
       attribute :lng,          Strict::Float
