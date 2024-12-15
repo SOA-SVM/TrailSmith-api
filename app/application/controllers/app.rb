@@ -25,8 +25,10 @@ module TrailSmith
     MESSAGES = {
       invalid_location: 'Invalid location input.',
       location_not_found: 'Could not find that location.',
+      plan_not_found: 'Could not find the plan.',
       db_error: 'Database error occurred.',
-      no_plan: 'Add a spot to get started.'
+      no_plan: 'Add a spot to get started.',
+      no_recommendation: 'No recommendations available.'
     }.freeze
 
     route do |routing|
@@ -38,17 +40,17 @@ module TrailSmith
       routing.root do
         # Get cookie viewer's previously seen projects
         session[:watching] ||= []
-        spots = Repository::For.klass(Entity::Spot).find_place_ids(session[:watching])
-        session[:watching] = spots.map(&:place_id)
-        flash.now[:notice] = MESSAGES[:no_plan] if spots.none?
-        view 'home', locals: { spots: }
+        plans = Repository::For.klass(Entity::Plan).find_ids(session[:watching])
+        session[:watching] = plans.map(&:id)
+        flash.now[:notice] = MESSAGES[:no_plan] if plans.none?
+        view 'home', locals: { plans: }
       end
 
       routing.on 'location' do
         routing.is do
           # POST /location/
           routing.post do
-            query = routing.params['query'].downcase
+            query = routing.params['query']
             if query.nil? || query.empty?
               flash[:error] = MESSAGES[:invalid_location]
               response.status = 400
@@ -57,7 +59,6 @@ module TrailSmith
 
             begin
               puts "\n=== OpenAI API 呼叫開始 ==="
-              openai_mapper = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
               puts '已建立 OpenAI Mapper'
 
               prompt = <<~PROMPT
@@ -83,7 +84,7 @@ module TrailSmith
                 {
                   "num_people": 2,
                   "region": "Kyoto",
-                  "day": 2,
+                  "day": 1,
                   "spots": [
                     "Kinkaku-ji",
                     "Arashiyama Bamboo Grove",
@@ -95,7 +96,9 @@ module TrailSmith
               PROMPT
               puts "Prompt: #{prompt}"
 
-              wish_result = openai_mapper.find(prompt, model: 'gpt-4o-mini', max_tokens: 500)
+              wish_result = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
+                .find(prompt, model: 'gpt-4o-mini', max_tokens: 500)
+
               puts "API complete response: #{wish_result.inspect}"
 
               if wish_result&.messages&.any?
@@ -120,7 +123,7 @@ module TrailSmith
                 end
               else
                 puts 'No valid response received from API'
-                session[:last_wish] = 'No recommendations available'
+                flash[:error] = MESSAGES[:no_recommendation]
               end
               puts '=== OpenAI API 呼叫結束 ==='
             rescue StandardError => err
@@ -133,8 +136,8 @@ module TrailSmith
             end
 
             begin
-              spot = GoogleMaps::SpotMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(query)
-              Repository::For.entity(spot).create(spot)
+              plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(raw_response)
+              plan = Repository::For.entity(plan).create(plan)
             rescue StandardError => err
               App.logger.error "ERROR: #{err.message}"
               flash[:error] = MESSAGES[:location_not_found]
@@ -142,26 +145,26 @@ module TrailSmith
             end
 
             # Add new project to watched set in cookies
-            session[:watching].insert(0, spot.place_id).uniq!
+            session[:watching].insert(0, plan.id).uniq!
 
-            routing.redirect "location/#{spot.place_id}"
+            routing.redirect "location/#{plan.id}"
           end
         end
 
-        routing.on String do |place_id|
-          # DELETE /location/[place_id]
+        routing.on String do |plan_id|
+          # DELETE /location/[plan_id]
           routing.delete do
-            session[:watching].delete(place_id)
+            session[:watching].delete(plan_id.to_i)
 
             routing.redirect '/'
           end
 
-          # GET /location/[place_id]
+          # GET /location/[plan_id]
           routing.get do
             begin
-              spot = Repository::For.klass(Entity::Spot).find_place_id(place_id)
-              if spot.nil?
-                flash[:error] = MESSAGES[:location_not_found]
+              plan = Repository::For.klass(Entity::Plan).find_id(plan_id)
+              if plan.nil?
+                flash[:error] = MESSAGES[:plan_not_found]
                 # routing.redirect '/'
               end
             rescue StandardError => err
@@ -169,36 +172,6 @@ module TrailSmith
               flash[:error] = MESSAGES[:db_error]
               routing.redirect '/'
             end
-            puts "\n[DEBUG] Session data: #{session.inspect}"
-            puts "\n[DEBUG] Last wish in session: #{session[:last_wish]}"
-            view 'location', locals: {
-              spot: spot,
-              session: session
-            }
-          end
-        end
-      end
-
-      routing.on 'test' do
-        routing.on String do |place_name|
-          # GET /test/[place_name]
-          if place_name == 'tainan'
-            info = {
-              num_people: 2,
-              region: 'Tainan',
-              day: 1,
-              spots: [
-                'Anping Old Fort, Tainan',
-                'Chihkan Tower, Tainan',
-                'Shennong Street, Tainan',
-                'Tainan Confucius Temple, Tainan'
-              ],
-              mode: %w[walking walking walking]
-            }
-
-            info = JSON.generate(info)
-
-            plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(info)
 
             hashtag = {
               people: plan.num_people,
@@ -215,7 +188,7 @@ module TrailSmith
 
             polylines = plan.routes.map(&:overview_polyline).to_json
 
-            view 'test', locals: { plan:, token: App.config.GOOGLE_MAPS_KEY, locations:, polylines:, hashtag: }
+            view 'location', locals: { plan:, locations:, polylines:, hashtag: }
           end
         end
       end

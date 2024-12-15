@@ -15,7 +15,6 @@ require_app
 QUESTION = 'What is the capital of France?'
 EXPECTED_RESPONSE = 'Paris'
 CONFIG = YAML.safe_load_file('config/secrets.yml')
-# binding.irb
 OPENAI_TOKEN = CONFIG['development']['OPENAI_TOKEN']
 CORRECT = YAML.safe_load_file('spec/fixtures/openai_response.yml')
 

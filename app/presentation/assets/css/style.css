@@ -368,6 +368,21 @@ h2 {
   justify-content: center;
   gap: 2em;
 }
+@media (max-width: 768px) {
+  .popular_spot {
+    flex-wrap: wrap;
+  }
+  .popular_spot img {
+    width: 250px;
+  }
+}
+@media (max-width: 375px) {
+  .popular_spot {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 .card {
   border-radius: 6px;
@@ -414,4 +429,19 @@ h2 {
 }
 .route-arrow:hover {
   cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.plan_name {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.travel_mode {
+  font-size: 14px;
+}
+
+.highlight-arrow {
+  background-color: #ffcccc; /* 高亮背景色 */
+  border: 2px solid #ff0000; /* 紅色邊框 */
+  border-radius: 5px;
 }

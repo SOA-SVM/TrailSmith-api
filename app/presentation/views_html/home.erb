@@ -1,10 +1,17 @@
+<style>
+  .image-button {
+    all: unset; 
+    display: inline-block;
+    cursor: pointer; 
+  }
+</style>
+
 <div class="container-fluid">
   <div class="search-container">
     <!-- Input group for search -->
     <form role="form" action="/location" method="POST" id="show-spot-info">
       <div class="input-group mt-3">
-        <%# <input type="text" name="query" placeholder="I want a day trip to Hsinchu." required="true" class="form-control"> %>
-        <input type="text" name="query" placeholder="Write a spot(e.g. NTHU)" required="true" class="form-control">
+        <input type="text" name="query" placeholder="I want a day trip to Hsinchu." required="true" class="form-control">
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
     </form>
@@ -12,7 +19,7 @@
   <div class="row">
     <div class="col-md-12 blank-row"></div>
   </div>
-  <% if spots.any?%>
+  <% if plans.any?%>
   <table class="table table-hover" id="spots_table">
     <thead>
       <th></th>
@@ -20,10 +27,10 @@
       <th>Spots</th>
     </thead>
     <tbody>
-      <% spots.each.with_index do |spot, index| %>
-      <tr class="table-row spot_row" id="spot[<%= index %>].row" data-href="location/<%= spot.place_id%>">
+      <% plans.each.with_index do |plan, index| %>
+      <tr class="table-row plan_row" id="spot[<%= index %>].row" data-href="location/<%= plan.id%>">
         <td id="delete_spot">
-          <form role="form" method="post" action="location/<%= spot.place_id %>">
+          <form role="form" method="post" action="location/<%= plan.id %>">
             <input type="hidden" name="_method" value="delete">
 
             <button type="submit" class="btn btn-sm btn-link" id="spot[<%= index %>].delete">
@@ -32,13 +39,13 @@
           </form>
         </td>
         <td class="td_plan">
-          <span class="spot_table_name" id="spot[<%= index %>].name">
-            <%=spot.name%>
+          <span class="plan_table_name" id="plan[<%= index %>].name">
+            Trip to <%= plan.region %>
           </span>
         </td>
         <td class="td_name">
-          <span class="spot_table_name" id="spot[<%= index %>].name">
-            <%=spot.name%>
+          <span class="plan_table_name" id="plan[<%= index %>].name">
+            <%= plan.spots.map(&:name).join(', ') %>
           </span>
         </td>
       </tr>
@@ -56,60 +63,72 @@
       <div>
         <ul class="d-flex popular_spot">
           <li>
-            <a href="/test/tainan">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Tainan">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/tainan.jpg" alt="tainan" width="300" height="300" loading="lazy">
+                      <img src="/media/tainan.jpg" alt="tainan" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Tainan</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
           <li>
-            <a href="/">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Taipei">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/taipei.jpg" alt="taipei" width="300" height="300" loading="lazy">
+                      <img src="/media/taipei.jpg" alt="taipei" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Taipei</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
           <li>
-            <a href="/">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Kaohsiung">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/kaohsiung.jpg" alt="kaohsiung" width="300" height="300" loading="lazy">
+                      <img src="/media/kaohsiung.jpg" alt="kaohsiung" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Kaohsiung</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
           <li>
-            <a href="/">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Hsinchu">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/hsinchu.jpg" alt="hsinchu" width="300" height="300" loading="lazy">
+                      <img src="/media/hsinchu.jpg" alt="hsinchu" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Hsinchu</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
         </ul>
       </div>
