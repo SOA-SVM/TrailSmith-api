@@ -188,10 +188,10 @@ module TrailSmith
               region: 'Tainan',
               day: 1,
               spots: [
-                'Anping Old Fort',
-                'Chihkan Tower',
-                'Shennong Street',
-                'Tainan Confucius Temple'
+                'Anping Old Fort, Tainan',
+                'Chihkan Tower, Tainan',
+                'Shennong Street, Tainan',
+                'Tainan Confucius Temple, Tainan'
               ],
               mode: %w[walking walking walking]
             }
