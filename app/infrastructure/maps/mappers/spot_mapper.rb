@@ -35,6 +35,8 @@ module TrailSmith
         end
 
         def self.build_reports(reports)
+          return nil unless reports
+
           reports.map do |report|
             Entity::Report.new(
               id: nil,
