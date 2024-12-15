@@ -24,28 +24,40 @@
     <thead>
       <th></th>
       <th>Plan</th>
+      <th>Day</th>
+      <th>People</th>
       <th>Spots</th>
     </thead>
     <tbody>
-      <% plans.each.with_index do |plan, index| %>
-      <tr class="table-row plan_row" id="spot[<%= index %>].row" data-href="location/<%= plan.id%>">
-        <td id="delete_spot">
-          <form role="form" method="post" action="location/<%= plan.id %>">
+      <% plans.each do |plan| %>
+      <tr class="table-row plan_row" id="<%= plan.index_str %>.row" data-href="<%= plan.plan_link %>">
+        <td id="delete_plan">
+          <form role="form" method="post" action="<%= plan.plan_link %>">
             <input type="hidden" name="_method" value="delete">
 
-            <button type="submit" class="btn btn-sm btn-link" id="spot[<%= index %>].delete">
+            <button type="submit" class="btn btn-sm btn-link" id="<%= plan.index_str %>.delete">
               <i class="fas fa-trash-alt"></i>
             </button>
           </form>
         </td>
         <td class="td_plan">
-          <span class="plan_table_name" id="plan[<%= index %>].name">
-            Trip to <%= plan.region %>
+          <span class="plan_table_name" id="<%= plan.index_str %>.title">
+            <%= plan.plan_title %>
           </span>
         </td>
-        <td class="td_name">
-          <span class="plan_table_name" id="plan[<%= index %>].name">
-            <%= plan.spots.map(&:name).join(', ') %>
+        <td class="td_day">
+          <span class="plan_table_name" id="<%= plan.index_str %>.day">
+            <%= plan.day %>
+          </span>
+        </td>
+        <td class="td_num_people">
+          <span class="plan_table_name" id="<%= plan.index_str %>.num_people">
+            <%= plan.num_people %>
+          </span>
+        </td>
+        <td class="td_spots">
+          <span class="plan_table_name" id="<%= plan.index_str %>.spots">
+            <%= plan.spot_names %>
           </span>
         </td>
       </tr>
