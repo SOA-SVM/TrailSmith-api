@@ -1,3 +1,11 @@
+<style>
+  .image-button {
+    all: unset; 
+    display: inline-block;
+    cursor: pointer; 
+  }
+</style>
+
 <div class="container-fluid">
   <div class="search-container">
     <!-- Input group for search -->
@@ -55,60 +63,72 @@
       <div>
         <ul class="d-flex popular_spot">
           <li>
-            <a href="/test/tainan">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Tainan">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/tainan.jpg" alt="tainan" width="300" height="300" loading="lazy">
+                      <img src="/media/tainan.jpg" alt="tainan" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Tainan</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
           <li>
-            <a href="/">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Taipei">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/taipei.jpg" alt="taipei" width="300" height="300" loading="lazy">
+                      <img src="/media/taipei.jpg" alt="taipei" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Taipei</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
           <li>
-            <a href="/">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Kaohsiung">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/kaohsiung.jpg" alt="kaohsiung" width="300" height="300" loading="lazy">
+                      <img src="/media/kaohsiung.jpg" alt="kaohsiung" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Kaohsiung</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
           <li>
-            <a href="/">
-              <div class="card">
-                <div><div>
+            <form action="/location" method="POST">
+              <input type="hidden" name="query" value="I want a day trip to Hsinchu">
+              <button type="submit" class="btn btn-link image_button">
+                <div class="card">
+                  <div>
                     <picture>
-                        <img src="/media/hsinchu.jpg" alt="hsinchu" width="300" height="300" loading="lazy">
+                      <img src="/media/hsinchu.jpg" alt="hsinchu" width="300" height="300" loading="lazy" class="d-block">
                     </picture>
-                </div></div>
-                <div class="spot_name">
+                  </div>
+                  <div class="spot_name">
                     <div>Hsinchu</div>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </button>
+            </form>
           </li>
         </ul>
       </div>

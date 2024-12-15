@@ -1,17 +1,3 @@
-<style>
-    .plan_name{
-        font-size: 32px;
-        font-weight: 700;
-    }
-    .travel_mode{
-        font-size: 14px;
-    }
-    .highlight-arrow {
-        background-color: #ffcccc; /* 高亮背景色 */
-        border: 2px solid #ff0000; /* 紅色邊框 */
-        border-radius: 5px;
-    }
-</style>
 <div class="d-flex align-items-end">
     <span class='plan_name mx-2'> A Trip to <%= hashtag[:region] %> </span>
     <span class='badge bg-info me-2'>People: <%= hashtag[:people] %></span>
@@ -98,7 +84,6 @@
         $(".route-arrow").hover(
             function () {
                 const index = $(this).data("index");
-                // 如果不是當前點擊高亮的路線，則臨時高亮
                 if (index !== activeIndex) {
                     routes[index].setOptions({
                         strokeOpacity: 1.0,
@@ -108,7 +93,6 @@
             },
             function () {
                 const index = $(this).data("index");
-                // 如果不是當前點擊高亮的路線，則恢復預設樣式
                 if (index !== activeIndex) {
                     routes[index].setOptions({
                         strokeOpacity: 0.5,
@@ -118,37 +102,33 @@
             }
         );
 
-        // 監聽箭頭點擊事件
         $(".route-arrow").on("click", function (event) {
-            event.stopPropagation(); // 阻止點擊事件冒泡到 document
+            event.stopPropagation();
 
             const index = $(this).data("index");
 
-            // 如果點擊的是當前高亮的箭頭，則取消高亮
             if (activeIndex === index) {
                 resetHighlight();
                 return;
             }
 
-            // 重置之前的高亮狀態
             resetHighlight();
 
-            // 高亮當前的箭頭和路線
+            // highlight rought and arrow
             $(this).addClass("highlight-arrow");
             routes[index].setOptions({
                 strokeOpacity: 1.0,
                 strokeWeight: 4,
             });
 
-            activeIndex = index; // 更新高亮的索引
+            activeIndex = index;
         });
 
-        // 點擊空白處恢復狀態
+        // reset highlight state
         $(document).on("click", function () {
             resetHighlight();
         });
 
-        // 重置高亮的函數
         function resetHighlight() {
             if (activeIndex !== null) {
                 $(".route-arrow").removeClass("highlight-arrow");
@@ -156,14 +136,13 @@
                     strokeOpacity: 0.5,
                     strokeWeight: 2,
                 });
-                activeIndex = null; // 重置高亮狀態
+                activeIndex = null;
             }
         }
         
 
     }
 
-    // 解碼函數
     function decodePolyline(encoded) {
         let points = [];
         let index = 0, len = encoded.length;

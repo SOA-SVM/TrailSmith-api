@@ -84,7 +84,7 @@ module TrailSmith
                 {
                   "num_people": 2,
                   "region": "Kyoto",
-                  "day": 2,
+                  "day": 1,
                   "spots": [
                     "Kinkaku-ji",
                     "Arashiyama Bamboo Grove",
@@ -154,7 +154,7 @@ module TrailSmith
         routing.on String do |plan_id|
           # DELETE /location/[plan_id]
           routing.delete do
-            session[:watching].delete(plan_id)
+            session[:watching].delete(plan_id.to_i)
 
             routing.redirect '/'
           end
@@ -189,47 +189,6 @@ module TrailSmith
             polylines = plan.routes.map(&:overview_polyline).to_json
 
             view 'location', locals: { plan:, locations:, polylines:, hashtag: }
-          end
-        end
-      end
-
-      routing.on 'test' do
-        routing.on String do |place_name|
-          # GET /test/[place_name]
-          if place_name == 'tainan'
-            info = {
-              num_people: 2,
-              region: 'Tainan',
-              day: 1,
-              spots: [
-                'Anping Old Fort, Tainan',
-                'Chihkan Tower, Tainan',
-                'Shennong Street, Tainan',
-                'Tainan Confucius Temple, Tainan'
-              ],
-              mode: %w[walking walking walking]
-            }
-
-            info = JSON.generate(info)
-
-            plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(info)
-
-            hashtag = {
-              people: plan.num_people,
-              region: plan.region,
-              day: plan.day
-            }
-
-            locations = plan.spots.map do |spot|
-              {
-                'coordinate' => spot.coordinate.to_h,
-                'title'      => spot.name
-              }
-            end.to_json
-
-            polylines = plan.routes.map(&:overview_polyline).to_json
-
-            view 'test', locals: { plan:, token: App.config.GOOGLE_MAPS_KEY, locations:, polylines:, hashtag: }
           end
         end
       end
