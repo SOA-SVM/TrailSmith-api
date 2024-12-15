@@ -40,10 +40,18 @@ module TrailSmith
       routing.root do
         # Get cookie viewer's previously seen projects
         session[:watching] ||= []
-        plans = Repository::For.klass(Entity::Plan).find_ids(session[:watching])
+
+        # Load previously viewed plans
+        plans = Repository::For.klass(Entity::Plan)
+          .find_ids(session[:watching])
+
         session[:watching] = plans.map(&:id)
+
         flash.now[:notice] = MESSAGES[:no_plan] if plans.none?
-        view 'home', locals: { plans: }
+
+        viewable_plans = Views::PlansList.new(plans)
+
+        view 'home', locals: { plans: viewable_plans }
       end
 
       routing.on 'location' do
@@ -140,7 +148,7 @@ module TrailSmith
               plan = Repository::For.entity(plan).create(plan)
             rescue StandardError => err
               App.logger.error "ERROR: #{err.message}"
-              flash[:error] = MESSAGES[:location_not_found]
+              flash[:error] = MESSAGES[:plan_not_found]
               routing.redirect '/'
             end
 
@@ -165,7 +173,7 @@ module TrailSmith
               plan = Repository::For.klass(Entity::Plan).find_id(plan_id)
               if plan.nil?
                 flash[:error] = MESSAGES[:plan_not_found]
-                # routing.redirect '/'
+                routing.redirect '/'
               end
             rescue StandardError => err
               App.logger.error "ERROR: #{err.message}"
