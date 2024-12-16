@@ -36,7 +36,7 @@ module TrailSmith
       end
 
       def self.create(entity)
-        raise 'Entity already exists in database' if find(entity)
+        raise 'Spot Entity already exists in database' if find(entity)
 
         db_spot = Database::SpotOrm.create(entity.to_attr_hash)
         entity.reports.each do |report|
