@@ -67,41 +67,10 @@ module TrailSmith
 
             begin
               puts "\n=== OpenAI API 呼叫開始 ==="
-              puts '已建立 OpenAI Mapper'
-
-              prompt = <<~PROMPT
-                Generates travel itineraries based on location: #{query}
-
-                Required JSON format:
-                {
-                  "num_people": Integer (default: 2),
-                  "region": String (location area/city),
-                  "day": Integer (default: 1),
-                  "spots": Array[String] (min 2, recommended 4 spots),
-                  "mode": Array[String] (length = spots.length - 1)
-                }
-
-                Rules:
-                1. mode must be from: ["walking", "driving", "bicycling", "transit"]
-                2. number of mode elements must be exactly (spots.length - 1)
-                3. customize to location characteristics
-                4. spots should be actual tourist attractions/destinations
-                5. return ONLY the JSON object, no additional text
-
-                Example structure (DO NOT use these values, generate based on #{query}):
-                {
-                  "num_people": 2,
-                  "region": "Kyoto",
-                  "day": 1,
-                  "spots": [
-                    "Kinkaku-ji",
-                    "Arashiyama Bamboo Grove",
-                    "Fushimi Inari Shrine",
-                    "Nijo Castle"
-                  ],
-                  "mode": ["walking", "transit", "walking"]
-                }
-              PROMPT
+              openai_mapper = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
+              puts "已建立 OpenAI Mapper"
+              
+              prompt = TrailSmith::Openai::OpenaiMapper.build_prompt(query)
               puts "Prompt: #{prompt}"
 
               wish_result = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
