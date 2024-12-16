@@ -309,6 +309,7 @@ a {
 
 :root {
   --bs-info-rgb: 0, 188, 212;
+  --bs-warning-rgb: 255, 150, 83;
 }
 
 header {
@@ -404,6 +405,14 @@ h2 {
   color: white;
   font-family: "Courier New", Courier, monospace;
   letter-spacing: 0.02em;
+}
+
+.legend {
+  border: 1px solid black;
+  padding: 8px;
+}
+.legend h5 {
+  font-weight: bold;
 }
 
 .left {

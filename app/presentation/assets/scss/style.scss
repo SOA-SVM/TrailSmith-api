@@ -102,6 +102,15 @@ h2 {
 }
 
 // draw map
+.legend {
+    border: 1px solid black;
+    padding: 8px;
+
+    h5 {
+        font-weight: bold;
+    }
+}
+
 .left {
     padding: 10px;
     display: flex;
@@ -128,12 +137,12 @@ h2 {
     }
 }
 
-.plan_name{
+.plan_name {
     font-size: 32px;
     font-weight: 700;
 }
 
-.travel_mode{
+.travel_mode {
     font-size: 14px;
 }
 
