@@ -31,6 +31,8 @@ module TrailSmith
       no_recommendation: 'No recommendations available.'
     }.freeze
 
+    MSG_GET_STARTED = 'Add a plan to get started.'
+
     route do |routing|
       routing.assets # load CSS
       response['Content-Type'] = 'text/html; charset=utf-8'
@@ -42,14 +44,18 @@ module TrailSmith
         session[:watching] ||= []
 
         # Load previously viewed plans
-        plans = Repository::For.klass(Entity::Plan)
-          .find_ids(session[:watching])
+        result = Service::ListPlans.new.call(session[:watching])
 
-        session[:watching] = plans.map(&:id)
+        if result.failure?
+          flash[:error] = result.failure
+          viewable_plans = []
+        else
+          plans = result.value!
+          flash.now[:notice] = MSG_GET_STARTED if plans.none?
 
-        flash.now[:notice] = MESSAGES[:no_plan] if plans.none?
-
-        viewable_plans = Views::PlansList.new(plans)
+          session[:watching] = plans.map(&:id)
+          viewable_plans = Views::PlansList.new(plans)
+        end
 
         view 'home', locals: { plans: viewable_plans }
       end
@@ -174,7 +180,7 @@ module TrailSmith
         routing.is 'google_maps.js' do
           response['Content-Type'] = 'application/javascript'
           api_key = App.config.GOOGLE_MAPS_KEY
-          response.write(GoogleMapsProxy.fetch_map_script(api_key))
+          response.write(Service::GoogleMapsProxy.fetch_map_script(api_key))
         end
       end
     end
