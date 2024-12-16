@@ -161,7 +161,15 @@ module TrailSmith
         routing.is 'google_maps.js' do
           response['Content-Type'] = 'application/javascript'
           api_key = App.config.GOOGLE_MAPS_KEY
-          response.write(Service::GoogleMapsProxy.fetch_map_script(api_key))
+
+          result = Service::GoogleMapsProxy.new.fetch_map_script(api_key)
+
+          if result.success?
+            response.write(result.value!)
+          else
+            response.status = 500
+            response.write("console.error('#{result.failure}')")
+          end
         end
       end
     end

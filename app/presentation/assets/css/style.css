@@ -415,6 +415,18 @@ h2 {
   font-weight: bold;
 }
 
+@media (max-width: 768px) {
+  .plan_viewer,
+  .plan_title {
+    flex-direction: column;
+  }
+  .plan_title {
+    align-items: normal !important;
+  }
+  .plan_title > div {
+    margin-bottom: 0.5em;
+  }
+}
 .left {
   padding: 10px;
   display: flex;

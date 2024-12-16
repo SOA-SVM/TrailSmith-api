@@ -111,6 +111,20 @@ h2 {
     }
 }
 
+@media (max-width: 768px) {
+    .plan_viewer,
+    .plan_title {
+        flex-direction: column;
+    }
+
+    .plan_title{
+        align-items: normal !important;
+        & > div{
+            margin-bottom: 0.5em;
+        }
+    }
+}
+
 .left {
     padding: 10px;
     display: flex;
