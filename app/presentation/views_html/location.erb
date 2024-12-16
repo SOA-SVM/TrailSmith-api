@@ -1,8 +1,8 @@
 <div class="d-flex align-items-end mt-3 justify-content-between">
     <div>
-        <span class='plan_name mx-2'> A Trip to <%= hashtag[:region] %> </span>
-        <span class='badge bg-info me-2'>People: <%= hashtag[:people] %></span>
-        <span class='badge bg-info'>Day: <%= hashtag[:day] %></span>
+        <span class='plan_name mx-2'> <%= plan.title_name %> </span>
+        <span class='badge bg-info me-2'> <%= plan.title_people %></span>
+        <span class='badge bg-info'> <%= plan.title_day %></span>
     </div>
     
     <div class="legend d-flex">
@@ -26,23 +26,17 @@
     <div class="left col-4">
         <h2>Travel Plan: </h2>
         <br>
-        <% plan.spots.each_with_index do |spot, index| %>
+        <% plan.each_spot do |spot| %>
             <div class="route-step" title="<%= spot.address %>">
                 <div class="step-text">
-                    <span class="step-index"><%= index + 1 %>.</span>
+                    <span class="step-index"><%= spot.step_index %>.</span>
                     <span class="spot-name"><%= spot.name %></span>
-                    <% if spot.popular.high? %>
-                    <span class="badge bg-success"> popular </span>
-                    <% elsif spot.popular.medium? %>
-                    <span class="badge bg-warning"> popular </span>
-                    <% elsif spot.popular.low? %>
-                    <span class="badge bg-danger"> popular </span>
-                    <% end %>
+                    <span class="badge <%= spot.how_popular? %>"> popular </span>
                 </div>
-                <% if index < plan.spots.size - 1 %>
-                <div class="route-arrow d-flex align-items-center" data-index=<%= index %>>
+                <% if plan.not_last_spot?(spot) %>
+                <div class="route-arrow d-flex align-items-center" data-index=<%= spot.index %>>
                     <i class="fas fa-arrow-down me-2"></i> 
-                    <span class="travel_mode">travel mode: <%= plan.routes[index].travel_mode %></span>
+                    <span class="travel_mode"><%= plan.travel_mode(spot) %></span>
                 </div>
                 <% end %>
             </div>
@@ -68,8 +62,8 @@
         initMap();
     }
     function initMap() {
-        const locations = <%= locations %>
-        const polylines = <%= polylines %>
+        const locations = <%= map.locations %>
+        const polylines = <%= map.polylines %>
 
         const map = new google.maps.Map(document.getElementById("map"), { 
             zoom: 14,

@@ -49,6 +49,13 @@ module TrailSmith
       def to_attr_hash
         to_hash.except(:id, :reports)
       end
+
+      def to_location_map
+        {
+          'coordinate' => coordinate.to_h,
+          'title'      => name
+        }
+      end
     end
   end
 end

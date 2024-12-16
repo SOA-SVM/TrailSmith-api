@@ -81,7 +81,7 @@ module TrailSmith
           return [] unless @data.is_a?(Array)
 
           @data.filter_map do |choice|
-            next unless choice.is_a?(Hash)
+            # next unless choice.is_a?(Hash)
 
             message = choice['message']
             next unless message.is_a?(Hash)

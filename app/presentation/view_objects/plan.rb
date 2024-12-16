@@ -31,5 +31,21 @@ module Views
     def spot_names
       @plan.spots.map(&:name).join(', ')
     end
+
+    def polylines
+      @plan.routes.map(&:overview_polyline)
+    end
+
+    def locations
+      @plan.spots.map(&:to_location_map)
+    end
+
+    def region
+      @plan.region
+    end
+
+    def routes
+      @plan.routes
+    end
   end
 end
