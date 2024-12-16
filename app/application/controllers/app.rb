@@ -148,22 +148,11 @@ module TrailSmith
               routing.redirect '/'
             end
 
-            hashtag = {
-              people: plan.num_people,
-              region: plan.region,
-              day: plan.day
-            }
+            viewable_plan = Views::PlanView.new(plan)
+            viewable_map = Views::Map.new(plan)
 
-            locations = plan.spots.map do |spot|
-              {
-                'coordinate' => spot.coordinate.to_h,
-                'title'      => spot.name
-              }
-            end.to_json
-
-            polylines = plan.routes.map(&:overview_polyline).to_json
-
-            view 'location', locals: { plan:, locations:, polylines:, hashtag: }
+            view 'location',
+                 locals: { plan: viewable_plan, map: viewable_map }
           end
         end
       end
