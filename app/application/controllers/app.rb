@@ -73,15 +73,8 @@ module TrailSmith
 
             begin
               puts "\n=== OpenAI API 呼叫開始 ==="
-              openai_mapper = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
-              puts "已建立 OpenAI Mapper"
-              
-              prompt = TrailSmith::Openai::OpenaiMapper.build_prompt(query)
-              puts "Prompt: #{prompt}"
-
-              wish_result = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
-                .find(prompt, model: 'gpt-4o-mini', max_tokens: 500)
-
+              wish_result = TrailSmith::Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
+                .build_prompt(query, model: 'gpt-4o-mini', max_tokens: 500)
               puts "API complete response: #{wish_result.inspect}"
 
               if wish_result&.messages&.any?
@@ -89,7 +82,6 @@ module TrailSmith
                 puts "Raw response: #{raw_response}"
 
                 begin
-                  # 嘗試解析 JSON 並確保必要的欄位存在
                   parsed_json = JSON.parse(raw_response)
                   required_fields = %w[num_people region day spots mode]
 
