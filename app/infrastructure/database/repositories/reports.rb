@@ -22,7 +22,7 @@ module TrailSmith
       end
 
       def self.create(entity)
-        raise 'Entity already exists in database' if find(entity)
+        raise 'Report Entity already exists in database' if find(entity)
 
         db_record = Database::ReportOrm.create(entity.to_attr_hash)
         rebuild_entity(db_record)

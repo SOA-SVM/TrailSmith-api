@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'spots'
+require_relative 'reports'
 
 module TrailSmith
   module Repository
@@ -10,7 +11,11 @@ module TrailSmith
       end
 
       def self.find(entity)
-        db_record = Database::PlanOrm.find(region: entity.region, day: entity.day)
+        db_plans = Database::PlanOrm.where(region: entity.region, day: entity.day).all
+        db_record = nil
+        db_plans.each do |db_plan|
+          db_record = db_plan if db_plan.spots.map(&:place_id) == entity.spots.map(&:place_id)
+        end
         rebuild_entity(db_record)
       end
 
@@ -46,7 +51,7 @@ module TrailSmith
       end
 
       def self.create(entity)
-        raise 'Entity already exists in database' if find(entity)
+        raise 'Plan Entity already exists in database' if find(entity)
 
         db_plan = Database::PlanOrm.create(entity.to_attr_hash)
 
@@ -58,7 +63,20 @@ module TrailSmith
 
       private_class_method def self.create_and_connect_spots_db(entity, db_plan)
         entity.spots.each do |spot|
-          db_plan.add_spot(Database::SpotOrm.create(spot.to_attr_hash)) # connect spot and plan
+          db_spot = Database::SpotOrm.find(place_id: spot.place_id)
+          unless db_spot
+            # connect report and spot
+            db_spot = Database::SpotOrm.create(spot.to_attr_hash)
+            create_and_connect_reports_db(spot, db_spot)
+          end
+          # connect spot and plan
+          db_plan.add_spot(db_spot)
+        end
+      end
+
+      private_class_method def self.create_and_connect_reports_db(entity, db_spot)
+        entity.reports.each do |report|
+          db_spot.add_report(Database::ReportOrm.create(report.to_attr_hash)) # connect route and plan
         end
       end
 

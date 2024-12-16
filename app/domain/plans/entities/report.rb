@@ -19,7 +19,8 @@ module TrailSmith
         prompt = '1. The keyword with one or two words from the prompt that could most describe the characteristic
                      of the spot for the tourist.
                   2. Do not give me a description of why choosing the keyword.
-                  3. Dont give me the name of the spot.'
+                  3. Dont give me the name of the spot.
+                  4. Word start with capital letter, e.g. Beautiful Campus'
         question = "Review: #{text} Prompt: #{prompt}"
         gpt = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
         gpt.find(question).messages.first
