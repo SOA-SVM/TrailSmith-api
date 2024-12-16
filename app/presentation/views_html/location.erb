@@ -1,4 +1,4 @@
-<div class="d-flex align-items-end mt-3 justify-content-between">
+<div class="d-flex align-items-end mt-3 justify-content-between plan_title">
     <div>
         <span class='plan_name mx-2'> <%= plan.title_name %> </span>
         <span class='badge bg-info me-2'> <%= plan.title_people %></span>
@@ -22,8 +22,8 @@
     </div>
 </div>
 <br>
-<div class="d-flex col-12">
-    <div class="left col-4">
+<div class="d-flex col-12 plan_viewer">
+    <div class="left col-md-5 col-lg-4">
         <h2>Travel Plan: </h2>
         <br>
         <% plan.each_spot do |spot| %>
@@ -51,7 +51,7 @@
         </div>
 
     </div>
-    <div class="right col-8">
+    <div class="right col-md-7 col-lg-8">
         <div id="map" style="width: 100%; height: 500px;">
         </div>
     </div>
@@ -86,7 +86,7 @@
             });
 
             marker.content.innerHTML = `
-            <div style="background: #4285F4; color: white; padding: 5px; border-radius: 3px;">
+            <div style="background: #FF0000; color: white; padding: 5px; border-radius: 3px;">
                 ${String.fromCharCode(65 + index)}
             </div>`;
 
@@ -101,9 +101,9 @@
             const routePolyline = new google.maps.Polyline({
                 path: polylinePath,
                 geodesic: true,
-                strokeColor: "#FF0000",
-                strokeOpacity: 0.5,
-                strokeWeight: 2,
+                strokeColor: "#4285F4",
+                strokeOpacity: 0.7,
+                strokeWeight: 4,
             });
             routePolyline.setMap(map);
             routes.push(routePolyline);
@@ -115,7 +115,7 @@
                 if (index !== activeIndex) {
                     routes[index].setOptions({
                         strokeOpacity: 1.0,
-                        strokeWeight: 4,
+                        strokeWeight: 8,
                     });
                 }
             },
@@ -123,8 +123,8 @@
                 const index = $(this).data("index");
                 if (index !== activeIndex) {
                     routes[index].setOptions({
-                        strokeOpacity: 0.5,
-                        strokeWeight: 2,
+                        strokeOpacity: 0.7,
+                        strokeWeight: 4,
                     });
                 }
             }
@@ -146,7 +146,7 @@
             $(this).addClass("highlight-arrow");
             routes[index].setOptions({
                 strokeOpacity: 1.0,
-                strokeWeight: 4,
+                strokeWeight: 8,
             });
 
             activeIndex = index;
@@ -161,8 +161,8 @@
             if (activeIndex !== null) {
                 $(".route-arrow").removeClass("highlight-arrow");
                 routes[activeIndex].setOptions({
-                    strokeOpacity: 0.5,
-                    strokeWeight: 2,
+                    strokeOpacity: 0.7,
+                    strokeWeight: 4,
                 });
                 activeIndex = null;
             }
