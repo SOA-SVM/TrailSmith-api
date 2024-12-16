@@ -13,6 +13,7 @@
                 <div class="step-text">
                     <span class="step-index"><%= index + 1 %>.</span>
                     <span class="spot-name"><%= spot.name %></span>
+                    <span class="spot-keyword"><%= spot.keywords %></span>
                 </div>
                 <% if index < plan.spots.size - 1 %>
                 <div class="route-arrow d-flex align-items-center" data-index=<%= index %>>
@@ -46,9 +47,9 @@
         const locations = <%= locations %>
         const polylines = <%= polylines %>
 
-        const map = new google.maps.Map(document.getElementById("map"), {
-        //   center: locations[0]['position'],
-          zoom: 14,
+        const map = new google.maps.Map(document.getElementById("map"), { 
+            zoom: 14,
+            mapId: "DEMO_MAP_ID"
         });
 
         const bounds = new google.maps.LatLngBounds();
@@ -59,17 +60,17 @@
 
         locations.forEach((location, index) => {
             const position = location['coordinate'];
-            const marker = new google.maps.Marker({
+            const marker = new google.maps.marker.AdvancedMarkerElement({
                 position: position,
                 map,
                 title: location['title'],
-                label: {
-                    text: String.fromCharCode(65 + index), // convert index to alphabet
-                    color: "#FFFFFF",
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                },
+                content: document.createElement('div'), 
             });
+
+            marker.content.innerHTML = `
+            <div style="background: #4285F4; color: white; padding: 5px; border-radius: 3px;">
+                ${String.fromCharCode(65 + index)}
+            </div>`;
 
             markers.push(marker);
             bounds.extend(position);
@@ -184,4 +185,4 @@
     }
 </script>
 
-<script src="/proxy/google_maps.js"></script>
+<script src="/proxy/google_maps.js" defer></script>
