@@ -42,6 +42,7 @@ module TrailSmith
           6. The chosen spots should be arranged so that each subsequent spot is relatively close to the previous one, effectively ordering the itinerary from closer locations to farther ones to minimize travel distance.
           7. The itinerary is for only one day (day = 1).
           8. All chosen spots must be within the given region (#{query}).
+          9. All chosen spots shoula add the given region (#{query}) in the last.
 
           Example structure (DO NOT use these values, generate based on #{query}):
           {
@@ -49,10 +50,10 @@ module TrailSmith
             "region": "Kyoto",
             "day": 2,
             "spots": [
-              "Kinkaku-ji",
-              "Arashiyama Bamboo Grove",
-              "Fushimi Inari Shrine",
-              "Nijo Castle"
+              "Kinkaku-ji, Kyoto",
+              "Arashiyama Bamboo Grove, Kyoto",
+              "Fushimi Inari Shrine, Kyoto",
+              "Nijo Castle, Kyoto"
             ],
             "mode": ["walking", "transit", "walking"]
           }
