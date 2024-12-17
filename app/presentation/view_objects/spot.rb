@@ -15,7 +15,7 @@ module Views
     end
 
     def step_index
-      @index + 1
+      ('A'.ord + @index).chr
     end
 
     def name
