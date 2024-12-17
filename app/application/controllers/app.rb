@@ -20,16 +20,8 @@ module TrailSmith
 
     use Rack::MethodOverride
 
-    MESSAGES = {
-      invalid_location: 'Invalid location input.',
-      location_not_found: 'Could not find that location.',
-      plan_not_found: 'Could not find the plan.',
-      db_error: 'Database error occurred.',
-      no_plan: 'Add a spot to get started.',
-      no_recommendation: 'No recommendations available.'
-    }.freeze
-
     MSG_GET_STARTED = 'Add a plan to get started.'
+    MSG_PLAN_CREATED = 'Plan created successfully.'
 
     route do |routing|
       routing.assets
@@ -40,13 +32,13 @@ module TrailSmith
       routing.root do
         session[:watching] ||= []
 
-        result = Service::ListPlans.new.call(session[:watching])
+        list_result = Service::ListPlans.new.call(session[:watching])
 
-        if result.failure?
-          flash[:error] = result.failure
+        if list_result.failure?
+          flash[:error] = list_result.failure
           viewable_plans = []
         else
-          plans = result.value!
+          plans = list_result.value!
           flash.now[:notice] = MSG_GET_STARTED if plans.none?
 
           session[:watching] = plans.map(&:id)
@@ -61,12 +53,6 @@ module TrailSmith
           # POST /location/
           routing.post do
             location_made = Forms::NewLocation.new.call(routing.params)
-
-            if location_made.failure?
-              flash[:error] = MESSAGES[:invalid_location]
-              routing.redirect '/'
-            end
-
             result = Service::CreateLocation.new.call(location_made.to_h)
 
             if result.failure?
@@ -76,7 +62,7 @@ module TrailSmith
 
             plan = result.value!
             session[:watching].insert(0, plan.id).uniq!
-            flash[:notice] = 'Location created successfully'
+            flash[:notice] = MSG_PLAN_CREATED
             routing.redirect "location/#{plan.id}"
           end
         end
@@ -90,20 +76,16 @@ module TrailSmith
 
           # GET /location/[plan_id]
           routing.get do
-            begin
-              plan = Repository::For.klass(Entity::Plan).find_id(plan_id)
-              if plan.nil?
-                flash[:error] = MESSAGES[:plan_not_found]
-                routing.redirect '/'
-              end
-            rescue StandardError => err
-              App.logger.error "ERROR: #{err.message}"
-              flash[:error] = MESSAGES[:db_error]
-              routing.redirect '/'
-            end
+            result = Service::FindPlan.new.call(plan_id)
 
-            viewable_plan = Views::PlanView.new(plan)
-            viewable_map = Views::Map.new(plan)
+            if result.failure?
+              flash[:error] = result.failure
+              routing.redirect '/'
+            else
+              plan = result.value!
+              viewable_plan = Views::PlanView.new(plan)
+              viewable_map = Views::Map.new(plan)
+            end
 
             view 'location',
                  locals: { plan: viewable_plan, map: viewable_map }
@@ -116,7 +98,7 @@ module TrailSmith
           response['Content-Type'] = 'application/javascript'
           api_key = App.config.GOOGLE_MAPS_KEY
 
-          result = Service::GoogleMapsProxy.new.fetch_map_script(api_key)
+          result = Service::GoogleMapsProxy.new.call(api_key)
 
           if result.success?
             response.write(result.value!)

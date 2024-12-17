@@ -9,7 +9,7 @@ module TrailSmith
     class GoogleMapsProxy
       include Dry::Monads::Result::Mixin
 
-      def fetch_map_script(token)
+      def call(token)
         url = build_url(token)
         response = HTTP.get(url)
         process_response(response)
