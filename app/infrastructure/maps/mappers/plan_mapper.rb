@@ -19,7 +19,7 @@ module TrailSmith
           id: nil,
           spots:,
           routes:,
-          region: @gpt_dict['region'],
+          region:,
           num_people: @gpt_dict['num_people'],
           day: @gpt_dict['day']
         )
@@ -35,11 +35,15 @@ module TrailSmith
         end
       end
 
+      def region
+        @gpt_dict['region']
+      end
+
       private
 
       def build_spot_array(name_array)
         name_array.map do |name|
-          SpotMapper.new(@key).build_entity(name)
+          SpotMapper.new(@key).build_entity("#{name}, #{region}")
         end
       end
     end

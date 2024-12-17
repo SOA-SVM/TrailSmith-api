@@ -71,6 +71,9 @@ module TrailSmith
               routing.redirect '/'
             end
 
+            origin_json = routing.params['origin_json']
+            query = origin_json.to_s + query unless origin_json.nil?
+
             begin
               puts "\n=== OpenAI API 呼叫開始 ==="
               wish_result = TrailSmith::Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
