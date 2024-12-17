@@ -9,10 +9,12 @@ module TrailSmith
       include Dry::Monads::Result::Mixin
 
       def call(input)
+        origin_json = input[:origin_json]
+        query = origin_json.nil? ? input[:query] : origin_json.to_s + input[:query]
         # Call OpenAI to generate recommendations
         wish_result = TrailSmith::Openai::OpenaiMapper
           .new(App.config.OPENAI_TOKEN)
-          .build_prompt(input[:query], model: 'gpt-4o-mini', max_tokens: 500)
+          .build_prompt(query, model: 'gpt-4o-mini', max_tokens: 500)
 
         return Failure('No recommendations received') unless wish_result&.messages&.any?
 

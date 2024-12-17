@@ -11,11 +11,23 @@ module TrailSmith
 
       params do
         required(:query).filled(:string)
+        optional(:origin_json).maybe(:string)
       end
 
       rule(:query) do
         unless QUERY_REGEX.match?(value)
           key.failure('must be a valid input with only letters, numbers, and basic punctuation')
+        end
+      end
+
+      rule(:origin_json) do
+        if value
+          begin
+            parsed_json = JSON.parse(value) # 解析 JSON 字串
+            key.failure('must be a valid JSON object') unless parsed_json.is_a?(Hash) # 確保是哈希結構
+          rescue JSON::ParserError
+            key.failure('must be a valid JSON string')
+          end
         end
       end
     end
