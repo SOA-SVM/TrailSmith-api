@@ -30,6 +30,12 @@ module Views
       ScoreRank.new(@spot.fun).to_css_class
     end
 
+    def each_hashtag(&show)
+      @spot.keywords.sample(3).each do |hashtag|
+        show.call "# #{hashtag}"
+      end
+    end
+
     # def how_relax?
     #   Score.new(@spot.relax)
     # end

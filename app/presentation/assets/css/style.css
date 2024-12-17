@@ -420,6 +420,11 @@ h2 {
   color: white;
 }
 
+.spot-hashtag {
+  color: #2fa4e7;
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
   .plan_viewer,
   .plan_title {
@@ -462,7 +467,7 @@ h2 {
   font-weight: 700;
 }
 
-.travel_mode {
+.travel_mode, .distance, .duration {
   font-size: 14px;
 }
 
