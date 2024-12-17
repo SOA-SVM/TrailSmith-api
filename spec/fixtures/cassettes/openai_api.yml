@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 16 Dec 2024 05:02:35 GMT
+      - Tue, 17 Dec 2024 07:17:11 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,7 +36,7 @@ http_interactions:
       Openai-Organization:
       - user-5c4nicwpcfep3szkvx23dro6
       Openai-Processing-Ms:
-      - '437'
+      - '252'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -44,40 +44,40 @@ http_interactions:
       X-Ratelimit-Limit-Tokens:
       - '200000'
       X-Ratelimit-Remaining-Requests:
-      - '9988'
+      - '9894'
       X-Ratelimit-Remaining-Tokens:
       - '199941'
       X-Ratelimit-Reset-Requests:
-      - 1m37.84s
+      - 15m14.168s
       X-Ratelimit-Reset-Tokens:
       - 17ms
       X-Request-Id:
-      - req_0ea7547d395ea5f868e21fed152951ed
+      - req_42434c3d03de4dc8bc08b56ca6f793fa
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=NyEKP9oqHVhvxSvdO.f.aPV0m32NUVGiguYv_oApaWE-1734325355-1.0.1.1-e_rFJhw1rxPqKvhI44.vVSTqfEqmziKn11vdh.aFS1lQxA16k7ud5ivayO.2LMPbv3.mm3G891KsfHMkhizvCA;
-        path=/; expires=Mon, 16-Dec-24 05:32:35 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=GNhdCaYTtz8rQAL56R1Jb63ao3twlfqVqgE2YBV9NjY-1734419831-1.0.1.1-Dc3EG9Wzk_3GeGsB35YmzpxqeR7TOZHsL1HCmYS4DuF1oxQ_nvvHmLDwPpSEs6_3roCXmFmFYEozJK1QDvGeZw;
+        path=/; expires=Tue, 17-Dec-24 07:47:11 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=WKDKSmagVfBb.CnPzi4TnBswvfSxPO4vxAll5VlCuE8-1734325355199-0.0.1.1-604800000;
+      - _cfuvid=zugKOvVzWmWTT5PHFUncTmvCOhC9H1Ep2EkWU1y7h9A-1734419831330-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8f2c1f3a0a00844e-TPE
+      - 8f3521c70c11826a-TPE
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
       string: |
         {
-          "id": "chatcmpl-AexXW0hhdEh1QPkB74wzOsuBiqUZr",
+          "id": "chatcmpl-AfM7Lf0Md0tBW7yImslG6kq6xGhKt",
           "object": "chat.completion",
-          "created": 1734325354,
+          "created": 1734419831,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -106,9 +106,9 @@ http_interactions:
               "rejected_prediction_tokens": 0
             }
           },
-          "system_fingerprint": "fp_6fc10e10eb"
+          "system_fingerprint": "fp_39a40c96a0"
         }
-  recorded_at: Mon, 16 Dec 2024 05:02:34 GMT
+  recorded_at: Tue, 17 Dec 2024 07:17:10 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -133,7 +133,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Mon, 16 Dec 2024 05:02:35 GMT
+      - Tue, 17 Dec 2024 07:17:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -143,23 +143,23 @@ http_interactions:
       Vary:
       - Origin
       X-Request-Id:
-      - req_8fa00f417d8f262ff55a45322993a5c2
+      - req_d8777103820f5e37bd26abdaf987e850
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=_0HDkNvrAhF6AkFey6a.t5fuvmzSknq_LDjdrJvn2LM-1734325355-1.0.1.1-ARpF3ENGPuexQStj.iwLpzSjKFeewcgZPx2NypnZDBQbEPMBNq2VDJj7QEbF_qtcnZzc8b946nPEikJ6AkNbWw;
-        path=/; expires=Mon, 16-Dec-24 05:32:35 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Y3noO5njtLtzR.Qz5IuQJbTlvvOcXw35oMg3uPmF0BA-1734419831-1.0.1.1-gBjuUCm7ewT8GFa1XCz88v4HsZkQr0Wxu7Wo6DxT9beuqye8WB0udjjtRHhsTHMUoYUPv4pDoD4nkR2FvHtZ5Q;
+        path=/; expires=Tue, 17-Dec-24 07:47:11 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=1qBddJyhh0ZwL0mrKo8MlNMxQwOdtn_sVsXNJZqkgOA-1734325355888-0.0.1.1-604800000;
+      - _cfuvid=Rm5YahmoZ0eYepEJAdDmHzkkxnM1H310Ou0DZLsQkek-1734419831662-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8f2c1f3f3c444a1e-TPE
+      - 8f3521ca8f9d4a22-TPE
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -173,5 +173,5 @@ http_interactions:
                 "code": "invalid_api_key"
             }
         }
-  recorded_at: Mon, 16 Dec 2024 05:02:35 GMT
+  recorded_at: Tue, 17 Dec 2024 07:17:11 GMT
 recorded_with: VCR 6.3.1
