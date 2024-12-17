@@ -24,7 +24,8 @@ module TrailSmith
         plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(raw_response)
 
         # Store in database
-        stored_plan = Repository::For.entity(plan).create(plan)
+        find_plan = Repository::For.entity(plan).find(plan)
+        stored_plan = find_plan.nil? ? Repository::For.entity(plan).create(plan) : find_plan
         Success(stored_plan)
       rescue StandardError => e
         puts "Error in CreateLocation service: #{e.message}"
