@@ -9,7 +9,7 @@ module Views
     end
 
     def plan_link
-      "location/#{@plan.id}"
+      "plan/#{@plan.id}"
     end
 
     def index_str

@@ -48,9 +48,9 @@ module TrailSmith
         view 'home', locals: { plans: viewable_plans }
       end
 
-      routing.on 'location' do
+      routing.on 'plan' do
         routing.is do
-          # POST /location/
+          # POST /plan/
           routing.post do
             location_made = Forms::NewLocation.new.call(routing.params)
             result = Service::CreateLocation.new.call(location_made.to_h)
@@ -63,18 +63,18 @@ module TrailSmith
             plan = result.value!
             session[:watching].insert(0, plan.id).uniq!
             flash[:notice] = MSG_PLAN_CREATED
-            routing.redirect "location/#{plan.id}"
+            routing.redirect "plan/#{plan.id}"
           end
         end
 
         routing.on String do |plan_id|
-          # DELETE /location/[plan_id]
+          # DELETE /plan/[plan_id]
           routing.delete do
             session[:watching].delete(plan_id.to_i)
             routing.redirect '/'
           end
 
-          # GET /location/[plan_id]
+          # GET /plan/[plan_id]
           routing.get do
             result = Service::FindPlan.new.call(plan_id)
 
@@ -87,7 +87,7 @@ module TrailSmith
               viewable_map = Views::Map.new(plan)
             end
 
-            view 'location',
+            view 'plan',
                  locals: { plan: viewable_plan, map: viewable_map }
           end
         end
