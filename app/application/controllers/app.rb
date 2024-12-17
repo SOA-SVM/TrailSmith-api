@@ -61,6 +61,7 @@ module TrailSmith
           # POST /location/
           routing.post do
             location_made = Forms::NewLocation.new.call(routing.params)
+
             if location_made.failure?
               flash[:error] = MESSAGES[:invalid_location]
               routing.redirect '/'

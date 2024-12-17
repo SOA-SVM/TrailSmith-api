@@ -28,22 +28,20 @@ module TrailSmith
 
       def fun
         # average fun score of reports
-        @fun ||= begin
-          fun_score = reports.empty? ? 0 : reports.map(&:fun).sum / reports.length
-          Value::Fun.new(fun_score.to_f)
-        end
+        @gpt ||= Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
+        fun_score = reports.empty? ? 0 : reports.take(3).sum { |report| report.fun(@gpt) } / reports.take(3).length
+        Value::Fun.new(fun_score.to_f)
       end
 
       def popular
-        @popular ||= begin
-          popular_score = rating_count
-          Value::Popular.new(popular_score.to_f)
-        end
+        popular_score = rating_count
+        Value::Popular.new(popular_score.to_f)
       end
 
       def keywords
         # array of keywords of reports
-        reports.flat_map(&:keywords).uniq
+        @gpt ||= Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
+        reports.take(3).map { |report| report.keywords(@gpt) }.uniq
       end
 
       def to_attr_hash

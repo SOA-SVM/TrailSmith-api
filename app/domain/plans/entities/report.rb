@@ -14,7 +14,7 @@ module TrailSmith
       attribute :rating,        Strict::Float
       attribute :text,          Strict::String
 
-      def keywords
+      def keywords(gpt)
         # GPT keywords from the review text
         prompt = '1. The keyword with one or two words from the prompt that could most describe the characteristic
                      of the spot for the tourist.
@@ -22,17 +22,15 @@ module TrailSmith
                   3. Dont give me the name of the spot.
                   4. Word start with capital letter, e.g. Beautiful Campus'
         question = "Review: #{text} Prompt: #{prompt}"
-        gpt = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
         gpt.find(question).messages.first
       end
 
-      def fun
+      def fun(gpt)
         # fun score = (review rating + GPT rating) / 2
         prompt = '1. Rate how fun the spot is according to the text.
                   2. The maximum is 5 and the minimum is 0.
                   3. Just give the score'
         question = "Review: #{text} Prompt: #{prompt}"
-        gpt = Openai::OpenaiMapper.new(App.config.OPENAI_TOKEN)
         response = gpt.find(question).messages.first
         (response.to_f + rating) / 2
       end

@@ -21,9 +21,7 @@ module TrailSmith
         return parsed_json if parsed_json.failure?
 
         # Create plan from response
-        plan = GoogleMaps::PlanMapper
-          .new(App.config.GOOGLE_MAPS_KEY)
-          .build_entity(raw_response)
+        plan = GoogleMaps::PlanMapper.new(App.config.GOOGLE_MAPS_KEY).build_entity(raw_response)
 
         # Store in database
         stored_plan = Repository::For.entity(plan).create(plan)

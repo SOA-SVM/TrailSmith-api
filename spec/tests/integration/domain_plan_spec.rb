@@ -21,8 +21,9 @@ describe 'Test Plan Domain Feature' do
     spot = plan.spots[0]
     report = spot.reports[0]
 
-    _(report.keywords).must_be_instance_of String
-    _(report.fun).must_be_instance_of Float
+    gpt = TrailSmith::Openai::OpenaiMapper.new(OPENAI_TOKEN)
+    _(report.keywords(gpt)).must_be_instance_of String
+    _(report.fun(gpt)).must_be_instance_of Float
 
     _(spot.fun.value).must_be_instance_of Float
     _(spot.popular.value).must_be_instance_of Float
