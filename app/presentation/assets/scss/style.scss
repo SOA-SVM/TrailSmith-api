@@ -158,7 +158,24 @@ h2 {
     &:hover {
         cursor: pointer; /* Show pointer cursor on hover */
     }
+
+    .arrow-secondary{
+        color: rgb(var(--bs-secondary-rgb));
+    }
+
+    .arrow-success{
+        color: rgb(var(--bs-success-rgb));
+    }
+
+    .arrow-warning{
+        color: rgb(var(--bs-warning-rgb));
+    }
+
+    .arrow-danger{
+        color: rgb(var(--bs-danger-rgb));
+    }
 }
+
 
 .plan_name {
     font-size: 32px;

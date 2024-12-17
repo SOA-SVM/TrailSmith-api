@@ -461,6 +461,18 @@ h2 {
 .route-arrow:hover {
   cursor: pointer; /* Show pointer cursor on hover */
 }
+.route-arrow .arrow-secondary {
+  color: var(--bs-secondary-rgb);
+}
+.route-arrow .arrow-success {
+  color: var(--bs-success-rgb);
+}
+.route-arrow .arrow-warning {
+  color: var(--bs-warning-rgb);
+}
+.route-arrow .arrow-danger {
+  color: var(--bs-danger-rgb);
+}
 
 .plan_name {
   font-size: 32px;
