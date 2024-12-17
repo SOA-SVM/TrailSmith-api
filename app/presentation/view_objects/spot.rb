@@ -23,22 +23,38 @@ module Views
     end
 
     def how_popular?
-      Popular.new(@spot.popular).to_css_class
+      ScoreRank.new(@spot.popular).to_css_class
     end
+
+    def how_fun?
+      ScoreRank.new(@spot.fun).to_css_class
+    end
+
+    def each_hashtag(&show)
+      @spot.keywords.sample(3).each do |hashtag|
+        show.call "# #{hashtag}"
+      end
+    end
+
+    # def how_relax?
+    #   Score.new(@spot.relax)
+    # end
   end
 
   # View for spot's popular
-  class Popular
-    def initialize(popularity)
-      @popularity = popularity
+  class ScoreRank
+    def initialize(score_rank)
+      @score_rank = score_rank
     end
 
     def to_css_class
-      if @popularity.high?
+      if @score_rank.not_available?
+        'bg-secondary'
+      elsif @score_rank.high?
         'bg-success'
-      elsif @popularity.medium?
+      elsif @score_rank.medium?
         'bg-warning'
-      elsif @popularity.low?
+      elsif @score_rank.low?
         'bg-danger'
       end
     end

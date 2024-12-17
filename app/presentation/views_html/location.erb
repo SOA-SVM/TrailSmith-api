@@ -19,6 +19,10 @@
             <div class="badge bg-danger pt-2 me-1"> </div>
             <span>Not that high</span>
         </div>
+        <div class="d-flex align-items-center ms-2">
+            <div class="badge bg-secondary pt-2 me-1"> </div>
+            <span>No data</span>
+        </div>
     </div>
 </div>
 <br>
@@ -31,12 +35,21 @@
                 <div class="step-text">
                     <span class="step-index"><%= spot.step_index %>.</span>
                     <span class="spot-name"><%= spot.name %></span>
-                    <span class="badge <%= spot.how_popular? %>"> popular </span>
+                    <span class="spot-popular badge <%= spot.how_popular? %>"> popular</span>
+                    <span class="spot-fun badge <%= spot.how_fun? %>"> fun</span>
+                    <br>
+                    <div class="mt-2">
+                        <% spot.each_hashtag do |hashtag| %>
+                        <span class="spot-hashtag"><%= hashtag %></span>
+                        <% end %>
+                    </div>
                 </div>
                 <% if plan.not_last_spot?(spot) %>
                 <div class="route-arrow d-flex align-items-center" data-index=<%= spot.index %>>
                     <i class="fas fa-arrow-down me-2"></i> 
-                    <span class="travel_mode"><%= plan.travel_mode(spot) %></span>
+                    <span class="travel_mode me-2"><%= plan.travel_mode(spot) %></span>
+                    <span class="distance me-2"><%= plan.distance(spot) %></span>
+                    <span class="duration"><%= plan.duration(spot) %></span>
                 </div>
                 <% end %>
             </div>
@@ -44,6 +57,7 @@
         <div class="search-container">
             <form role="form" action="/location" method="POST" id="show-spot-info">
             <div class="input-group mt-3">
+                <input type="text" name="origin_json" value='<%= plan.origin_json %>' class="d-none">
                 <input type="text" name="query" placeholder="Regenerate the route..." required="true" class="form-control">
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>

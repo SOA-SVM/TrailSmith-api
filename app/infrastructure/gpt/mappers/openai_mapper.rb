@@ -30,11 +30,11 @@ module TrailSmith
             "region": String (location area/city),
             "day": Integer (default: 1),
             "spots": Array[String] (min 2, recommended 4 spots),
-            "mode": Array[String] (length = spots.length - 1)
+            "mode": Array[String] (length = spots.length - 1) (should be from ["walking", "driving", "bicycling", "transit"])
           }
 
           Rules:
-          1. mode must be from: ["walking", "driving", "bicycling", "transit"]
+          1. if got a json with task just edit base on it
           2. number of mode elements must be exactly (spots.length - 1)
           3. customize to location characteristics
           4. spots should be actual tourist attractions/destinations

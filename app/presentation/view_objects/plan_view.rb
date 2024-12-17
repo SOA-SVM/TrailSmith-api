@@ -35,5 +35,23 @@ module Views
     def travel_mode(spot)
       "travel mode: #{@plan.routes[spot.index].travel_mode}"
     end
+
+    def distance(spot)
+      "distance: #{@plan.routes[spot.index].distance_desc}"
+    end
+
+    def duration(spot)
+      "duration: #{@plan.routes[spot.index].travel_time_desc}"
+    end
+
+    def origin_json
+      {
+        num_people: @plan.num_people,
+        region: @plan.region,
+        day: @plan.day,
+        spots: @spots.map(&:name),
+        mode: @plan.routes.map(&:travel_mode)
+      }.to_json
+    end
   end
 end

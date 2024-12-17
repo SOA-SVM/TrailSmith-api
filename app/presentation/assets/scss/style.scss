@@ -111,15 +111,24 @@ h2 {
     }
 }
 
+.badge.bg-secondary {
+    color: white;
+}
+
+.spot-hashtag {
+    color: #2fa4e7;
+    font-size: 14px;
+}
+
 @media (max-width: 768px) {
     .plan_viewer,
     .plan_title {
         flex-direction: column;
     }
 
-    .plan_title{
+    .plan_title {
         align-items: normal !important;
-        & > div{
+        & > div {
             margin-bottom: 0.5em;
         }
     }
@@ -156,7 +165,7 @@ h2 {
     font-weight: 700;
 }
 
-.travel_mode {
+.travel_mode, .distance, .duration {
     font-size: 14px;
 }
 

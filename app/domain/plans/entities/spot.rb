@@ -29,8 +29,8 @@ module TrailSmith
       def fun
         # average fun score of reports
         @fun ||= begin
-          fun_score = reports.map(&:fun).sum / reports.length
-          Value::Fun.new(fun_score)
+          fun_score = reports.empty? ? 0 : reports.map(&:fun).sum / reports.length
+          Value::Fun.new(fun_score.to_f)
         end
       end
 

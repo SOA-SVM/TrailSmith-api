@@ -24,6 +24,10 @@ module TrailSmith
       def low?
         @value <= LOW_THRESHOLD
       end
+
+      def not_available?
+        @value.zero?
+      end
     end
   end
 end
