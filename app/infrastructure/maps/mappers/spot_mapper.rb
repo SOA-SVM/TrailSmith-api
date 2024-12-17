@@ -52,10 +52,6 @@ module TrailSmith
         end
       end
 
-      def coordinate
-        Coordinate.new(@key).coordinate(place_id)
-      end
-
       # Find the coordinate for the spot
       class Coordinate
         def initialize(token, gateway_class = Route::Api)
@@ -68,16 +64,6 @@ module TrailSmith
           spot_detail = @gateway.spot_detail(place_id)
           spot_detail.data.geometry.location
         end
-      end
-
-      private
-
-      def fetch_place_data(text_query)
-        GoogleMaps::Api.new(@key).place_data(text_query)
-      end
-
-      def fetch_coordinates(place_id)
-        Coordinate.new(@key).coordinate(place_id)
       end
     end
   end

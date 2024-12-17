@@ -35,8 +35,8 @@
                 <div class="step-text">
                     <span class="step-index"><%= spot.step_index %>.</span>
                     <span class="spot-name"><%= spot.name %></span>
-                    <span class="spot-popular badge <%= spot.how_popular? %>"> popular</span>
-                    <span class="spot-fun badge <%= spot.how_fun? %>"> fun</span>
+                    <span class="spot-popular badge bg-<%= spot.how_popular? %>"> popular</span>
+                    <span class="spot-fun badge bg-<%= spot.how_fun? %>"> fun</span>
                     <br>
                     <div class="mt-2">
                         <% spot.each_hashtag do |hashtag| %>
@@ -46,7 +46,7 @@
                 </div>
                 <% if plan.not_last_spot?(spot) %>
                 <div class="route-arrow d-flex align-items-center" data-index=<%= spot.index %>>
-                    <i class="fas fa-arrow-down me-2"></i> 
+                    <i class="fas fa-arrow-down me-2 arrow-<%= plan.how_tired?(spot) %>"></i> 
                     <span class="travel_mode me-2"><%= plan.travel_mode(spot) %></span>
                     <span class="distance me-2"><%= plan.distance(spot) %></span>
                     <span class="duration"><%= plan.duration(spot) %></span>
@@ -186,35 +186,38 @@
     }
 
     function decodePolyline(encoded) {
-        let points = [];
-        let index = 0, len = encoded.length;
-        let lat = 0, lng = 0;
+        let index = 0, lat = 0, lng = 0;
+        const polyline = [];
+        const shift = (value, bits) => value | (bits << shift);
 
-        while (index < len) {
-          let b, shift = 0, result = 0;
-          do {
-            b = encoded.charCodeAt(index++) - 63;
-            result |= (b & 0x1f) << shift;
-            shift += 5;
-          } while (b >= 0x20);
-          let dlat = (result & 1) ? ~(result >> 1) : (result >> 1);
-          lat += dlat;
+        while (index < encoded.length) {
+            let result = 0, shift = 0, byte = null;
 
-          shift = 0;
-          result = 0;
-          do {
-            b = encoded.charCodeAt(index++) - 63;
-            result |= (b & 0x1f) << shift;
-            shift += 5;
-          } while (b >= 0x20);
-          let dlng = (result & 1) ? ~(result >> 1) : (result >> 1);
-          lng += dlng;
+            do {
+                byte = encoded.charCodeAt(index++) - 63;
+                result |= (byte & 0x1f) << shift;
+                shift += 5;
+            } while (byte >= 0x20);
+            const deltaLat = (result & 1) ? ~(result >> 1) : (result >> 1);
+            lat += deltaLat;
 
-          points.push({ lat: lat / 1e5, lng: lng / 1e5 });
+            result = 0, shift = 0;
+
+            do {
+                byte = encoded.charCodeAt(index++) - 63; 
+                result |= (byte & 0x1f) << shift; 
+                shift += 5;
+            } while (byte >= 0x20);
+            const deltaLng = (result & 1) ? ~(result >> 1) : (result >> 1);
+            lng += deltaLng;
+
+            polyline.push({ lat: lat / 1e5, lng: lng / 1e5 });
         }
 
-        return points;
+        return polyline;
     }
+
+
 </script>
 
 <script src="/proxy/google_maps.js" defer></script>

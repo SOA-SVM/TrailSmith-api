@@ -4,8 +4,8 @@ module TrailSmith
   module Value
     # popular score
     class Tiredness
-      HIGH_THRESHOLD = 30
-      LOW_THRESHOLD = 10
+      HIGH_THRESHOLD = 150
+      LOW_THRESHOLD = 50
 
       attr_reader :value
 

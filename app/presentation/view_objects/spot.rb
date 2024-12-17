@@ -49,13 +49,13 @@ module Views
 
     def to_css_class
       if @score_rank.not_available?
-        'bg-secondary'
+        'secondary'
       elsif @score_rank.high?
-        'bg-success'
+        'success'
       elsif @score_rank.medium?
-        'bg-warning'
+        'warning'
       elsif @score_rank.low?
-        'bg-danger'
+        'danger'
       end
     end
   end

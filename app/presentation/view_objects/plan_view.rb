@@ -44,6 +44,10 @@ module Views
       "duration: #{@plan.routes[spot.index].travel_time_desc}"
     end
 
+    def how_tired?(spot)
+      ScoreRank.new(@plan.routes[spot.index].tiredness).to_css_class
+    end
+
     def origin_json
       {
         num_people: @plan.num_people,
