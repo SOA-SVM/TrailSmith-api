@@ -6,6 +6,7 @@ require 'erb'
 require 'json'
 
 module TrailSmith
+  # Web App
   class App < Roda
     plugin :halt
     plugin :flash
@@ -38,7 +39,7 @@ module TrailSmith
       # GET /
       routing.root do
         session[:watching] ||= []
-        
+
         result = Service::ListPlans.new.call(session[:watching])
 
         if result.failure?
@@ -66,7 +67,7 @@ module TrailSmith
             end
 
             result = Service::CreateLocation.new.call(location_made.to_h)
-            
+
             if result.failure?
               flash[:error] = result.failure
               routing.redirect '/'
@@ -88,20 +89,23 @@ module TrailSmith
 
           # GET /location/[plan_id]
           routing.get do
-            result = Service::ViewLocation.new.call(plan_id)
-            
-            if result.failure?
-              flash[:error] = result.failure
+            begin
+              plan = Repository::For.klass(Entity::Plan).find_id(plan_id)
+              if plan.nil?
+                flash[:error] = MESSAGES[:plan_not_found]
+                routing.redirect '/'
+              end
+            rescue StandardError => err
+              App.logger.error "ERROR: #{err.message}"
+              flash[:error] = MESSAGES[:db_error]
               routing.redirect '/'
             end
 
-            view_data = result.value!
-            view 'location', locals: view_data
+            viewable_plan = Views::PlanView.new(plan)
+            viewable_map = Views::Map.new(plan)
 
-          rescue StandardError => e
-            App.logger.error "ERROR: #{e.message}"
-            flash[:error] = MESSAGES[:db_error]
-            routing.redirect '/'
+            view 'location',
+                 locals: { plan: viewable_plan, map: viewable_map }
           end
         end
       end
