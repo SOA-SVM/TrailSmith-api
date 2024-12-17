@@ -1,17 +1,22 @@
 # frozen_string_literal: true
 
-require 'dry/validation'
+require 'dry-validation'
 
 module TrailSmith
   module Forms
+    # URL validation for new location request
     class NewLocation < Dry::Validation::Contract
+      # URL format regex
+      QUERY_REGEX = /^[A-Za-z0-9\s\u4e00-\u9fa5,.'-]+$/
+
       params do
         required(:query).filled(:string)
       end
 
       rule(:query) do
-        key.failure('must not be empty') if value.nil? || value.empty?
-        key.failure('must be between 2 and 100 characters') unless (2..100).cover?(value.length)
+        unless QUERY_REGEX.match?(value)
+          key.failure('must be a valid input with only letters, numbers, and basic punctuation')
+        end
       end
     end
   end

@@ -59,14 +59,12 @@ module TrailSmith
         routing.is do
           # POST /location/
           routing.post do
-            # 使用 Form Object 驗證輸入
             location_made = Forms::NewLocation.new.call(routing.params)
             if location_made.failure?
               flash[:error] = MESSAGES[:invalid_location]
               routing.redirect '/'
             end
 
-            # 使用 Service Object 處理 OpenAI 和 Google Maps 邏輯
             result = Service::CreateLocation.new.call(location_made.to_h)
             
             if result.failure?
