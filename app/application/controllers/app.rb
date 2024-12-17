@@ -32,13 +32,13 @@ module TrailSmith
       routing.root do
         session[:watching] ||= []
 
-        result = Service::ListPlans.new.call(session[:watching])
+        list_result = Service::ListPlans.new.call(session[:watching])
 
-        if result.failure?
-          flash[:error] = result.failure
+        if list_result.failure?
+          flash[:error] = list_result.failure
           viewable_plans = []
         else
-          plans = result.value!
+          plans = list_result.value!
           flash.now[:notice] = MSG_GET_STARTED if plans.none?
 
           session[:watching] = plans.map(&:id)

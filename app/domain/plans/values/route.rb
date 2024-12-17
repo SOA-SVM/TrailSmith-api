@@ -24,15 +24,16 @@ module TrailSmith
         to_hash.except(:id)
       end
 
+      TRAVEL_MODE_WEIGHTS = {
+        'walking'   => 10,
+        'bicycling' => 8,
+        'transit'   => 6,
+        'driving'   => 4
+      }.freeze
+
       # Calculates the relaxing index based on travel mode, distance, and travel time
       def tiredness
-        weight = case travel_mode
-                 when 'walking' then 10
-                 when 'bicycling' then 8
-                 when 'transit' then 6
-                 when 'driving' then 4
-                 else 3
-                 end
+        weight = TRAVEL_MODE_WEIGHTS.fetch(travel_mode, 3)
 
         # Adjust relaxing score based on distance and travel time
         score = (distance / 1000.0) + (travel_time / 60.0)
