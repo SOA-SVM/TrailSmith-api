@@ -8,6 +8,7 @@ Sequel.migration do
       primary_key [:plan_id, :spot_id] # rubocop:disable Style/SymbolArray
       foreign_key :plan_id, :plans
       foreign_key :spot_id, :spots
+      Integer :position, default: 0
 
       index [:plan_id, :spot_id] # rubocop:disable Style/SymbolArray
     end
