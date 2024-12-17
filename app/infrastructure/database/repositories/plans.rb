@@ -70,11 +70,13 @@ module TrailSmith
             create_and_connect_reports_db(spot, db_spot)
           end
           # connect spot and plan
-          db_plan.add_spot(db_spot)
+          db_plan.add_spot_with_position(db_spot)
         end
       end
 
       private_class_method def self.create_and_connect_reports_db(entity, db_spot)
+        return if entity.reports.nil?
+
         entity.reports.each do |report|
           db_spot.add_report(Database::ReportOrm.create(report.to_attr_hash)) # connect route and plan
         end

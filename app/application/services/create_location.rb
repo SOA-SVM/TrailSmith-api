@@ -25,16 +25,18 @@ module TrailSmith
 
         # Store in database
         find_plan = Repository::For.entity(plan).find(plan)
+
         stored_plan = find_plan.nil? ? Repository::For.entity(plan).create(plan) : find_plan
+
         Success(stored_plan)
-      rescue StandardError => e
-        puts "Error in CreateLocation service: #{e.message}"
-        case e.message
-        when /already exists/
-          Failure('This plan already exists')
-        else
-          Failure('Could not create location')
-        end
+        # rescue StandardError => e
+        #   puts "Error in CreateLocation service: #{e.message}"
+        #   case e.message
+        #   when /already exists/
+        #     Failure('This plan already exists')
+        #   else
+        #     Failure('Could not create location')
+        #   end
       end
 
       private
