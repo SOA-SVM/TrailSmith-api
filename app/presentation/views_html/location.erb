@@ -19,6 +19,10 @@
             <div class="badge bg-danger pt-2 me-1"> </div>
             <span>Not that high</span>
         </div>
+        <div class="d-flex align-items-center ms-2">
+            <div class="badge bg-secondary pt-2 me-1"> </div>
+            <span>No data</span>
+        </div>
     </div>
 </div>
 <br>
@@ -31,7 +35,8 @@
                 <div class="step-text">
                     <span class="step-index"><%= spot.step_index %>.</span>
                     <span class="spot-name"><%= spot.name %></span>
-                    <span class="badge <%= spot.how_popular? %>"> popular </span>
+                    <span class="badge <%= spot.how_popular? %>"> popular</span>
+                    <span class="badge <%= spot.how_fun? %>"> fun</span>
                 </div>
                 <% if plan.not_last_spot?(spot) %>
                 <div class="route-arrow d-flex align-items-center" data-index=<%= spot.index %>>

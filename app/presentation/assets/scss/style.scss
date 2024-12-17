@@ -111,15 +111,19 @@ h2 {
     }
 }
 
+.badge.bg-secondary {
+    color: white;
+}
+
 @media (max-width: 768px) {
     .plan_viewer,
     .plan_title {
         flex-direction: column;
     }
 
-    .plan_title{
+    .plan_title {
         align-items: normal !important;
-        & > div{
+        & > div {
             margin-bottom: 0.5em;
         }
     }

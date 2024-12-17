@@ -26,6 +26,10 @@ module Views
       ScoreRank.new(@spot.popular).to_css_class
     end
 
+    def how_fun?
+      ScoreRank.new(@spot.fun).to_css_class
+    end
+
     # def how_relax?
     #   Score.new(@spot.relax)
     # end
@@ -38,7 +42,9 @@ module Views
     end
 
     def to_css_class
-      if @score_rank.high?
+      if @score_rank.not_available?
+        'bg-secondary'
+      elsif @score_rank.high?
         'bg-success'
       elsif @score_rank.medium?
         'bg-warning'
