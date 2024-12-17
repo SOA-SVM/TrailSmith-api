@@ -2,6 +2,7 @@
 
 require 'dry-types'
 require 'dry-struct'
+require_relative 'tiredness'
 
 module TrailSmith
   module Value
@@ -24,19 +25,19 @@ module TrailSmith
       end
 
       # Calculates the relaxing index based on travel mode, distance, and travel time
-      # def relaxing
-      #   base_relaxing = case @travel_mode
-      #                   when :walking then 10
-      #                   when :bicycling then 8
-      #                   when :driving then 5
-      #                   when :transit then 7
-      #                   else 3
-      #                   end
+      def tiredness
+        weight = case travel_mode
+                 when 'walking' then 10
+                 when 'bicycling' then 8
+                 when 'transit' then 6
+                 when 'driving' then 4
+                 else 3
+                 end
 
-      #   # Adjust relaxing score based on distance and travel time
-      #   adjustment = (@distance / 10.0) + (@travel_time / 60.0)
-      #   [base_relaxing - adjustment, 0].max.round(2)
-      # end
+        # Adjust relaxing score based on distance and travel time
+        score = (distance / 1000.0) + (travel_time / 60.0)
+        Tiredness.new(weight * score)
+      end
     end
   end
 end

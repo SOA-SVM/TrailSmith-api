@@ -36,8 +36,8 @@ module TrailSmith
 
       def popular
         @popular ||= begin
-          popular_score = rating_count.to_f
-          Value::Popular.new(popular_score)
+          popular_score = rating_count
+          Value::Popular.new(popular_score.to_f)
         end
       end
 
