@@ -35,10 +35,6 @@ module Views
         show.call "# #{hashtag}"
       end
     end
-
-    # def how_relax?
-    #   Score.new(@spot.relax)
-    # end
   end
 
   # View for spot's popular
@@ -56,6 +52,18 @@ module Views
         'warning'
       elsif @score_rank.low?
         'danger'
+      end
+    end
+
+    def to_css_class_reverse
+      if @score_rank.not_available?
+        'secondary'
+      elsif @score_rank.high?
+        'danger'
+      elsif @score_rank.medium?
+        'warning'
+      elsif @score_rank.low?
+        'success'
       end
     end
   end
