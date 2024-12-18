@@ -9,7 +9,7 @@ module TrailSmith
       include Dry::Transaction
 
       step :validate_list
-      step :retreive_plans
+      step :retrieve_plans
 
       private
 
