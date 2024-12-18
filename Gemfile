@@ -6,11 +6,13 @@ ruby File.read('.ruby-version').strip
 # CONFIGURATION
 gem 'figaro', '~> 1.2'
 gem 'pry'
+gem 'rack-test'
 gem 'rake', '~> 13.2', '>= 13.2.1'
 
 # PRESENTATION LAYER
-gem 'erb', '~> 4.0', '>= 4.0.4'
-gem 'htmlbeautifier'
+gem 'multi_json', '~> 1.15'
+gem 'ostruct', '~> 0.6.1'
+gem 'roar', '~> 1.2'
 
 # APPLICATION LAYER
 # Web application related
@@ -24,6 +26,11 @@ gem 'tilt'
 gem 'dry-monads', '~> 1.6'
 gem 'dry-transaction', '~> 0.16.0'
 gem 'dry-validation', '~> 1.10'
+
+# Caching
+gem 'rack-cache', '~> 1.17'
+gem 'redis', '~> 5.3'
+gem 'redis-rack-cache', '~> 2.2', '>= 2.2.1'
 
 # DOMAIN LAYER
 # Validation
@@ -39,6 +46,11 @@ gem 'hirb'
 # gem 'hirb-unicode' # incompatible with new rubocop
 gem 'sequel', '~> 5.0'
 
+# Asynchronicity
+gem 'concurrent-ruby', '~> 1.3', '>= 1.3.4'
+gem 'aws-sdk-sqs', '~> 1.89'
+gem 'shoryuken', '~> 6.2', '>= 6.2.1'
+
 group :development, :test do
   gem 'sqlite3', '~> 1.0'
 end
@@ -49,18 +61,12 @@ end
 
 # Testing
 group :test do
-  # Unit/Integration/Acceptance Tests
+  # API Unit/Integration/Acceptance Tests
   gem 'minitest', '~> 5.20'
   gem 'minitest-rg', '~> 5.2'
   gem 'simplecov', '~> 0.22.0'
   gem 'vcr', '~> 6.3', '>= 6.3.1'
   gem 'webmock', '~> 3.24'
-
-  # Acceptance Tests
-  gem 'headless', '~> 2.3', '>= 2.3.1'
-  gem 'page-object', '~> 2.3', '>= 2.3.1'
-  gem 'selenium-webdriver', '~> 4.26'
-  gem 'watir', '~> 7.3'
 end
 
 # Development

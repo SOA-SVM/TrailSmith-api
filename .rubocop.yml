@@ -7,11 +7,17 @@ AllCops:
     - 'Gemfile'
     - 'rakefile'
     - '**/*.rb'
+  Exclude:
+    - '_snippets/**/*'
 
 require:
   - rubocop-minitest
   - rubocop-rake
   - rubocop-sequel
+
+# Ignore use of OpenStruct for representers
+Style/OpenStructUse:
+  Enabled: false
 
 # ignore block length where unavoidable (e.g., frameworks using blocks)
 Metrics/BlockLength:
