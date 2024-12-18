@@ -20,8 +20,8 @@ GOOGLE_MAPS_KEY = TrailSmith::App.config.GOOGLE_MAPS_KEY
 OPENAI_TOKEN = TrailSmith::App.config.OPENAI_TOKEN
 
 TEXT_QUERY = 'nthu'
-STARTING_SPOT = 'ChIJB7ZNzXI2aDQREwR22ltdKxE'
-NEXT_SPOT = 'ChIJBXLgwuk1aDQRuu4aKYS0jF4'
+STARTING_SPOT = 'nthu'
+NEXT_SPOT = 'Hsinchu Train Station'
 TRAVEL_MODE = 'walking'
 GPT_JSON = '{
 "num_people": 2,
@@ -31,11 +31,11 @@ GPT_JSON = '{
 "mode": ["walking", "walking"]
 }'
 
-GPT_JSON2 = '{
-"num_people": 2,
-"region": "Hsinchu",
-"day": 3,
-"spots": ["nthu", "Hsinchu Zoo", "Hsinchu Train Station"],
-"mode": ["walking", "walking"]
-}'
+# GPT_JSON2 = '{
+# "num_people": 2,
+# "region": "Hsinchu",
+# "day": 3,
+# "spots": ["nthu", "Hsinchu Zoo", "Hsinchu Train Station"],
+# "mode": ["walking", "walking"]
+# }'
 MAP_CORRECT = YAML.safe_load_file('spec/fixtures/maps_results.yml', permitted_classes: [Symbol])
