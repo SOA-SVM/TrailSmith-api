@@ -4,7 +4,7 @@ require_relative '../../../helpers/spec_helper'
 require_relative '../../../helpers/vcr_helper'
 require_relative '../../../helpers/database_helper'
 
-require 'ostruct'
+require 'irb'
 
 describe 'ListPlan Service Integration Test' do
   VcrHelper.setup_vcr
@@ -27,11 +27,11 @@ describe 'ListPlan Service Integration Test' do
       valid_token = GOOGLE_MAPS_KEY
 
       # WHEN: we request for the proxy service
-      result = TrailSmith::Service::GoogleMapsProxy.new.call(valid_token)
+      result = TrailSmith::Service::GoogleMapsProxy.new.call(token: valid_token)
 
       # THEN: it should return successful response
       _(result.success?).must_equal true
-      response = result.value!
+      response = result.value![:message]
       _(response).must_include 'initMap'
     end
   end
