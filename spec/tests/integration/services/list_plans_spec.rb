@@ -56,5 +56,20 @@ describe 'ListPlan Service Integration Test' do
       list = result.value!.message
       _(list.plans).must_equal []
     end
+
+    it 'test' do
+      # GIVEN: we are watching a plan that does not exist locally
+      list_request = TrailSmith::Request::EncodedPlanList.to_request({})
+
+      # WHEN: we request a list of all watched plans
+      result = TrailSmith::Service::ListPlans.new.call(
+        list_request: list_request
+      )
+
+      # THEN: it should return an empty list
+      _(result.success?).must_equal true
+      list = result.value!.message
+      _(list.plans).must_equal []
+    end
   end
 end
