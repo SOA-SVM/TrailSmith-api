@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module TrailSmith
-  def Response
+  module Response
     # List of plans
     PlansList = Struct.new(:plans)
   end
