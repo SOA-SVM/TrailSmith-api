@@ -40,12 +40,12 @@ namespace :run do
 end
 
 namespace :db do
-  task :config do # rubocop:disable Rake/Desc
+  task :config do
     require 'sequel'
     require_relative 'config/environment' # load config info
     require_relative 'spec/helpers/database_helper'
 
-    def app = TrailSmith::App # rubocop:disable Rake/MethodDefinitionInTask
+    def app = TrailSmith::App
   end
 
   desc 'Run migrations'

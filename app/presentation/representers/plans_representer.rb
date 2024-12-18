@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+require 'ostruct'
 require 'roar/decorator'
 require 'roar/json'
 
-require_relative 'plan/representer'
+require_relative 'plan_representer'
 
 module TrailSmith
   module Representer
