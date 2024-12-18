@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../helpers/spec_helper_openai'
+require_relative '../../../helpers/spec_helper_openai'
 require 'irb'
 
 describe 'Test OpenAI API liabrary' do
@@ -24,11 +24,9 @@ describe 'Test OpenAI API liabrary' do
 
   describe 'OpenAI Information' do
     it 'HAPPY: should provide a successful response from the API' do
-      # binding.irb
       mapper = TrailSmith::Openai::OpenaiMapper.new(OPENAI_TOKEN)
       response = mapper.find(QUESTION)
       puts "Test Response: #{response.inspect}"
-      # binding.irb
       _(response).must_be_instance_of TrailSmith::Entity::Wish
       _(response.messages).wont_be_empty # 檢查 messages 不為空
       _(response.messages.first).must_include EXPECTED_RESPONSE # 檢查包含期望值
