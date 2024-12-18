@@ -17,7 +17,7 @@ module TrailSmith
 
       # GET /
       routing.root do
-        message = "TrailSmith API v1 at /api/v1/ in #{App.enviroment} mode"
+        message = "TrailSmith API v1 at /api/v1/ in #{App.environment} mode"
 
         result_response = Representer::HttpResponse.new(
           Response::ApiResult.new(status: :ok, message:)
