@@ -98,7 +98,7 @@ module TrailSmith
           response['Content-Type'] = 'application/javascript'
           api_key = App.config.GOOGLE_MAPS_KEY
 
-          result = Service::GoogleMapsProxy.new.call(api_key)
+          result = Service::GoogleMapsProxy.new.call('bad_token')
 
           if result.success?
             response.write(result.value!)
