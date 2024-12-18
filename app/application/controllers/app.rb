@@ -10,27 +10,14 @@ module TrailSmith
   class App < Roda
     plugin :halt
     plugin :flash
-    plugin :all_verbs
-    plugin :render, engine: 'erb', views: 'app/presentation/views_html'
-    plugin :public, root: 'app/presentation/public'
-    plugin :assets, path: 'app/presentation/assets',
-                   css: 'style.css', timestamp_paths: true,
-                   js: 'table_row_click.js'
-    plugin :common_logger, $stderr
-
-    use Rack::MethodOverride
-
-    MSG_GET_STARTED = 'Add a plan to get started.'
-    MSG_PLAN_CREATED = 'Plan created successfully.'
+    plugin :all_verbs # allows DELETE and other HTTP verbs beyond GET/POST
 
     route do |routing|
-      routing.assets
-      response['Content-Type'] = 'text/html; charset=utf-8'
-      routing.public
+      response['Content-Type'] = 'application/json'
 
       # GET /
       routing.root do
-        session[:watching] ||= []
+        message = "TrailSmith API v1 at /api/v1/ in #{App.enviroment} mode"
 
         list_result = Service::ListPlans.new.call(session[:watching])
 
