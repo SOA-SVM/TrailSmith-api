@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"What is
+        the capital of France?"}],"max_tokens":50}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer BAD_TOKEN
+      Connection:
+      - close
+      Host:
+      - api.openai.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 16:25:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '259'
+      Connection:
+      - close
+      Vary:
+      - Origin
+      X-Request-Id:
+      - req_00c62a4ffb30f6b79cde02e4c6e0a545
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=icpTokuqHrtpXdfrh_pmks_XWTzqFTRkWMJR1oEdGlI-1734539112-1.0.1.1-E5LUcDys51sBgr1DMc.aquFk0fXwToapUB.Rn4fLjPOwdtAYakXuDpgA_Yo3H.xKAh4IzirHjR3925f5pp0KbQ;
+        path=/; expires=Wed, 18-Dec-24 16:55:12 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=iJO_m_ULaFenKgHW4W6NDOs0L4bk6spel5YuhRngeZI-1734539112820-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f4081edcba1827c-TPE
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: |
+        {
+            "error": {
+                "message": "Incorrect API key provided: BAD_TOKEN. You can find your API key at https://platform.openai.com/account/api-keys.",
+                "type": "invalid_request_error",
+                "param": null,
+                "code": "invalid_api_key"
+            }
+        }
+  recorded_at: Wed, 18 Dec 2024 16:25:13 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"What is
+        the capital of France?"}],"max_tokens":50}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <OPENAI_TOKEN>
+      Connection:
+      - close
+      Host:
+      - api.openai.com
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 16:25:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-5c4nicwpcfep3szkvx23dro6
+      Openai-Processing-Ms:
+      - '617'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '199941'
+      X-Ratelimit-Reset-Requests:
+      - 8.64s
+      X-Ratelimit-Reset-Tokens:
+      - 17ms
+      X-Request-Id:
+      - req_b3a3865194f74e5e10eed5631523e1cf
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=j9e1R0ByWefsyJbEKWgX5c74w1Jtb60vV6jR0NUGos4-1734539113-1.0.1.1-mnnqhF4NRyG9.BiC8eXGMxNKwrpilmqxFTzizvEAM3hYZiykue0xaaq6ffCWtK0w3uwO9vLqNcLaL7qnj_kz.A;
+        path=/; expires=Wed, 18-Dec-24 16:55:13 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=Z.vEphygau32FEoXSxu_1euCel7B9dxwTdienXsKH6s-1734539113792-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f4081f0091f4a1c-TPE
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "chatcmpl-Afr9FlerU3pawqZmVOJ1OcywHDvjM",
+          "object": "chat.completion",
+          "created": 1734539113,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "The capital of France is Paris.",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 14,
+            "completion_tokens": 7,
+            "total_tokens": 21,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_39a40c96a0"
+        }
+  recorded_at: Wed, 18 Dec 2024 16:25:14 GMT
+recorded_with: VCR 6.3.1
