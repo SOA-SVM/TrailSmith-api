@@ -28,9 +28,27 @@ module TrailSmith
       end
       routing.on 'api/v1' do
         routing.on 'plans' do
-          routing.on String do |plan_id|
-            # POST /plans/{plan_id}
-            routing.post do
+          # routing.on String do |plan_id|
+          #   # POST /plans/{plan_id}
+          #   routing.get do
+          #     result
+          #   end
+          # end
+
+          routing.is do 
+            # GET /plans?list={base64_json_array_of_plan_ids}
+            routing.get do
+              list_req = Request::EncodedPlanList.new(routing.params)
+              result = Service::ListPlans.new.call(list_request: list_req)
+
+              if result.failure?
+                failed = Representer::HttpResponse.new(result.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end
+
+              http_response = Representer::HttpResponse.new(result.value!)
+              response.status = http_response.http_status_code
+              Representer::PlansList.new(result.value!.message).to_json
             end
           end
         end
