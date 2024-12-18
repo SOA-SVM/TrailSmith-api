@@ -13,8 +13,7 @@ task spec: ['spec:default']
 namespace :spec do
   desc 'Run unit and integration tests'
   Rake::TestTask.new(:default) do |t|
-    t.pattern = Dir.glob('spec/tests/{integration,unit}/**/*_spec.rb') \
-                - ['spec/tests/integration/gateway_cloud_spec.rb'] # ignore cloud api for now
+    t.pattern = 'spec/tests/{integration,unit}/**/*_spec.rb'
     t.warning = false
   end
 
@@ -26,8 +25,7 @@ namespace :spec do
 
   desc 'Run unit, integration, and acceptance tests'
   Rake::TestTask.new(:all) do |t|
-    t.pattern = Dir.glob('spec/tests/**/*_spec.rb') \
-                - ['spec/tests/integration/gateway_cloud_spec.rb'] # ignore cloud api for now
+    t.pattern = t.pattern = 'spec/tests/**/*_spec.rb'
     t.warning = false
   end
 end

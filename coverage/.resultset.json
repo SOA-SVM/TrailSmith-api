@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/victor1154/TrailSmith/require_app.rb": {
+      "/home/shou/hw/api_explore/require_app.rb": {
         "lines": [
           null,
           null,
@@ -21,7 +21,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/config/environment.rb": {
+      "/home/shou/hw/api_explore/config/environment.rb": {
         "lines": [
           null,
           null,
@@ -65,7 +65,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/plans/entities/plan.rb": {
+      "/home/shou/hw/api_explore/app/domain/plans/entities/plan.rb": {
         "lines": [
           null,
           null,
@@ -99,7 +99,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/plans/entities/spot.rb": {
+      "/home/shou/hw/api_explore/app/domain/plans/entities/spot.rb": {
         "lines": [
           null,
           null,
@@ -162,7 +162,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/plans/entities/report.rb": {
+      "/home/shou/hw/api_explore/app/domain/plans/entities/report.rb": {
         "lines": [
           null,
           null,
@@ -209,7 +209,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/plans/values/fun.rb": {
+      "/home/shou/hw/api_explore/app/domain/plans/values/fun.rb": {
         "lines": [
           null,
           null,
@@ -246,7 +246,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/plans/values/popular.rb": {
+      "/home/shou/hw/api_explore/app/domain/plans/values/popular.rb": {
         "lines": [
           null,
           null,
@@ -283,7 +283,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/plans/values/route.rb": {
+      "/home/shou/hw/api_explore/app/domain/plans/values/route.rb": {
         "lines": [
           null,
           null,
@@ -311,15 +311,16 @@
           9,
           null,
           null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           1,
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
           null,
           null,
           0,
@@ -330,7 +331,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/plans/values/tiredness.rb": {
+      "/home/shou/hw/api_explore/app/domain/plans/values/tiredness.rb": {
         "lines": [
           null,
           null,
@@ -367,7 +368,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/domain/wishs/entities/wish.rb": {
+      "/home/shou/hw/api_explore/app/domain/wishs/entities/wish.rb": {
         "lines": [
           null,
           null,
@@ -386,7 +387,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/orm/plan_orm.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/orm/plan_orm.rb": {
         "lines": [
           null,
           null,
@@ -426,7 +427,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/orm/report_orm.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/orm/report_orm.rb": {
         "lines": [
           null,
           null,
@@ -445,7 +446,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/orm/route_orm.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/orm/route_orm.rb": {
         "lines": [
           null,
           null,
@@ -464,7 +465,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/orm/spot_orm.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/orm/spot_orm.rb": {
         "lines": [
           null,
           null,
@@ -489,7 +490,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/repositories/for.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/repositories/for.rb": {
         "lines": [
           null,
           null,
@@ -521,7 +522,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/repositories/spots.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/repositories/spots.rb": {
         "lines": [
           null,
           null,
@@ -575,7 +576,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/repositories/reports.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/repositories/reports.rb": {
         "lines": [
           null,
           null,
@@ -611,7 +612,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/repositories/plans.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/repositories/plans.rb": {
         "lines": [
           null,
           null,
@@ -690,6 +691,8 @@
           null,
           null,
           1,
+          3,
+          null,
           3,
           15,
           null,
@@ -705,7 +708,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/database/repositories/routes.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/database/repositories/routes.rb": {
         "lines": [
           null,
           null,
@@ -742,7 +745,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/gpt/gateways/openai_api.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/gpt/gateways/openai_api.rb": {
         "lines": [
           null,
           null,
@@ -854,7 +857,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/gpt/mappers/openai_mapper.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/gpt/mappers/openai_mapper.rb": {
         "lines": [
           null,
           null,
@@ -954,7 +957,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/maps/gateways/maps_api.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/maps/gateways/maps_api.rb": {
         "lines": [
           null,
           null,
@@ -1026,7 +1029,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/maps/gateways/route.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/maps/gateways/route.rb": {
         "lines": [
           null,
           null,
@@ -1108,7 +1111,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/maps/mappers/plan_mapper.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/maps/mappers/plan_mapper.rb": {
         "lines": [
           null,
           null,
@@ -1163,7 +1166,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/maps/mappers/spot_mapper.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/maps/mappers/spot_mapper.rb": {
         "lines": [
           null,
           null,
@@ -1237,7 +1240,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/infrastructure/maps/mappers/route_mapper.rb": {
+      "/home/shou/hw/api_explore/app/infrastructure/maps/mappers/route_mapper.rb": {
         "lines": [
           null,
           null,
@@ -1311,7 +1314,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/presentation/view_objects/map.rb": {
+      "/home/shou/hw/api_explore/app/presentation/view_objects/map.rb": {
         "lines": [
           null,
           null,
@@ -1333,7 +1336,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/presentation/view_objects/plan.rb": {
+      "/home/shou/hw/api_explore/app/presentation/view_objects/plan.rb": {
         "lines": [
           null,
           null,
@@ -1388,7 +1391,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/presentation/view_objects/plan_list.rb": {
+      "/home/shou/hw/api_explore/app/presentation/view_objects/plan_list.rb": {
         "lines": [
           null,
           null,
@@ -1414,7 +1417,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/presentation/view_objects/plan_view.rb": {
+      "/home/shou/hw/api_explore/app/presentation/view_objects/plan_view.rb": {
         "lines": [
           null,
           null,
@@ -1432,6 +1435,10 @@
           0,
           0,
           null,
+          null,
+          null,
+          1,
+          0,
           null,
           null,
           1,
@@ -1479,7 +1486,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/presentation/view_objects/spot.rb": {
+      "/home/shou/hw/api_explore/app/presentation/view_objects/spot.rb": {
         "lines": [
           null,
           null,
@@ -1521,13 +1528,21 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
           1,
           1,
           0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           null,
           null,
           1,
@@ -1545,7 +1560,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/application/controllers/app.rb": {
+      "/home/shou/hw/api_explore/app/application/controllers/app.rb": {
         "lines": [
           null,
           null,
@@ -1570,14 +1585,6 @@
           1,
           null,
           1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           1,
           null,
           1,
@@ -1610,12 +1617,6 @@
           null,
           0,
           0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
           0,
           null,
           0,
@@ -1639,20 +1640,16 @@
           null,
           null,
           0,
-          null,
           0,
-          0,
-          0,
-          0,
-          null,
           null,
           0,
           0,
           0,
           null,
+          0,
+          0,
+          0,
           null,
-          0,
-          0,
           null,
           0,
           null,
@@ -1680,7 +1677,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/application/forms/new_location.rb": {
+      "/home/shou/hw/api_explore/app/application/forms/new_location.rb": {
         "lines": [
           null,
           null,
@@ -1695,6 +1692,7 @@
           null,
           1,
           1,
+          1,
           null,
           null,
           1,
@@ -1703,11 +1701,22 @@
           null,
           null,
           null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/application/services/create_location.rb": {
+      "/home/shou/hw/api_explore/app/application/services/create_location.rb": {
         "lines": [
           null,
           null,
@@ -1720,37 +1729,33 @@
           1,
           null,
           1,
+          1,
+          1,
+          1,
+          1,
           null,
-          0,
+          1,
           null,
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
+          1,
           0,
           0,
-          null,
           0,
-          null,
           0,
-          null,
           null,
           null,
           1,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
           null,
           1,
           0,
@@ -1761,6 +1766,51 @@
           null,
           0,
           null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/shou/hw/api_explore/app/application/services/find_plan.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
           null,
           0,
           null,
@@ -1769,7 +1819,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/application/services/google_maps_proxy.rb": {
+      "/home/shou/hw/api_explore/app/application/services/google_maps_proxy.rb": {
         "lines": [
           null,
           null,
@@ -1809,7 +1859,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/application/services/list_plans.rb": {
+      "/home/shou/hw/api_explore/app/application/services/list_plans.rb": {
         "lines": [
           null,
           null,
@@ -1834,57 +1884,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/app/application/services/view_location.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/victor1154/TrailSmith/spec/helpers/vcr_helper.rb": {
+      "/home/shou/hw/api_explore/spec/helpers/vcr_helper.rb": {
         "lines": [
           null,
           null,
@@ -1905,8 +1905,8 @@
           null,
           1,
           8,
-          21562,
-          21562,
+          29726,
+          29726,
           null,
           null,
           8,
@@ -1922,7 +1922,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/spec/helpers/database_helper.rb": {
+      "/home/shou/hw/api_explore/spec/helpers/database_helper.rb": {
         "lines": [
           null,
           null,
@@ -1941,7 +1941,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/spec/tests/integration/gateway_database_spec.rb": {
+      "/home/shou/hw/api_explore/spec/tests/integration/gateway_database_spec.rb": {
         "lines": [
           null,
           null,
@@ -2012,7 +2012,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/spec/tests/integration/gateway_maps_spec.rb": {
+      "/home/shou/hw/api_explore/spec/tests/integration/gateway_maps_spec.rb": {
         "lines": [
           null,
           null,
@@ -2062,7 +2062,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/spec/tests/integration/gateway_openai_spec.rb": {
+      "/home/shou/hw/api_explore/spec/tests/integration/gateway_openai_spec.rb": {
         "lines": [
           null,
           null,
@@ -2074,8 +2074,8 @@
           1,
           1,
           null,
-          5050,
-          5050,
+          6048,
+          6048,
           null,
           null,
           1,
@@ -2111,7 +2111,7 @@
           null
         ]
       },
-      "/home/victor1154/TrailSmith/spec/helpers/spec_helper_openai.rb": {
+      "/home/shou/hw/api_explore/spec/helpers/spec_helper_openai.rb": {
         "lines": [
           null,
           null,
@@ -2139,12 +2139,12 @@
           1,
           1,
           1,
-          5050,
-          5050,
+          6048,
+          6048,
           null
         ]
       }
     },
-    "timestamp": 1734456584
+    "timestamp": 1734488471
   }
 }
