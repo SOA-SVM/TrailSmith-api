@@ -17,19 +17,24 @@ module TrailSmith
       private
 
       def validate_input(input)
-        query = input[:query]
-        origin_json = input[:origin_json]
-        query = origin_json.to_s + query if origin_json
-        query.nil? || query.strip.empty? ? Failure('Invalid input: query is missing') : Success(query)
+        location_made = input[:location_made].call
+        if location_made.success?
+          query = location_made.value!['query']
+          origin_json = location_made.value!['origin_json']
+          query = origin_json.to_s + query if origin_json
+          query.nil? || query.strip.empty? ? Failure('Invalid input: query is missing') : Success(input.merge(query: query))
+        else
+          Failure(list_request.failure)
+        end
       end
 
-      def generate_recommendation(query)
+      def generate_recommendation(input)
         wish_result = TrailSmith::Openai::OpenaiMapper
           .new(App.config.OPENAI_TOKEN)
-          .build_prompt(query, model: 'gpt-4o-mini', max_tokens: 500)
+          .build_prompt(input[:query], model: 'gpt-4o-mini', max_tokens: 500)
 
         if wish_result&.messages&.any?
-          Success(wish_result.messages.first)
+          Success(input.merge(response: wish_result.messages.first))
         else
           Failure('No recommendations received')
         end
@@ -37,12 +42,12 @@ module TrailSmith
         Failure("OpenAI API Error: #{err.message}")
       end
 
-      def validate_response(response)
-        parsed_json = JSON.parse(response)
+      def validate_response(input)
+        parsed_json = JSON.parse(input[:response])
         required_fields = %w[num_people region day spots mode]
 
         if required_fields.all? { |field| parsed_json.key?(field) }
-          Success(response)
+          Success(input)
         else
           Failure('Invalid response format from OpenAI')
         end
@@ -50,18 +55,18 @@ module TrailSmith
         Failure('Could not parse OpenAI response')
       end
 
-      def create_plan(raw_response)
+      def create_plan(input)
         plan = GoogleMaps::PlanMapper
           .new(App.config.GOOGLE_MAPS_KEY)
-          .build_entity(raw_response)
+          .build_entity(input[:response])
 
-        Success(plan)
+        Success(input.merge(plan: plan))
       rescue StandardError => err
         Failure("Error creating plan: #{err.message}")
       end
 
-      def stored_plan(plan)
-        stored_plan = Repository::For.entity(plan).create(plan)
+      def stored_plan(input)
+        stored_plan = Repository::For.entity(input[:plan]).create(input[:plan])
         Success(stored_plan)
       rescue StandardError => err
         case err.message

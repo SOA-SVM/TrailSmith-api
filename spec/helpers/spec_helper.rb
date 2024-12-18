@@ -30,7 +30,7 @@ GPT_JSON = '{
 "spots": ["nthu", "Hsinchu Train Station", "Hsinchu Zoo"],
 "mode": ["walking", "walking"]
 }'
-
+QUERY = 'I want a day trip to Tainan'
 # GPT_JSON2 = '{
 # "num_people": 2,
 # "region": "Hsinchu",
