@@ -7,7 +7,7 @@ require 'roda'
 require 'sequel'
 # require 'delegate' # needed until Rack 2.3 fixes delegateclass bug
 
-module CodePraise
+module TrailSmith
   # Environment-specific configuration
   class App < Roda
     plugin :environments

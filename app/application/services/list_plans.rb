@@ -1,20 +1,39 @@
 #  frozen_string_literal: true
 
-require 'dry/monads'
+require 'dry/transaction'
 
 module TrailSmith
   module Service
     # Retrieves array of all listed plan entities
     class ListPlans
-      include Dry::Monads::Result::Mixin
+      include Dry::Transaction
 
-      def call(plans_list)
-        plans = Repository::For.klass(Entity::Plan)
-          .find_ids(plans_list)
+      step :validate_list
+      step :retreive_plans
 
-        Success(plans)
+      private
+
+      DB_ERR = 'Could not access database'
+
+      # Expects list of plans in input[:list_request]
+      def validate_list(input)
+        list_request = input[:list_request].call
+        if list_request.success?
+          Success(input.merge(list: list_request.value!))
+        else
+          Failure(list_request.failure)
+        end
+      end
+
+      def retrieve_plans(input)
+        Repository::For.klass(Entity::Plan).find_ids(input[:list])
+          .then { |plans| Response::PlansList.new(plans) }
+          .then { |list| Response::ApiResult.new(status: :ok, message: list) }
+          .then { |result| Success(result) }
       rescue StandardError
-        Failure('Could not access database')
+        Failure(
+          Response::ApiResult.new(status: :internal_error, message: DB_ERR)
+        )
       end
     end
   end
